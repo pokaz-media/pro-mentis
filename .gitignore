@@ -1,0 +1,7 @@
+# Design source bundle (private client chat transcript + prototype) — kept local only
+design-bundle/
+design-bundle.gz
+
+# OS / editor cruft
+.DS_Store
+*.log

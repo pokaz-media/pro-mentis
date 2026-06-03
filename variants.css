@@ -1,0 +1,248 @@
+/* ============================================================
+   Pro-Mentis — VARIANTS
+   4 alternatywne układy na sekcję + globalne osie:
+   przejścia, kształt, gęstość, czcionka tekstu.
+   Sterowane atrybutami data-* (z panelu Tweaks).
+   ============================================================ */
+
+:root { --radius-lg: 10px; }
+
+/* ───────────────────────────────────────────────────────────
+   GLOBALNE: czcionka tekstu
+   ─────────────────────────────────────────────────────────── */
+html[data-bodyfont="mulish"]   { --font-body: "Mulish", system-ui, sans-serif; }
+html[data-bodyfont="worksans"] { --font-body: "Work Sans", system-ui, sans-serif; }
+
+/* ───────────────────────────────────────────────────────────
+   GLOBALNE: kształt narożników
+   ─────────────────────────────────────────────────────────── */
+html[data-shape="sharp"] { --radius: 0px;  --radius-lg: 0px; }
+html[data-shape="soft"]  { --radius: 6px;  --radius-lg: 14px; }
+html[data-shape="round"] { --radius: 16px; --radius-lg: 28px; }
+html[data-shape] .offer-grid,
+html[data-shape] .map-ph,
+html[data-shape] .hero-photo,
+html[data-shape] .widget-ph,
+html[data-shape] .locate-block,
+html[data-shape] .ph { border-radius: var(--radius-lg) !important; }
+
+/* ───────────────────────────────────────────────────────────
+   GLOBALNE: gęstość
+   ─────────────────────────────────────────────────────────── */
+html[data-density="compact"]  section { padding-block: clamp(46px, 7vh, 84px); }
+html[data-density="compact"]  .section-head { margin-bottom: clamp(24px, 3vw, 34px); }
+html[data-density="spacious"] section { padding-block: clamp(104px, 17vh, 210px); }
+html[data-density="spacious"] .section-head { margin-bottom: clamp(48px, 6vw, 80px); }
+
+/* ───────────────────────────────────────────────────────────
+   GLOBALNE: przejścia / animacje wejścia
+   ─────────────────────────────────────────────────────────── */
+.reveal {
+  transition: opacity .8s cubic-bezier(.2,.7,.3,1),
+              transform .8s cubic-bezier(.2,.7,.3,1),
+              filter .8s ease !important;
+}
+html[data-anim="none"]  .reveal { opacity: 1; transform: none; filter: none; transition: none !important; }
+html[data-anim="fade"]  .reveal { transform: none; filter: none; }
+html[data-anim="rise"]  .reveal { transform: translateY(30px); filter: none; }
+html[data-anim="slide"] .reveal { transform: translateX(-40px); filter: none; }
+html[data-anim="scale"] .reveal { transform: scale(.92); transform-origin: center; filter: none; }
+html[data-anim="blur"]  .reveal { transform: translateY(12px); filter: blur(12px); }
+.reveal.in { opacity: 1 !important; transform: none !important; filter: none !important; }
+
+/* ═══════════════════════════════════════════════════════════
+   HERO — 4. układ: BANNER (serce jako wielki znak wodny)
+   (centered / split / editorial już są w styles.css)
+   ═══════════════════════════════════════════════════════════ */
+.hero[data-hero="banner"] .hero-inner { text-align: center; display: flex; flex-direction: column; align-items: center; }
+.hero[data-hero="banner"] .hero-eyebrow { justify-content: center; }
+.hero[data-hero="banner"] .hero-title { font-size: clamp(2.7rem, 8.5vw, 6.6rem); }
+.hero[data-hero="banner"] .hero-title .l2 { display: block; margin-left: 0; }
+.hero[data-hero="banner"] .hero-lede { margin-inline: auto; }
+.hero[data-hero="banner"] .hero-actions { justify-content: center; }
+.hero[data-hero="banner"] .hero-meta { justify-content: center; }
+.hero[data-hero="banner"] .hero-art { display: none; }
+.hero[data-hero="banner"] .hero-bg-heart { display: block; width: min(720px, 92vw); top: -6%; opacity: 0.09; }
+
+/* ═══════════════════════════════════════════════════════════
+   OFERTA — grid (default) / cards / list / mosaic
+   ═══════════════════════════════════════════════════════════ */
+/* cards — unoszące się karty z cieniem */
+#oferta[data-layout="cards"] .offer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; background: transparent; border: none; border-radius: 0; overflow: visible; }
+#oferta[data-layout="cards"] .offer-card { background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius-lg); box-shadow: var(--shadow-md); }
+#oferta[data-layout="cards"] .offer-card:hover { background: var(--bg); transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+
+/* list — pełnoszerokie wiersze z dużym numerem */
+#oferta[data-layout="list"] .offer-grid { display: flex; flex-direction: column; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; }
+#oferta[data-layout="list"] .offer-card { display: grid; grid-template-columns: 70px 1fr auto; grid-template-rows: auto auto; align-items: center; gap: 2px 28px; padding: 26px 34px; }
+#oferta[data-layout="list"] .offer-card .num { grid-row: 1 / 3; grid-column: 1; align-self: center; font-family: var(--font-display); font-size: 1.8rem; }
+#oferta[data-layout="list"] .offer-card h3 { grid-column: 2; grid-row: 1; font-size: 1.4rem; }
+#oferta[data-layout="list"] .offer-card p { grid-column: 2; grid-row: 2; max-width: 70ch; }
+#oferta[data-layout="list"] .offer-card .more { grid-column: 3; grid-row: 1 / 3; align-self: center; opacity: 1; transform: none; }
+
+/* mosaic — pierwsza pozycja powiększona */
+#oferta[data-layout="mosaic"] .offer-grid { display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: 1fr; gap: 1px; }
+#oferta[data-layout="mosaic"] .offer-card:first-child { grid-column: span 2; grid-row: span 2; justify-content: center; }
+#oferta[data-layout="mosaic"] .offer-card:first-child h3 { font-size: clamp(1.8rem, 3vw, 2.6rem); }
+#oferta[data-layout="mosaic"] .offer-card:first-child p { font-size: 1.1rem; max-width: 42ch; }
+#oferta[data-layout="mosaic"] .offer-card:first-child .more { opacity: 1; transform: none; }
+
+/* ═══════════════════════════════════════════════════════════
+   ZESPÓŁ — grid (default) / rows / circles / minimal
+   ═══════════════════════════════════════════════════════════ */
+/* rows — poziome wiersze, okrągły mały portret */
+#zespol[data-layout="rows"] .team-grid { display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--line); }
+#zespol[data-layout="rows"] .member { display: grid; grid-template-columns: 92px 1fr; grid-template-rows: auto auto auto; column-gap: 26px; align-items: center; padding: 22px 0; border-bottom: 1px solid var(--line); }
+#zespol[data-layout="rows"] .member .portrait { grid-column: 1; grid-row: 1 / 4; width: 92px; aspect-ratio: 1 / 1; border-radius: 50%; }
+#zespol[data-layout="rows"] .member h3 { grid-column: 2; grid-row: 1; margin-top: 0; }
+#zespol[data-layout="rows"] .member .role { grid-column: 2; grid-row: 2; }
+#zespol[data-layout="rows"] .member p { grid-column: 2; grid-row: 3; margin-top: 6px; }
+
+/* circles — duże okrągłe awatary, wyśrodkowane */
+#zespol[data-layout="circles"] .team-grid { grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); }
+#zespol[data-layout="circles"] .member { align-items: center; text-align: center; }
+#zespol[data-layout="circles"] .member .portrait { width: 148px; aspect-ratio: 1 / 1; border-radius: 50%; margin: 0 auto; }
+
+/* minimal — katalog typograficzny, bez zdjęć */
+#zespol[data-layout="minimal"] .member .portrait { display: none; }
+#zespol[data-layout="minimal"] .team-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border-top: 1px solid var(--line); }
+#zespol[data-layout="minimal"] .member { padding: 26px 30px 26px 0; border-bottom: 1px solid var(--line); }
+#zespol[data-layout="minimal"] .member h3 { margin-top: 0; font-size: 1.6rem; }
+
+/* ═══════════════════════════════════════════════════════════
+   MISJA — band (default) / light / split / centered
+   ═══════════════════════════════════════════════════════════ */
+/* light — jasne tło zamiast grafitu */
+#misja[data-layout="light"] { background: var(--surface); color: var(--ink); }
+#misja[data-layout="light"] .eyebrow { color: var(--accent-ink); }
+#misja[data-layout="light"] .mission-quote { color: var(--ink); }
+#misja[data-layout="light"] .mission-quote em { color: var(--accent-ink); }
+#misja[data-layout="light"] .mission-body .mb h4 { color: var(--ink); }
+#misja[data-layout="light"] .mission-body .mb p { color: var(--ink-soft); }
+#misja[data-layout="light"] .mission-heart { opacity: 0.06; }
+
+/* split — cytat po lewej, wartości po prawej */
+#misja[data-layout="split"] .wrap { display: grid; grid-template-columns: 1.1fr 1fr; column-gap: 64px; align-items: start; }
+#misja[data-layout="split"] .eyebrow { grid-column: 1; grid-row: 1; }
+#misja[data-layout="split"] .mission-quote { grid-column: 1; grid-row: 2; margin-top: 18px; max-width: none; }
+#misja[data-layout="split"] .mission-body { grid-column: 2; grid-row: 1 / 3; grid-template-columns: 1fr; gap: 26px; margin-top: 0; align-self: center; }
+
+/* centered — wielki cytat na środku */
+#misja[data-layout="centered"] .wrap { text-align: center; max-width: 980px; }
+#misja[data-layout="centered"] .mission-quote { margin: 18px auto 0; max-width: 22ch; font-size: clamp(2.1rem, 5vw, 3.8rem); }
+#misja[data-layout="centered"] .mission-body { margin-top: clamp(44px, 6vh, 76px); margin-inline: auto; text-align: left; }
+
+/* ═══════════════════════════════════════════════════════════
+   DOJAZD — map-left (default) / map-right / map-top / cards
+   ═══════════════════════════════════════════════════════════ */
+/* map-right — mapa po prawej */
+#dojazd[data-layout="map-right"] .locate-grid { grid-template-columns: 1fr 1.3fr; }
+#dojazd[data-layout="map-right"] .map-ph { order: 2; }
+#dojazd[data-layout="map-right"] .locate-card { order: 1; }
+
+/* map-top — pełna mapa u góry, dane w rzędzie */
+#dojazd[data-layout="map-top"] .locate-grid { grid-template-columns: 1fr; }
+#dojazd[data-layout="map-top"] .map-ph { min-height: 360px; }
+#dojazd[data-layout="map-top"] .locate-card { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
+#dojazd[data-layout="map-top"] .locate-divider { display: none; }
+
+/* cards — dane jako kafelki, mapa pod spodem */
+#dojazd[data-layout="cards"] .locate-grid { grid-template-columns: 1fr; gap: 32px; }
+#dojazd[data-layout="cards"] .locate-card { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; order: 1; }
+#dojazd[data-layout="cards"] .map-ph { order: 2; min-height: 320px; }
+#dojazd[data-layout="cards"] .locate-block { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 24px; }
+#dojazd[data-layout="cards"] .locate-divider { display: none; }
+
+/* ═══════════════════════════════════════════════════════════
+   KONTAKT — widget-left (default) / widget-right / stacked / centered
+   ═══════════════════════════════════════════════════════════ */
+/* widget-right */
+#kontakt[data-layout="widget-right"] .contact-grid { grid-template-columns: 0.9fr 1fr; }
+#kontakt[data-layout="widget-right"] .widget-ph { order: 2; }
+#kontakt[data-layout="widget-right"] .contact-info { order: 1; }
+
+/* stacked — widżet na całą szerokość, dane w rzędzie */
+#kontakt[data-layout="stacked"] .contact-grid { grid-template-columns: 1fr; gap: 44px; }
+#kontakt[data-layout="stacked"] .contact-info { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; align-items: start; }
+#kontakt[data-layout="stacked"] .contact-info .btn { grid-column: 1 / -1; justify-self: start; }
+
+/* centered — dane w rzędzie na środku, widżet pod spodem */
+#kontakt[data-layout="centered"] .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+#kontakt[data-layout="centered"] .contact-info { display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center; align-items: flex-start; gap: 32px 48px; order: 1; }
+#kontakt[data-layout="centered"] .ci-row { flex: 0 1 290px; }
+#kontakt[data-layout="centered"] .widget-ph { order: 2; }
+#kontakt[data-layout="centered"] .contact-info .btn { flex: 1 0 100%; justify-content: center; order: 99; margin-top: 4px; }
+
+/* ═══════════════════════════════════════════════════════════
+   RESPONSYWNOŚĆ wariantów (zwijanie kolumn na wąskich ekranach)
+   ═══════════════════════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════════
+   ZAWSZE WIDOCZNY PANEL WARIANTÓW
+   ═══════════════════════════════════════════════════════════ */
+.pm-switch {
+  position: fixed; right: 18px; bottom: 18px; z-index: 9999;
+  width: min(300px, calc(100vw - 32px));
+  max-height: min(82vh, 760px);
+  display: flex; flex-direction: column;
+  background: color-mix(in oklab, #fffdfa 92%, transparent);
+  backdrop-filter: blur(16px) saturate(1.1);
+  -webkit-backdrop-filter: blur(16px) saturate(1.1);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 24px 60px -18px rgba(43,45,47,.34);
+  font-family: var(--font-body); color: var(--ink);
+  overflow: hidden;
+}
+.pm-switch.is-collapsed { width: auto; }
+.pm-switch.is-collapsed .pm-switch-body,
+.pm-switch.is-collapsed .pm-switch-ft { display: none; }
+.pm-switch-hd {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 13px 14px 13px 16px; cursor: pointer; user-select: none;
+  background: var(--accent); color: #fff;
+}
+.pm-switch-hd .pm-ic { display: flex; align-items: center; gap: 9px; }
+.pm-switch-hd .pm-ic img { height: 18px; width: auto; filter: brightness(0) invert(1); opacity: .92; }
+.pm-switch-hd b { font-size: .8rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
+.pm-caret { font-size: .7rem; transition: transform .2s; opacity: .9; }
+.pm-switch.is-collapsed .pm-caret { transform: rotate(180deg); }
+.pm-switch-body { padding: 4px 16px 14px; overflow-y: auto; overflow-x: hidden; display: flex; flex-direction: column; }
+.pm-grp-title { font-size: .6rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--ink-faint); margin: 16px 0 4px; }
+.pm-grp-title:first-child { margin-top: 8px; }
+.pm-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 5px 0; }
+.pm-row > span { font-size: .85rem; color: var(--ink-soft); flex: none; }
+.pm-row select {
+  flex: 1; max-width: 170px; height: 31px; padding: 0 28px 0 10px;
+  border: 1px solid var(--line); border-radius: 8px; background-color: #fff; color: var(--ink);
+  font: inherit; font-size: .82rem; cursor: pointer; appearance: none; -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path fill='%23999' d='M0 0h10L5 6z'/></svg>");
+  background-repeat: no-repeat; background-position: right 10px center;
+}
+.pm-row select:hover { border-color: var(--ink-faint); }
+.pm-row select:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.pm-switch-ft { padding: 12px 16px 14px; border-top: 1px solid var(--line); }
+.pm-reset { width: 100%; height: 34px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: inherit; font-size: .82rem; font-weight: 600; cursor: pointer; transition: background .2s; }
+.pm-reset:hover { background: var(--surface-2); }
+.pm-hint { font-size: .7rem; color: var(--ink-faint); margin-top: 9px; line-height: 1.45; }
+@media print { .pm-switch { display: none !important; } }
+
+@media (max-width: 860px) {
+  #oferta[data-layout="cards"] .offer-grid,
+  #oferta[data-layout="mosaic"] .offer-grid { grid-template-columns: 1fr; }
+  #oferta[data-layout="mosaic"] .offer-card:first-child { grid-column: auto; grid-row: auto; }
+  #oferta[data-layout="list"] .offer-card { grid-template-columns: 50px 1fr; }
+  #oferta[data-layout="list"] .offer-card .more { display: none; }
+
+  #zespol[data-layout="minimal"] .team-grid { grid-template-columns: 1fr; }
+
+  #misja[data-layout="split"] .wrap { grid-template-columns: 1fr; row-gap: 28px; }
+  #misja[data-layout="split"] .mission-body { grid-column: 1; grid-row: auto; }
+  #misja[data-layout="split"] .eyebrow { grid-row: auto; }
+  #misja[data-layout="split"] .mission-quote { grid-row: auto; }
+
+  #dojazd[data-layout="map-top"] .locate-card,
+  #dojazd[data-layout="cards"] .locate-card { grid-template-columns: 1fr 1fr; }
+
+  #kontakt[data-layout="stacked"] .contact-info { grid-template-columns: 1fr; }
+  #kontakt[data-layout="centered"] .contact-info { flex-direction: column; align-items: flex-start; }
+}
