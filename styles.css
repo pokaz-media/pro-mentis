@@ -297,6 +297,45 @@ section { padding-block: clamp(72px, 11vh, 140px); }
 .ci-row .big { font-family: var(--font-display); font-size: 1.55rem; font-weight: 600; color: var(--ink); margin-top: 2px; }
 .ci-row p { color: var(--ink-soft); font-size: 0.95rem; margin-top: 2px; }
 
+/* ---------- Cennik ---------- */
+.price-list { max-width: 760px; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--bg); box-shadow: var(--shadow-sm); }
+.price-row { display: flex; align-items: baseline; justify-content: space-between; gap: 24px; padding: 26px 30px; }
+.price-row + .price-row { border-top: 1px solid var(--line); }
+.price-info h3 { font-size: 1.5rem; }
+.price-info .price-dur { display: block; margin-top: 4px; font-family: var(--font-body); font-size: 0.92rem; color: var(--ink-soft); }
+.price-amount { font-family: var(--font-display); font-size: 1.9rem; font-weight: 600; color: var(--accent-ink); white-space: nowrap; }
+.price-note { margin-top: 28px; max-width: 760px; padding: 18px 22px; border-left: 2px solid var(--accent-line); background: var(--surface); border-radius: 0 6px 6px 0; color: var(--ink-soft); font-size: 0.98rem; }
+.price-note b { color: var(--ink); font-weight: 600; }
+
+/* ---------- Zapisy / formularz ---------- */
+.signup-form { max-width: 640px; display: flex; flex-direction: column; gap: 20px; }
+.signup-form .field { display: flex; flex-direction: column; gap: 7px; }
+.signup-form .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.signup-form label { font-size: 0.82rem; font-weight: 600; letter-spacing: 0.04em; color: var(--ink-soft); }
+.signup-form .opt { font-weight: 400; color: var(--ink-faint); letter-spacing: 0; }
+.signup-form input,
+.signup-form select,
+.signup-form textarea {
+  font: inherit; font-size: 1rem; color: var(--ink);
+  background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 12px 14px; width: 100%; transition: border-color .2s, box-shadow .2s;
+}
+.signup-form textarea { resize: vertical; min-height: 96px; }
+.signup-form input:focus, .signup-form select:focus, .signup-form textarea:focus {
+  outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-tint);
+}
+.signup-form input[name="_honey"] { display: none; }
+.signup-form .consent { flex-direction: row; align-items: flex-start; gap: 10px; font-weight: 400; color: var(--ink-soft); font-size: 0.92rem; line-height: 1.5; letter-spacing: 0; cursor: pointer; }
+.signup-form .consent input { width: auto; margin-top: 3px; flex: none; accent-color: var(--accent); }
+.signup-form .consent a { color: var(--accent-ink); text-decoration: underline; text-underline-offset: 2px; }
+.signup-form .btn { align-self: flex-start; }
+.signup-form .form-hint { font-size: 0.85rem; color: var(--ink-faint); }
+
+/* clickable address affordance */
+.ci-row a.big:hover { color: var(--accent-ink); }
+.locate-block a { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--accent-line); transition: color .2s; }
+.locate-block a:hover { color: var(--accent-ink); }
+
 /* ---------- Footer ---------- */
 .site-footer { background: var(--charcoal); color: rgba(243,241,238,.75); padding-block: 64px 36px; }
 .footer-top { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; padding-bottom: 44px; border-bottom: 1px solid rgba(255,255,255,.1); }
@@ -327,6 +366,9 @@ section { padding-block: clamp(72px, 11vh, 140px); }
   body { font-size: 16px; }
   .offer-grid { grid-template-columns: 1fr; }
   .footer-top { grid-template-columns: 1fr; }
+  .signup-form .field-row { grid-template-columns: 1fr; }
+  .price-row { padding: 20px; }
+  .price-amount { font-size: 1.6rem; }
   .hero-meta { gap: 24px; }
   .header-cta .phone-text { display: none; }
   .brand-text { display: none; }

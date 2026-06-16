@@ -12,7 +12,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pro-Mentis — Klinika Psychoterapii</title>
 <meta name="description" content="Pro-Mentis — Klinika Psychoterapii w centrum Łodzi. Serce dla rozumu, rozum dla serca.">
-<link rel="icon" type="image/png" href="assets/heart.png">
+<link rel="icon" type="image/svg+xml" href="assets/logo-heart.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Lora:ital,wght@0,500;0,600;1,500&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Hanken+Grotesk:wght@400;500;600;700&family=Mulish:wght@400;500;600;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -24,7 +24,7 @@
 <!-- ============ HEADER ============ -->
 <header class="site-header" id="header">
   <a class="brand" href="#top" aria-label="Pro-Mentis — strona główna">
-    <img src="assets/heart.png" alt="">
+    <img src="assets/logo-heart.svg" alt="">
     <span class="brand-text">
       <b>Pro-Mentis</b>
       <span>Klinika Psychoterapii</span>
@@ -34,10 +34,12 @@
   <nav class="nav" aria-label="Główna nawigacja">
     <div class="nav-links">
       <a href="#oferta">Oferta</a>
+      <a href="#cennik">Cennik</a>
       <a href="#zespol">Zespół</a>
       <a href="#misja">Misja</a>
       <a href="#dojazd">Jak dojechać</a>
       <a href="#kontakt">Kontakt</a>
+      <a href="#zapisy">Zapisy</a>
     </div>
   </nav>
 
@@ -46,7 +48,7 @@
       <span class="dot"></span>
       <span class="phone-text"><small>Zadzwoń</small>+48 000 000 000</span>
     </a>
-    <a class="btn btn-primary" href="#kontakt">Umów wizytę</a>
+    <a class="btn btn-primary" href="#zapisy">Umów wizytę</a>
   </div>
 </header>
 
@@ -54,11 +56,11 @@
 
   <!-- ============ HERO ============ -->
   <section class="hero wrap" id="hero" data-hero="editorial" data-screen-label="Hero">
-    <img class="hero-bg-heart" src="assets/heart.png" alt="" aria-hidden="true">
+    <img class="hero-bg-heart" src="assets/logo-heart.svg" alt="" aria-hidden="true">
     <div class="hero-inner">
       <div class="hero-content reveal">
         <span class="hero-eyebrow eyebrow">
-          <img class="heart-mini" src="assets/heart.png" alt="">
+          <img class="heart-mini" src="assets/logo-heart.svg" alt="">
           Klinika Psychoterapii · Łódź
         </span>
         <h1 class="hero-title">
@@ -70,7 +72,7 @@
           Profesjonalna psychoterapia prowadzona z uważnością, dyskrecją i szacunkiem.
         </p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#kontakt">Umów wizytę <span class="arrow">→</span></a>
+          <a class="btn btn-primary" href="#zapisy">Umów wizytę <span class="arrow">→</span></a>
           <a class="btn btn-ghost" href="#oferta">Poznaj ofertę</a>
         </div>
         <div class="hero-meta">
@@ -81,7 +83,7 @@
       </div>
       <div class="hero-art reveal">
         <div class="hero-photo ph" data-label="zdjęcie wnętrza gabinetu"></div>
-        <img class="hero-heart" src="assets/heart.png" alt="" aria-hidden="true">
+        <img class="hero-heart" src="assets/logo-heart.svg" alt="" aria-hidden="true">
       </div>
     </div>
   </section>
@@ -131,8 +133,54 @@
           <p>Bezpieczna przestrzeń dla nastolatków i wsparcie dla rodziców w towarzyszeniu w rozwoju.</p>
           <span class="more">Dowiedz się więcej →</span>
         </article>
+        <article class="offer-card">
+          <span class="num">07</span>
+          <h3>Diagnoza psychologiczna</h3>
+          <p>Rzetelna ocena funkcjonowania psychicznego z wykorzystaniem testów i wywiadu — z pisemną opinią i zaleceniami.</p>
+          <span class="more">Dowiedz się więcej →</span>
+        </article>
+        <article class="offer-card">
+          <span class="num">08</span>
+          <h3>Konsultacja seksuologiczna</h3>
+          <p>Wsparcie w trudnościach dotyczących seksualności i bliskości — w atmosferze dyskrecji i bez oceniania.</p>
+          <span class="more">Dowiedz się więcej →</span>
+        </article>
+        <article class="offer-card">
+          <span class="num">09</span>
+          <h3>Psycholog kliniczny</h3>
+          <p>Konsultacje i diagnoza w obszarze zdrowia psychicznego prowadzone przez psychologa klinicznego.</p>
+          <span class="more">Dowiedz się więcej →</span>
+        </article>
       </div>
     </div>
+  </section>
+
+  <!-- ============ CENNIK ============ -->
+  <section class="pricing wrap" id="cennik" data-screen-label="Cennik">
+    <div class="section-head reveal">
+      <span class="eyebrow">Cennik</span>
+      <h2 class="section-title">Przejrzyste stawki</h2>
+      <p class="lede">Bez ukrytych kosztów. Wycenę pozostałych usług ustalamy indywidualnie podczas pierwszej konsultacji.</p>
+    </div>
+    <div class="price-list reveal">
+      <div class="price-row">
+        <div class="price-info">
+          <h3>Psychoterapia indywidualna</h3>
+          <span class="price-dur">sesja 50 minut</span>
+        </div>
+        <span class="price-amount">210 zł</span>
+      </div>
+      <div class="price-row">
+        <div class="price-info">
+          <h3>Psychoterapia par</h3>
+          <span class="price-dur">sesja 80 minut</span>
+        </div>
+        <span class="price-amount">330 zł</span>
+      </div>
+    </div>
+    <p class="price-note reveal">
+      Płatność: <b>BLIK</b> lub <b>gotówka</b>. Do każdej wizyty wydajemy paragon; faktura na życzenie.
+    </p>
   </section>
 
   <!-- ============ ZESPÓŁ ============ -->
@@ -179,7 +227,7 @@
 
   <!-- ============ MISJA ============ -->
   <section class="mission" id="misja" data-layout="split" data-screen-label="Misja">
-    <img class="mission-heart" src="assets/heart.png" alt="" aria-hidden="true">
+    <img class="mission-heart" src="assets/logo-heart.svg" alt="" aria-hidden="true">
     <div class="wrap">
       <span class="eyebrow reveal">Nasza misja</span>
       <p class="mission-quote reveal">Łączymy <em>serce</em> i <em>rozum</em> — bo zdrowie psychiczne rodzi się tam, gdzie emocje i myśli się spotykają.</p>
@@ -208,11 +256,11 @@
       <p class="lede">Dobrze skomunikowane miejsce z łatwym dojazdem komunikacją miejską i samochodem.</p>
     </div>
     <div class="locate-grid reveal">
-      <div class="map-ph ph" data-label="mapa Google — do osadzenia"></div>
+      <a class="map-ph ph" href="https://www.google.com/maps/search/?api=1&amp;query=ul.+Drewnowska+102,+Łódź" target="_blank" rel="noopener" data-label="mapa Google — ul. Drewnowska 102"></a>
       <div class="locate-card">
         <div class="locate-block">
           <h4>Adres</h4>
-          <p>ul. Przykładowa 12<br><span class="land">Łódź, Śródmieście — naprzeciw [punkt orientacyjny]</span></p>
+          <p><a href="https://www.google.com/maps/search/?api=1&amp;query=ul.+Drewnowska+102,+Łódź" target="_blank" rel="noopener">ul. Drewnowska 102</a><br><span class="land">Łódź — obok Manufaktury</span></p>
         </div>
         <div class="locate-divider"></div>
         <div class="locate-block">
@@ -222,7 +270,7 @@
         <div class="locate-divider"></div>
         <div class="locate-block">
           <h4>Parking</h4>
-          <p class="land">Parking miejski oraz miejsca postojowe w najbliższej okolicy.</p>
+          <p class="land">Parking bezpośrednio pod budynkiem lub na parkingu Manufaktury (od strony Leroy Merlin).</p>
         </div>
         <div class="locate-divider"></div>
         <div class="locate-block">
@@ -270,13 +318,78 @@
             <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
             <div>
               <h4>Adres</h4>
-              <span class="big">ul. Przykładowa 12</span>
-              <p>Łódź, Śródmieście</p>
+              <a class="big" href="https://www.google.com/maps/search/?api=1&amp;query=ul.+Drewnowska+102,+Łódź" target="_blank" rel="noopener">ul. Drewnowska 102</a>
+              <p>Łódź — obok Manufaktury</p>
             </div>
           </div>
           <a class="btn btn-primary" href="tel:+48000000000" style="align-self:flex-start;margin-top:4px">Zadzwoń teraz <span class="arrow">→</span></a>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ============ ZAPISY / FORMULARZ ============ -->
+  <section class="signup" id="zapisy" data-screen-label="Zapisy">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Zapisy</span>
+        <h2 class="section-title">Zapisz się na wizytę</h2>
+        <p class="lede">Wypełnij krótki formularz — oddzwonimy lub odpiszemy, by potwierdzić termin i dobrać odpowiedniego specjalistę.</p>
+      </div>
+      <!--
+        Wysyłka bez backendu przez FormSubmit (https://formsubmit.co).
+        WAŻNE: pierwsza wysyłka wymaga jednorazowej aktywacji adresu (link w mailu od FormSubmit).
+        Na docelowym hostingu pro-mentis.pl można podmienić action na własny handler PHP (mail()).
+      -->
+      <form class="signup-form reveal" action="https://formsubmit.co/kontakt@pro-mentis.pl" method="POST">
+        <input type="hidden" name="_subject" value="Nowe zgłoszenie z pro-mentis.pl">
+        <input type="hidden" name="_captcha" value="true">
+        <input type="hidden" name="_template" value="table">
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <div class="field">
+          <label for="f-name">Imię i nazwisko</label>
+          <input id="f-name" name="Imię i nazwisko" type="text" required autocomplete="name">
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="f-phone">Telefon</label>
+            <input id="f-phone" name="Telefon" type="tel" required autocomplete="tel" inputmode="tel">
+          </div>
+          <div class="field">
+            <label for="f-email">E-mail</label>
+            <input id="f-email" name="E-mail" type="email" required autocomplete="email">
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-topic">Czego dotyczy zgłoszenie</label>
+          <select id="f-topic" name="Usługa" required>
+            <option value="" selected disabled>Wybierz…</option>
+            <option>Psychoterapia indywidualna</option>
+            <option>Psychoterapia par</option>
+            <option>Diagnoza psychologiczna</option>
+            <option>Konsultacja seksuologiczna</option>
+            <option>Psycholog kliniczny</option>
+            <option>Konsultacja psychiatryczna</option>
+            <option>Grupa TUS</option>
+            <option>Inne / nie wiem</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-when">Preferowany termin <span class="opt">(opcjonalnie)</span></label>
+          <input id="f-when" name="Preferowany termin" type="text" placeholder="np. popołudnia w tygodniu">
+        </div>
+        <div class="field">
+          <label for="f-msg">Wiadomość <span class="opt">(opcjonalnie)</span></label>
+          <textarea id="f-msg" name="Wiadomość" rows="4" placeholder="Krótko, w czym możemy pomóc."></textarea>
+        </div>
+        <label class="consent">
+          <input type="checkbox" name="Zgoda RODO" value="tak" required>
+          <span>Wyrażam zgodę na przetwarzanie moich danych osobowych w celu kontaktu i umówienia wizyty, zgodnie z <a href="#" target="_blank" rel="noopener">polityką prywatności</a>.</span>
+        </label>
+        <button class="btn btn-primary" type="submit">Wyślij zgłoszenie <span class="arrow">→</span></button>
+        <p class="form-hint">Pola wymagane: imię i nazwisko, telefon, e-mail, usługa i zgoda. Prosimy nie podawać w wiadomości szczegółowych informacji o stanie zdrowia.</p>
+      </form>
     </div>
   </section>
 </main>
@@ -292,16 +405,18 @@
       <div class="footer-col">
         <h5>Nawigacja</h5>
         <a href="#oferta">Oferta</a>
+        <a href="#cennik">Cennik</a>
         <a href="#zespol">Zespół</a>
         <a href="#misja">Misja</a>
         <a href="#dojazd">Jak dojechać</a>
         <a href="#kontakt">Kontakt</a>
+        <a href="#zapisy">Zapisy</a>
       </div>
       <div class="footer-col">
         <h5>Kontakt</h5>
         <a href="tel:+48000000000">+48 000 000 000</a>
         <a href="mailto:kontakt@pro-mentis.pl">kontakt@pro-mentis.pl</a>
-        <p>ul. Przykładowa 12, Łódź</p>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=ul.+Drewnowska+102,+Łódź" target="_blank" rel="noopener">ul. Drewnowska 102, Łódź</a>
         <p>Pon.–Pt. 8:00–21:00</p>
       </div>
     </div>
@@ -472,7 +587,7 @@
       g[1].forEach(function (f) { body.appendChild(buildField(f[0], f[1], state, onChange)); });
     });
 
-    var heartIcon = el('img', { src: 'assets/heart.png', alt: '' });
+    var heartIcon = el('img', { src: 'assets/logo-heart.svg', alt: '' });
     var head = el('div', { class: 'pm-switch-hd' }, [
       el('span', { class: 'pm-ic' }, [heartIcon, el('b', { text: 'Warianty' })]),
       el('span', { class: 'pm-caret', text: '▾' })

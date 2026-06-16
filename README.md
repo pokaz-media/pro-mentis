@@ -8,10 +8,10 @@ in a browser (or serve the folder) to view.
 
 | File           | Purpose |
 |----------------|---------|
-| `index.html`   | The page markup + sticky-header / reveal-on-scroll + the **Warianty** switcher (vanilla JS). |
-| `styles.css`   | Base design system — tokens, typography, default section layouts. |
+| `index.html`   | The page markup (Hero · Oferta · **Cennik** · Zespół · Misja · Dojazd · Kontakt · **Zapisy/formularz**) + sticky-header / reveal-on-scroll + the **Warianty** switcher (vanilla JS). |
+| `styles.css`   | Base design system — tokens, typography, default section layouts (incl. Cennik + signup form). |
 | `variants.css` | Alternative section layouts + the global axes + the switcher panel styling. |
-| `assets/`      | `heart.png` (mark) and `logo-full.png` (full logo). |
+| `assets/`      | `logo-heart.svg` (clean vector heart — used for the mark, hero/mission art and favicon), `heart.png` (legacy raster), `logo-full.png` (full logo, still raster). |
 | `design-bundle/` | The original Claude Design export (prototype HTML, chat transcript, screenshots) kept for reference. |
 
 ## The "Warianty" switcher
@@ -36,6 +36,19 @@ Once a final combination is chosen, the switcher can be deleted (the
 second `<script>` block + the `.pm-*` rules at the bottom of `variants.css`)
 and the chosen values baked into the markup's `data-*` attributes.
 
+## Signup form (Zapisy)
+
+The bottom section is a contact / booking form that submits **by e-mail with no
+backend** via [FormSubmit](https://formsubmit.co) to `kontakt@pro-mentis.pl`.
+
+- **First-time activation:** FormSubmit sends a one-off confirmation e-mail to
+  `kontakt@pro-mentis.pl` after the very first submission — click the link there
+  once and submissions start arriving. Until then the mailbox must exist.
+- On the production host (`pro-mentis.pl`) the `action` can be swapped for a
+  own PHP `mail()` handler — see the comment above the `<form>` in `index.html`.
+- The RODO consent links to a **privacy policy page that does not exist yet**
+  (`href="#"` placeholder) — add `Polityka prywatności` content before launch.
+
 ## Placeholders to replace before launch
 
 All copy is realistic Polish placeholder text. Still needed from the client:
@@ -43,5 +56,9 @@ All copy is realistic Polish placeholder text. Still needed from the client:
 - Real phone number (currently `+48 000 000 000` in the header, Kontakt and footer).
 - Clinic description / final hero wording (the Word file mentioned in the chat).
 - The 5 therapists: names, roles, photos, bios (Zespół section).
-- Real street address + landmark, and a Google Maps embed (replaces the map placeholder in Dojazd).
+- A real Google Maps embed for the Dojazd section (address is now `ul. Drewnowska 102, Łódź`;
+  the address links open Google Maps, but the in-page map is still a placeholder).
 - The ZnanyLekarz booking widget embed code (replaces the placeholder in Kontakt).
+- A **vector (SVG) version of the full logo** for the footer — only the heart mark
+  is vector so far; the footer still uses the raster `logo-full.png`.
+- A `Polityka prywatności` page for the form's RODO consent link.
