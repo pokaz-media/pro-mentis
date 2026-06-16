@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pl"
       data-atmo="cream"
-      data-accent="expressive"
+      data-accent="minimal"
       data-anim="scale"
       data-shape="sharp"
       data-density="regular"
@@ -256,7 +256,9 @@
       <p class="lede">Dobrze skomunikowane miejsce z łatwym dojazdem komunikacją miejską i samochodem.</p>
     </div>
     <div class="locate-grid reveal">
-      <a class="map-ph ph" href="https://www.google.com/maps/search/?api=1&amp;query=ul.+Drewnowska+102,+Łódź" target="_blank" rel="noopener" data-label="mapa Google — ul. Drewnowska 102"></a>
+      <iframe class="map-embed" title="Mapa dojazdu — ul. Drewnowska 102, Łódź"
+        src="https://maps.google.com/maps?q=ul.+Drewnowska+102,+%C5%81%C3%B3d%C5%BA&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
+        loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
       <div class="locate-card">
         <div class="locate-block">
           <h4>Adres</h4>
@@ -399,7 +401,13 @@
   <div class="wrap">
     <div class="footer-top">
       <div class="footer-brand">
-        <img src="assets/logo-full.png" alt="Pro-Mentis — Klinika Psychoterapii">
+        <a class="brand" href="#top" aria-label="Pro-Mentis — strona główna">
+          <img src="assets/logo-heart.svg" alt="">
+          <span class="brand-text">
+            <b>Pro-Mentis</b>
+            <span>Klinika Psychoterapii</span>
+          </span>
+        </a>
         <p>Klinika psychoterapii w centrum Łodzi. Serce dla rozumu, rozum dla serca.</p>
       </div>
       <div class="footer-col">
@@ -427,9 +435,6 @@
   </div>
 </footer>
 
-<!-- Variant switcher mounts here -->
-<div id="tweaks-root"></div>
-
 <!-- ============ SCRIPTS ============ -->
 <script>
 /* ------------------------------------------------------------------
@@ -454,193 +459,6 @@
     els.forEach(function (el) { io.observe(el); });
   } else {
     els.forEach(function (el) { el.classList.add('in'); });
-  }
-})();
-</script>
-
-<script>
-/* ------------------------------------------------------------------
-   Panel "Warianty" — live design switcher (vanilla JS)
-   Each section has 4 alternative layouts; global axes for atmosphere,
-   accent, motion, corner shape, density and typography. Selections are
-   applied via data-* attributes (see styles.css / variants.css) and
-   persisted in localStorage.
-   ------------------------------------------------------------------ */
-(function () {
-  var DEFAULTS = {
-    hero: 'editorial',
-    offerLayout: 'grid',
-    teamLayout: 'grid',
-    missionLayout: 'split',
-    locateLayout: 'map-left',
-    contactLayout: 'widget-left',
-    atmo: 'cream',
-    accent: 'expressive',
-    anim: 'scale',
-    shape: 'sharp',
-    density: 'regular',
-    font: 'cormorant',
-    bodyfont: 'hanken'
-  };
-
-  var OPTIONS = {
-    hero:          [['centered','Wyśrodkowany'],['split','Podzielony (zdjęcie)'],['editorial','Edytorialny'],['banner','Baner (serce w tle)']],
-    offerLayout:   [['grid','Siatka (kafelki)'],['cards','Karty z cieniem'],['list','Lista / wiersze'],['mosaic','Mozaika (1 duża)']],
-    teamLayout:    [['grid','Siatka kart'],['rows','Wiersze poziome'],['circles','Okrągłe awatary'],['minimal','Minimal (bez zdjęć)']],
-    missionLayout: [['band','Pas grafitowy'],['light','Jasne tło'],['split','Cytat + wartości'],['centered','Wielki cytat (środek)']],
-    locateLayout:  [['map-left','Mapa po lewej'],['map-right','Mapa po prawej'],['map-top','Mapa u góry'],['cards','Dane jako kafelki']],
-    contactLayout: [['widget-left','Widżet po lewej'],['widget-right','Widżet po prawej'],['stacked','Widżet + dane w rzędzie'],['centered','Dane na środku']],
-    atmo:          [['cream','Krem'],['paper','Papier'],['cool','Chłodny']],
-    accent:        [['minimal','Grafit'],['classic','Klasyczny'],['expressive','Wyrazisty']],
-    anim:          [['none','Brak (statycznie)'],['fade','Przenikanie'],['rise','Wznoszenie'],['slide','Wjazd z boku'],['scale','Skalowanie'],['blur','Wyostrzanie']],
-    shape:         [['sharp','Ostre'],['soft','Miękkie'],['round','Zaokrąglone']],
-    density:       [['compact','Gęsto'],['regular','Średnio'],['spacious','Luźno']],
-    font:          [['cormorant','Cormorant Garamond'],['lora','Lora'],['playfair','Playfair Display']],
-    bodyfont:      [['hanken','Hanken Grotesk'],['mulish','Mulish'],['worksans','Work Sans']]
-  };
-
-  // section-axis key -> element id whose data-layout it drives
-  var SECTION_TARGET = {
-    offerLayout: 'oferta',
-    teamLayout: 'zespol',
-    missionLayout: 'misja',
-    locateLayout: 'dojazd',
-    contactLayout: 'kontakt'
-  };
-
-  var LS_KEY = 'pro-mentis-tweaks';
-
-  function loadTweaks() {
-    var saved = {};
-    try { saved = JSON.parse(localStorage.getItem(LS_KEY) || '{}') || {}; }
-    catch (e) { saved = {}; }
-    var out = {};
-    for (var k in DEFAULTS) { out[k] = (k in saved) ? saved[k] : DEFAULTS[k]; }
-    return out;
-  }
-
-  function saveTweaks(t) {
-    try { localStorage.setItem(LS_KEY, JSON.stringify(t)); } catch (e) {}
-  }
-
-  function setLayout(id, val) {
-    var el = document.getElementById(id);
-    if (el) el.setAttribute('data-layout', val);
-  }
-
-  function applyTweaks(t) {
-    var root = document.documentElement;
-    root.dataset.atmo = t.atmo;
-    root.dataset.accent = t.accent;
-    root.dataset.anim = t.anim;
-    root.dataset.shape = t.shape;
-    root.dataset.density = t.density;
-    root.dataset.font = t.font;
-    root.dataset.bodyfont = t.bodyfont;
-    var hero = document.getElementById('hero');
-    if (hero) hero.setAttribute('data-hero', t.hero);
-    for (var key in SECTION_TARGET) { setLayout(SECTION_TARGET[key], t[key]); }
-  }
-
-  // ---- build panel DOM ----
-  function el(tag, attrs, children) {
-    var node = document.createElement(tag);
-    if (attrs) for (var a in attrs) {
-      if (a === 'class') node.className = attrs[a];
-      else if (a === 'text') node.textContent = attrs[a];
-      else node.setAttribute(a, attrs[a]);
-    }
-    (children || []).forEach(function (c) {
-      node.appendChild(typeof c === 'string' ? document.createTextNode(c) : c);
-    });
-    return node;
-  }
-
-  function buildField(key, labelText, state, onChange) {
-    var select = el('select');
-    OPTIONS[key].forEach(function (o) {
-      var opt = el('option', { value: o[0], text: o[1] });
-      if (o[0] === state[key]) opt.selected = true;
-      select.appendChild(opt);
-    });
-    select.addEventListener('change', function () { onChange(key, select.value); });
-    return el('label', { class: 'pm-row' }, [
-      el('span', { text: labelText }),
-      select
-    ]);
-  }
-
-  function buildPanel(state, onChange, onReset) {
-    var body = el('div', { class: 'pm-switch-body' });
-
-    var groups = [
-      ['Układy sekcji', [
-        ['hero', 'Hero'], ['offerLayout', 'Oferta'], ['teamLayout', 'Zespół'],
-        ['missionLayout', 'Misja'], ['locateLayout', 'Dojazd'], ['contactLayout', 'Kontakt']
-      ]],
-      ['Atmosfera i kolor', [['atmo', 'Tło'], ['accent', 'Akcent']]],
-      ['Ruch i forma', [['anim', 'Przejścia'], ['shape', 'Narożniki'], ['density', 'Gęstość']]],
-      ['Typografia', [['font', 'Nagłówki'], ['bodyfont', 'Tekst']]]
-    ];
-    groups.forEach(function (g) {
-      body.appendChild(el('div', { class: 'pm-grp-title', text: g[0] }));
-      g[1].forEach(function (f) { body.appendChild(buildField(f[0], f[1], state, onChange)); });
-    });
-
-    var heartIcon = el('img', { src: 'assets/logo-heart.svg', alt: '' });
-    var head = el('div', { class: 'pm-switch-hd' }, [
-      el('span', { class: 'pm-ic' }, [heartIcon, el('b', { text: 'Warianty' })]),
-      el('span', { class: 'pm-caret', text: '▾' })
-    ]);
-
-    var resetBtn = el('button', { class: 'pm-reset', type: 'button', text: 'Przywróć domyślne' });
-    resetBtn.addEventListener('click', onReset);
-    var foot = el('div', { class: 'pm-switch-ft' }, [
-      resetBtn,
-      el('p', { class: 'pm-hint', text: 'Wybierz warianty dla każdej sekcji — zmiany zapisują się w przeglądarce.' })
-    ]);
-
-    var panel = el('div', { class: 'pm-switch' }, [head, body, foot]);
-    head.addEventListener('click', function () { panel.classList.toggle('is-collapsed'); });
-    return panel;
-  }
-
-  function mount() {
-    var state = loadTweaks();
-    applyTweaks(state);
-
-    var root = document.getElementById('tweaks-root');
-    if (!root) return;
-
-    var rebuild = function () {
-      root.innerHTML = '';
-      root.appendChild(buildPanel(state, onChange, onReset));
-    };
-
-    function onChange(key, value) {
-      state[key] = value;
-      applyTweaks(state);
-      saveTweaks(state);
-    }
-
-    function onReset() {
-      state = {};
-      for (var k in DEFAULTS) state[k] = DEFAULTS[k];
-      applyTweaks(state);
-      saveTweaks(state);
-      rebuild();
-    }
-
-    rebuild();
-  }
-
-  // Apply immediately (the markup carries the same defaults, so no flash on first load),
-  // then mount the panel.
-  applyTweaks(loadTweaks());
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', mount);
-  } else {
-    mount();
   }
 })();
 </script>
