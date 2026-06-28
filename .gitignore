@@ -2,6 +2,9 @@
 design-bundle/
 design-bundle.gz
 
+# Source materials from client feedback (original photos + PDFs) — kept local only
+new feedback/
+
 # OS / editor cruft
 .DS_Store
 *.log
