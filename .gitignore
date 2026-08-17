@@ -1,9 +1,6 @@
-# Design source bundle (private client chat transcript + prototype) — kept local only
-design-bundle/
-design-bundle.gz
-
-# Source materials from client feedback (original photos + PDFs) — kept local only
-new feedback/
+# Local-only reference material — client source files (original photos, PDFs,
+# schedules) and the original Claude Design export. Never shipped, never committed.
+_source/
 
 # OS / editor cruft
 .DS_Store

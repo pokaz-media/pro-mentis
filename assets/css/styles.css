@@ -108,7 +108,8 @@ h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; line-height
 
 /* ---------- Layout ---------- */
 .wrap { max-width: var(--maxw); margin: 0 auto; padding-inline: var(--pad); }
-section { padding-block: clamp(72px, 11vh, 140px); }
+/* `main >` — tylko sekcje najwyższego poziomu; zagnieżdżone (np. grupy cennika) bez odstępu */
+main > section { padding-block: clamp(72px, 11vh, 140px); }
 .section-head { max-width: 640px; margin-bottom: clamp(36px, 5vw, 60px); }
 .section-head .eyebrow { display: block; margin-bottom: 18px; }
 .section-head .lede { margin-top: 18px; }
@@ -257,12 +258,12 @@ section { padding-block: clamp(72px, 11vh, 140px); }
 .member p { font-size: 0.93rem; color: var(--ink-soft); margin-top: 10px; }
 .member .portrait img { width: 100%; height: 100%; object-fit: cover; object-position: center top; border-radius: 6px; display: block; }
 
-/* Detailed profiles — two-up layout */
-.team-grid.profiles { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px; align-items: start; }
-.member-detailed { background: var(--surface); border: 1px solid var(--accent-line); border-radius: 8px; padding: 28px 30px 30px; }
-.member-detailed .portrait { aspect-ratio: 1/1; margin: -28px -30px 0; border-radius: 8px 8px 0 0; overflow: hidden; }
+/* Detailed profiles — three-up grid of expandable cards */
+.team-grid.profiles { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 30px; align-items: start; }
+.member-detailed { background: var(--surface); border: 1px solid var(--accent-line); border-radius: 8px; padding: 24px 26px 26px; }
+.member-detailed .portrait { aspect-ratio: 1/1; margin: -24px -26px 0; border-radius: 8px 8px 0 0; overflow: hidden; }
 .member-detailed .portrait img { border-radius: 8px 8px 0 0; object-position: center 20%; }
-.member-detailed h3 { margin-top: 22px; }
+.member-detailed h3 { margin-top: 20px; font-size: 1.45rem; }
 .member-detailed .role { line-height: 1.5; }
 .member-quote { margin: 18px 0 0; padding: 14px 18px; border-left: 2px solid var(--accent-line); background: var(--bg); border-radius: 0 6px 6px 0; font-family: var(--font-display); font-style: italic; font-size: 1.02rem; color: var(--ink-soft); }
 .member-quote::before { content: "„"; }
@@ -274,7 +275,44 @@ section { padding-block: clamp(72px, 11vh, 140px); }
 .member-creds li { position: relative; padding-left: 18px; margin-top: 9px; font-size: 0.9rem; color: var(--ink-soft); line-height: 1.5; }
 .member-creds li::before { content: "•"; position: absolute; left: 2px; color: var(--accent-ink); }
 .member-creds li b { color: var(--ink); font-weight: 600; }
-.member-superv { font-style: italic; font-size: 0.88rem; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--accent-line); }
+.member-detailed .member-superv { font-style: italic; font-size: 0.86rem; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--accent-line); }
+
+/* godziny przyjęć w karcie terapeuty */
+.member-hours { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--accent-line); }
+.member-hours h4 {
+  font-family: var(--font-body); font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint);
+}
+.member-hours ul { list-style: none; margin: 11px 0 0; padding: 0; display: flex; flex-direction: column; gap: 5px; }
+.member-hours li { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; font-size: 0.88rem; }
+.member-hours li span { color: var(--ink-soft); }
+.member-hours li b { font-weight: 600; color: var(--ink); font-variant-numeric: lining-nums; white-space: nowrap; }
+.member-hours .member-hours-none { margin-top: 10px; font-size: 0.86rem; font-style: italic; color: var(--ink-soft); }
+
+/* „Pełny profil” — rozwijana część karty */
+.member-more { margin-top: 20px; }
+.member-more > summary {
+  list-style: none; cursor: pointer; user-select: none;
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-body); font-size: 0.82rem; font-weight: 600;
+  letter-spacing: 0.04em; color: var(--accent-ink);
+  padding: 9px 16px; border: 1px solid var(--accent-line); border-radius: 100px;
+  transition: background .2s, border-color .2s;
+}
+.member-more > summary::-webkit-details-marker { display: none; }
+.member-more > summary::after { content: "▾"; font-size: 0.85em; line-height: 1; transition: transform .25s; }
+.member-more[open] > summary::after { transform: rotate(180deg); }
+.member-more > summary:hover { background: var(--accent-tint); }
+.member-more-body { margin-top: 20px; }
+.member-more-body > p:first-child { margin-top: 0; }
+
+/* przy 3 kolumnach: samotna karta w ostatnim rzędzie ląduje na środku, nie z lewej */
+@media (min-width: 1081px) {
+  .team-grid.profiles > .member:last-child:nth-child(3n + 1) { grid-column: 2; }
+}
+@media (max-width: 1080px) and (min-width: 781px) {
+  .team-grid.profiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
 @media (max-width: 780px) {
   .team-grid.profiles { grid-template-columns: 1fr; gap: 32px; }
 }
@@ -290,6 +328,12 @@ section { padding-block: clamp(72px, 11vh, 140px); }
 .mission-body .mb h4 { font-size: 1.15rem; color: #fff; font-family: var(--font-body); font-weight: 700; }
 .mission-body .mb p { color: rgba(243,241,238,.7); font-size: 0.95rem; margin-top: 8px; }
 .mission-heart { position: absolute; right: -60px; bottom: -60px; width: 360px; opacity: 0.08; z-index: 0; }
+.mission-photo { margin-top: clamp(32px, 4vw, 44px); max-width: 460px; }
+.mission-photo img { width: 100%; height: auto; border-radius: 8px; box-shadow: var(--shadow-lg); }
+.mission-photo figcaption {
+  margin-top: 12px; font-size: 0.8rem; letter-spacing: 0.04em;
+  text-transform: uppercase; color: rgba(243,241,238,.55);
+}
 
 /* ---------- Dojazd ---------- */
 .locate-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 40px; align-items: stretch; }
@@ -321,15 +365,66 @@ section { padding-block: clamp(72px, 11vh, 140px); }
 .ci-row p { color: var(--ink-soft); font-size: 0.95rem; margin-top: 2px; }
 
 /* ---------- Cennik ---------- */
-.price-list { max-width: 760px; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--bg); box-shadow: var(--shadow-sm); }
-.price-row { display: flex; align-items: baseline; justify-content: space-between; gap: 24px; padding: 26px 30px; }
+/* mały „chip” — używany w legendzie cennika i przy pozycjach */
+.tag {
+  display: inline-block;
+  font-family: var(--font-body); font-size: 0.66rem; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase; line-height: 1.5;
+  color: var(--ink-soft); background: var(--surface);
+  border: 1px solid var(--line); border-radius: 100px;
+  padding: 3px 10px; white-space: nowrap;
+}
+
+.price-legend { max-width: 860px; margin-bottom: clamp(28px, 4vw, 40px); }
+.price-legend .eyebrow { display: block; margin-bottom: 14px; }
+.price-legend ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 9px; }
+.price-legend li { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 0.9rem; color: var(--ink-soft); }
+.price-legend li .tag { flex: none; }
+.price-legend a { color: var(--accent-ink); text-decoration: underline; text-underline-offset: 2px; }
+.price-legend-soon { margin-top: 14px; font-size: 0.88rem; font-style: italic; color: var(--ink-faint); }
+.price-legend-soon b { font-style: normal; font-weight: 600; color: var(--ink-soft); }
+
+.price-groups { max-width: 860px; display: flex; flex-direction: column; gap: 26px; }
+.price-group { border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--bg); box-shadow: var(--shadow-sm); }
+.price-group-head {
+  font-family: var(--font-body); font-size: 0.76rem; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-faint);
+  padding: 17px 30px 15px; background: var(--surface); border-bottom: 1px solid var(--line);
+}
+.price-group-note { padding: 15px 30px 0; font-size: 0.9rem; color: var(--ink-soft); }
+.price-group-note a { color: var(--accent-ink); text-decoration: underline; text-underline-offset: 2px; }
+
+.price-row { display: flex; align-items: baseline; justify-content: space-between; gap: 24px; padding: 20px 30px; }
 .price-row + .price-row { border-top: 1px solid var(--line); }
-.price-info h3 { font-size: 1.5rem; }
-.price-info .price-dur { display: block; margin-top: 4px; font-family: var(--font-body); font-size: 0.92rem; color: var(--ink-soft); }
-.price-amount { font-family: var(--font-display); font-size: 1.9rem; font-weight: 600; color: var(--accent-ink); white-space: nowrap; }
-.price-note { margin-top: 28px; max-width: 760px; padding: 18px 22px; border-left: 2px solid var(--accent-line); background: var(--surface); border-radius: 0 6px 6px 0; color: var(--ink-soft); font-size: 0.98rem; }
+.price-group-note + .price-row { border-top: none; }
+.price-info h4 { font-size: 1.2rem; line-height: 1.25; }
+.price-info .price-dur { display: block; margin-top: 5px; font-family: var(--font-body); font-size: 0.88rem; color: var(--ink-soft); }
+.price-book { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 11px; }
+.price-amount { font-family: var(--font-display); font-size: 1.6rem; font-weight: 600; color: var(--accent-ink); white-space: nowrap; text-align: right; font-variant-numeric: lining-nums; }
+.price-amount small { display: block; margin-top: 3px; font-family: var(--font-body); font-size: 0.7rem; font-weight: 500; letter-spacing: 0.03em; color: var(--ink-faint); }
+.price-amount.price-free { font-size: 1.15rem; font-style: italic; color: var(--ink-soft); }
+
+.price-note { margin-top: 28px; max-width: 860px; padding: 18px 22px; border-left: 2px solid var(--accent-line); background: var(--surface); border-radius: 0 6px 6px 0; color: var(--ink-soft); font-size: 0.98rem; }
 .price-note b { color: var(--ink); font-weight: 600; }
 .soon { font-size: 0.82em; font-style: italic; color: var(--ink-soft); opacity: 0.85; }
+
+/* ---------- Godziny przyjęć (tabela zbiorcza) ---------- */
+.hours { margin-top: clamp(44px, 6vw, 72px); }
+.hours h3 { font-size: clamp(1.5rem, 2.6vw, 1.9rem); }
+.hours-lede { margin-top: 8px; color: var(--ink-soft); font-size: 0.95rem; }
+.table-scroll { margin-top: 22px; overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); box-shadow: var(--shadow-sm); }
+.hours-table { width: 100%; min-width: 700px; border-collapse: collapse; font-size: 0.88rem; }
+.hours-table th, .hours-table td { padding: 13px 16px; text-align: left; border-bottom: 1px solid var(--line); }
+.hours-table thead th {
+  font-family: var(--font-body); font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint);
+  background: var(--surface); white-space: nowrap;
+}
+.hours-table tbody th { font-family: var(--font-body); font-size: 0.9rem; font-weight: 600; color: var(--ink); white-space: nowrap; }
+.hours-table tbody td { color: var(--ink-soft); white-space: nowrap; font-variant-numeric: lining-nums; }
+.hours-table tbody tr:last-child th,
+.hours-table tbody tr:last-child td { border-bottom: none; }
+.hours-table .hours-individual { font-style: italic; color: var(--ink-faint); }
 
 /* ---------- Zapisy / formularz ---------- */
 .signup-form { max-width: 640px; display: flex; flex-direction: column; gap: 20px; }
@@ -403,4 +498,12 @@ section { padding-block: clamp(72px, 11vh, 140px); }
   .header-cta .btn { padding: 0.62em 0.95em; font-size: 0.84rem; }
   .hero[data-hero="centered"] .hero-title .l2,
   .hero[data-hero="editorial"] .hero-title .l2 { margin-left: 0; }
+
+  /* cennik — nazwa nad ceną, żeby długie tytuły się nie łamały w słupek */
+  .price-row { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .price-amount { text-align: left; font-size: 1.5rem; }
+  .price-group-head { padding: 15px 20px 13px; }
+  .price-group-note { padding: 14px 20px 0; }
+  .member-detailed { padding: 22px 22px 24px; }
+  .member-detailed .portrait { margin: -22px -22px 0; }
 }
