@@ -248,6 +248,9 @@ main > section { padding-block: clamp(72px, 11vh, 140px); }
 .offer-card p { color: var(--ink-soft); font-size: 0.98rem; }
 .offer-card .more { margin-top: auto; font-weight: 600; font-size: 0.9rem; color: var(--accent-ink); display: inline-flex; gap: 6px; align-items: center; opacity: 0; transform: translateY(4px); transition: opacity .3s, transform .3s; }
 .offer-card:hover .more { opacity: 1; transform: translateY(0); }
+/* samotny kafel w ostatnim wierszu rozciąga się na całą szerokość — inaczej siatka
+   (komórki rozdzielone tłem) kończy się pustym prostokątem */
+.offer-grid > .offer-card:last-child:nth-child(3n + 1) { grid-column: 1 / -1; }
 
 /* ---------- Zespół ---------- */
 .team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 28px; }
@@ -344,6 +347,18 @@ main > section { padding-block: clamp(72px, 11vh, 140px); }
 .locate-block p { color: var(--ink); font-size: 1.05rem; }
 .locate-block p .land { color: var(--ink-soft); font-size: 0.95rem; }
 .locate-divider { height: 1px; background: var(--line); }
+.locate-lines { list-style: none; margin: 12px 0 0; padding: 0; display: flex; flex-direction: column; gap: 7px; }
+.locate-lines li { font-size: 0.98rem; color: var(--ink); font-variant-numeric: lining-nums; }
+.locate-lines li span {
+  display: inline-block; min-width: 88px;
+  font-family: var(--font-body); font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint);
+}
+
+.locate-photos { margin-top: clamp(26px, 3.4vw, 40px); display: grid; grid-template-columns: 2fr 1fr; gap: 18px; }
+.locate-photos figure { margin: 0; }
+.locate-photos img { width: 100%; height: auto; display: block; border-radius: 10px; box-shadow: var(--shadow-sm); }
+.locate-photos figcaption { margin-top: 10px; font-family: var(--font-body); font-size: 0.86rem; line-height: 1.5; color: var(--ink-faint); }
 
 /* ---------- Kontakt / widżet ---------- */
 .contact { background: var(--surface); }
@@ -374,6 +389,15 @@ main > section { padding-block: clamp(72px, 11vh, 140px); }
   border: 1px solid var(--line); border-radius: 100px;
   padding: 3px 10px; white-space: nowrap;
 }
+/* chip, który naprawdę prowadzi do formularza */
+a.tag-link {
+  text-decoration: none; cursor: pointer;
+  transition: color .18s, border-color .18s, background-color .18s;
+}
+a.tag-link:hover { color: var(--accent-ink); border-color: var(--accent-line); background: var(--accent-tint); }
+a.tag-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+/* kanał zapisu jeszcze nieuruchomiony — chip informacyjny, nieklikalny */
+.tag-soon { border-style: dashed; color: var(--ink-faint); cursor: default; }
 
 .price-legend { max-width: 860px; margin-bottom: clamp(28px, 4vw, 40px); }
 .price-legend .eyebrow { display: block; margin-bottom: 14px; }
@@ -381,6 +405,8 @@ main > section { padding-block: clamp(72px, 11vh, 140px); }
 .price-legend li { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 0.9rem; color: var(--ink-soft); }
 .price-legend li .tag { flex: none; }
 .price-legend a { color: var(--accent-ink); text-decoration: underline; text-underline-offset: 2px; }
+.price-legend a.tag-link { color: var(--ink-soft); text-decoration: none; }
+.price-legend a.tag-link:hover { color: var(--accent-ink); }
 .price-legend-soon { margin-top: 14px; font-size: 0.88rem; font-style: italic; color: var(--ink-faint); }
 .price-legend-soon b { font-style: normal; font-weight: 600; color: var(--ink-soft); }
 
@@ -444,6 +470,9 @@ main > section { padding-block: clamp(72px, 11vh, 140px); }
   outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-tint);
 }
 .signup-form input[name="_honey"] { display: none; }
+/* pole „Usługa” podświetla się na moment, gdy zostało podstawione z cennika */
+.signup-form .field-flash select { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-tint); }
+.signup-form .field-flash label { color: var(--accent-ink); }
 .signup-form .consent { flex-direction: row; align-items: flex-start; gap: 10px; font-weight: 400; color: var(--ink-soft); font-size: 0.92rem; line-height: 1.5; letter-spacing: 0; cursor: pointer; }
 .signup-form .consent input { width: auto; margin-top: 3px; flex: none; accent-color: var(--accent); }
 .signup-form .consent a { color: var(--accent-ink); text-decoration: underline; text-underline-offset: 2px; }
@@ -474,8 +503,10 @@ main > section { padding-block: clamp(72px, 11vh, 140px); }
   .nav-links { display: none; }
   .menu-toggle { display: inline-flex; }
   .offer-grid { grid-template-columns: repeat(2, 1fr); }
+  .offer-grid > .offer-card:last-child:nth-child(2n + 1) { grid-column: 1 / -1; }
   .mission-body { grid-template-columns: 1fr; gap: 22px; }
   .locate-grid, .contact-grid { grid-template-columns: 1fr; }
+  .locate-photos { grid-template-columns: 1fr; }
   .footer-top { grid-template-columns: 1fr 1fr; }
   .hero[data-hero="split"] .hero-inner { grid-template-columns: 1fr; }
   .hero[data-hero="split"] .hero-art { display: none; }
