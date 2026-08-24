@@ -259,8 +259,6 @@ main > section { padding-block: clamp(72px, 11vh, 140px); }
 .offer-card .num { font-family: ui-monospace, monospace; font-size: 0.78rem; color: var(--accent-ink); letter-spacing: 0.1em; }
 .offer-card h3 { font-size: 1.5rem; }
 .offer-card p { color: var(--ink-soft); font-size: 0.98rem; }
-.offer-card .more { margin-top: auto; font-weight: 600; font-size: 0.9rem; color: var(--accent-ink); display: inline-flex; gap: 6px; align-items: center; opacity: 0; transform: translateY(4px); transition: opacity .3s, transform .3s; }
-.offer-card:hover .more { opacity: 1; transform: translateY(0); }
 /* samotny kafel w ostatnim wierszu rozciąga się na całą szerokość — inaczej siatka
    (komórki rozdzielone tłem) kończy się pustym prostokątem */
 .offer-grid > .offer-card:last-child:nth-child(3n + 1) { grid-column: 1 / -1; }

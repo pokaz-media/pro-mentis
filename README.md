@@ -94,8 +94,14 @@ renumbered 1–9 (the source restarted at `1.` mid-paragraph, so it had two item
 numbered 1). Nothing else in the wording was touched — if the substance needs to
 change, it changes in the client's document first.
 
-**Oferta** — 13 tiles. They are kept 1:1 in sync with the `Usługa` dropdown in
-the Zapisy form and with the Cennik; changing one means changing all three.
+**Oferta** — 13 tiles, each just a number, a title and a sentence. They are kept
+1:1 in sync with the `Usługa` dropdown in the Zapisy form and with the Cennik;
+changing one means changing all three. The tiles are **not** links — the
+`Dowiedz się więcej →` label that used to appear on hover was removed at the
+client's request (it promised a page that does not exist); `.offer-card:hover`
+still tints the background. The `.more` rules in `variants.css` (for the `list`
+and `mosaic` Oferta layouts) are now dead but left in place, since that file is
+the alternative-layout library rather than shipped CSS.
 
 **Cennik** — 7 `.price-group` blocks (konsultacje, seksuologia, dietetyka,
 mediacje, zajęcia grupowe, diagnoza, pozostałe). Each row carries a duration and
