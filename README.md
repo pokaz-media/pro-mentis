@@ -120,6 +120,14 @@ would build on pro-mentis.pl cannot sync with ZnanyLekarz's, so per the client's
 own rule it is limited to the services ZnanyLekarz does not cover. The four
 psychotherapy rows carry `ZnanyLekarz` instead. Move the chips if that changes.
 
+As of 24 Aug 2026 ZnanyLekarz booking is **live**, so those four chips are real
+`<a class="tag tag-link">` links to the facility profile (`target="_blank"`,
+`rel="noopener nofollow"`) — no `data-usluga`, so the form-prefill script ignores
+them. `Kalendarz online` is the only channel still `.tag-soon`, and
+`.price-legend-soon` now talks about that calendar alone. Worth asking the client
+whether the seksuologia rows should also get a `ZnanyLekarz` chip — the original
+rule for splitting them assumed ZnanyLekarz booking did not work at all.
+
 **Zespół** — 10 expandable cards. Photo, name, role, intro, pull quote and that
 person's hours are always visible; second paragraph, credentials, experience and
 the supervision note sit behind a `Pełny profil` `<details>` toggle (no JS).
@@ -250,19 +258,17 @@ the `_honey` honeypot stays either way. On the production host the
   one visibly unfinished element in Kontakt.
 - Card payment went live in round 4, so the `(wkrótce)` marker is gone from the
   Płatność note — and with it the `.soon` rule, which nothing else used.
-- **Turn on online booking on the ZnanyLekarz profile.** The widget itself is
-  already embedded in Kontakt (`.widget-ph.widget-live` — the client's snippet
-  from their panel, verbatim, plus the `platform.docplanner.com` loader; the
-  script replaces the fallback `a.zl-facility-url` with an iframe that sizes
-  itself). But the facility profile has appointment booking switched **off**, so
-  the only button the widget renders is *Pokaż opinie* — the profile page states
-  outright that the clinic does not offer online booking. Until that is enabled
-  in the ZnanyLekarz panel the ZnanyLekarz chips in Cennik stay `.tag-soon` and
-  `.widget-note` under the widget says what it actually does; flipping the switch
-  means dropping `.tag-soon` from four chips, rewriting `.widget-note` and
-  reconsidering the Kontakt lede. The **online calendar** on pro-mentis.pl is a
-  separate decision — see the chip note under Cennik. The
-  `.price-legend-soon` paragraph covers both; delete it once they work.
+- **ZnanyLekarz booking is live** (client enabled it 24 Aug 2026 — the widget's
+  button changed from *Pokaż opinie* to *Umów wizytę*). The widget in Kontakt is
+  the client's snippet from their panel, verbatim, plus the
+  `platform.docplanner.com` loader; the script replaces the fallback
+  `a.zl-facility-url` with an iframe that sizes itself. `.widget-note` under it is
+  gone — it only existed to explain that booking did not work yet. What is still
+  outstanding there: **the facility has no logo uploaded**, so the widget renders
+  a grey placeholder avatar — the one visibly unfinished element in Kontakt.
+- The **online calendar** on pro-mentis.pl is still not built; it is the only
+  channel left marked `.tag-soon`, and `.price-legend-soon` is the paragraph to
+  delete when it works.
 - **Dietetyk kliniczny** — the service is in Oferta and Cennik, but there is no
   bio or photo for the dietitian in Zespół.
 - **Katarzyna Wójcikowska** and **Dominika Krawczyk** are missing from
