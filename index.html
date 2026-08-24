@@ -31,7 +31,7 @@
     </span>
   </a>
 
-  <nav class="nav" aria-label="Główna nawigacja">
+  <nav class="nav" id="nav-main" aria-label="Główna nawigacja">
     <div class="nav-links">
       <a href="#oferta">Oferta</a>
       <a href="#cennik">Cennik</a>
@@ -41,6 +41,7 @@
       <a href="#kontakt">Kontakt</a>
       <a href="#zapisy">Zapisy</a>
     </div>
+    <a class="nav-phone" href="tel:+48693979397">Zadzwoń: +48 693 979 397</a>
   </nav>
 
   <div class="header-cta">
@@ -48,6 +49,9 @@
       <span class="phone-text"><small>Zadzwoń</small>+48 693 979 397</span>
     </a>
     <a class="btn btn-primary" href="#zapisy">Umów wizytę</a>
+    <button class="menu-toggle" type="button" aria-label="Menu nawigacji" aria-expanded="false" aria-controls="nav-main">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
 
@@ -81,7 +85,6 @@
         </div>
       </div>
       <div class="hero-art reveal">
-        <div class="hero-photo ph" data-label="zdjęcie wnętrza gabinetu"></div>
         <img class="hero-heart" src="assets/img/logo-heart.svg" alt="" aria-hidden="true">
       </div>
     </div>
@@ -189,12 +192,12 @@
     <div class="price-legend reveal">
       <span class="eyebrow muted">Sposoby zapisu</span>
       <ul>
-        <li><a class="tag tag-link" href="#zapisy">Formularz</a> krótkie zgłoszenie <a href="#zapisy">na tej stronie</a> — dostępne dla każdej usługi</li>
-        <li><span class="tag tag-soon">Kalendarz online</span> kalendarz rezerwacji bezpośrednio na pro-mentis.pl</li>
-        <li><span class="tag tag-soon">ZnanyLekarz</span> rezerwacja przez portal znanylekarz.pl</li>
+        <li><a class="tag tag-link" href="#zapisy">Formularz</a><span>krótkie zgłoszenie na tej stronie — dostępne dla każdej usługi</span></li>
+        <li><span class="tag tag-soon">Kalendarz online</span><span>kalendarz rezerwacji bezpośrednio na pro-mentis.pl</span></li>
+        <li><span class="tag tag-soon">ZnanyLekarz</span><span>rezerwacja przez portal znanylekarz.pl — <a href="https://www.znanylekarz.pl/placowki/pro-mentis" target="_blank" rel="noopener nofollow">nasz profil placówki</a></span></li>
       </ul>
-      <!-- USUŃ ten akapit, gdy kalendarz online i profil ZnanyLekarz będą już aktywne -->
-      <p class="price-legend-soon">Kalendarz online i rezerwację przez ZnanyLekarz uruchamiamy <b>wkrótce</b> — do tego czasu zapisy przez formularz lub telefonicznie.</p>
+      <!-- USUŃ ten akapit, gdy umawianie online (ZnanyLekarz i/lub własny kalendarz) będzie już aktywne -->
+      <p class="price-legend-soon">Umawianie online — przez ZnanyLekarz i własny kalendarz na pro-mentis.pl — uruchamiamy <b>wkrótce</b>. Do tego czasu zapisy przez formularz lub telefonicznie.</p>
     </div>
 
     <div class="price-groups reveal">
@@ -205,7 +208,7 @@
           <div class="price-info">
             <h4>Konsultacja / psychoterapia indywidualna</h4>
             <span class="price-dur">dzieci, młodzież, dorośli · 50 minut</span>
-            <span class="price-book"><a class="tag tag-link" href="#zapisy" data-usluga="Psychoterapia indywidualna">Formularz</a><span class="tag tag-soon" title="ZnanyLekarz — wkrótce">ZnanyLekarz</span></span>
+            <span class="price-book"><a class="tag tag-link" href="#zapisy" data-usluga="Psychoterapia indywidualna">Formularz</a><span class="tag tag-soon" title="Umawianie przez ZnanyLekarz — wkrótce">ZnanyLekarz</span></span>
           </div>
           <span class="price-amount">220 zł</span>
         </div>
@@ -213,7 +216,7 @@
           <div class="price-info">
             <h4>Konsultacje psychologiczne · interwencja kryzysowa · poradnictwo wychowawcze</h4>
             <span class="price-dur">50 minut</span>
-            <span class="price-book"><a class="tag tag-link" href="#zapisy" data-usluga="Konsultacje i wsparcie w kryzysie">Formularz</a><span class="tag tag-soon" title="ZnanyLekarz — wkrótce">ZnanyLekarz</span></span>
+            <span class="price-book"><a class="tag tag-link" href="#zapisy" data-usluga="Konsultacje i wsparcie w kryzysie">Formularz</a><span class="tag tag-soon" title="Umawianie przez ZnanyLekarz — wkrótce">ZnanyLekarz</span></span>
           </div>
           <span class="price-amount">220 zł</span>
         </div>
@@ -221,7 +224,7 @@
           <div class="price-info">
             <h4>Konsultacja / psychoterapia pary</h4>
             <span class="price-dur">80 minut</span>
-            <span class="price-book"><a class="tag tag-link" href="#zapisy" data-usluga="Terapia par">Formularz</a><span class="tag tag-soon" title="ZnanyLekarz — wkrótce">ZnanyLekarz</span></span>
+            <span class="price-book"><a class="tag tag-link" href="#zapisy" data-usluga="Terapia par">Formularz</a><span class="tag tag-soon" title="Umawianie przez ZnanyLekarz — wkrótce">ZnanyLekarz</span></span>
           </div>
           <span class="price-amount">330 zł</span>
         </div>
@@ -229,7 +232,7 @@
           <div class="price-info">
             <h4>Konsultacja / psychoterapia rodzinna</h4>
             <span class="price-dur">80 minut</span>
-            <span class="price-book"><a class="tag tag-link" href="#zapisy" data-usluga="Terapia rodzinna">Formularz</a><span class="tag tag-soon" title="ZnanyLekarz — wkrótce">ZnanyLekarz</span></span>
+            <span class="price-book"><a class="tag tag-link" href="#zapisy" data-usluga="Terapia rodzinna">Formularz</a><span class="tag tag-soon" title="Umawianie przez ZnanyLekarz — wkrótce">ZnanyLekarz</span></span>
           </div>
           <span class="price-amount">330 zł</span>
         </div>
@@ -391,7 +394,7 @@
     </div>
 
     <p class="price-note reveal">
-      Płatność: <b>BLIK</b>, <b>gotówka</b> lub <b>karta</b> <span class="soon">(wkrótce)</span>. Do każdej wizyty wydajemy paragon; faktura na życzenie.
+      Płatność: <b>BLIK</b>, <b>gotówka</b> lub <b>karta</b>. Do każdej wizyty wydajemy paragon; faktura na życzenie.
     </p>
   </section>
 
@@ -926,14 +929,18 @@
       <div class="section-head reveal">
         <span class="eyebrow">Kontakt</span>
         <h2 class="section-title">Umów pierwszą wizytę</h2>
-        <p class="lede">Wybierz dogodny termin online lub zadzwoń — pomożemy dobrać odpowiedniego specjalistę.</p>
+        <p class="lede">Zadzwoń, napisz lub wypełnij formularz — pomożemy dobrać odpowiedniego specjalistę.</p>
       </div>
       <div class="contact-grid reveal">
-        <div class="widget-ph">
-          <div class="widget-inner">
-            <h3>Rezerwacja online</h3>
-            <p>Wkrótce możliwość zapisu przez portal <b>ZnanyLekarz.pl</b>.</p>
-          </div>
+        <!--
+          Widget ZnanyLekarz (Docplanner) — kod z panelu placówki, wklejony bez zmian.
+          Skrypt dociąga się z platform.docplanner.com; gdy jest zablokowany albo strona
+          działa offline, zostaje sam odnośnik „Umów wizytę” prowadzący na profil placówki.
+        -->
+        <div class="widget-ph widget-live">
+          <a class="zl-facility-url" href="https://www.znanylekarz.pl/placowki/pro-mentis" rel="nofollow" data-zlw-facility="pro-mentis" data-zlw-type="facility-big" data-zlw-saas-only="false" data-zlw-a11y-title="Widget umówienia wizyty lekarskiej">Umów wizytę</a>
+          <script>!function($_x,_s,id){var js,fjs=$_x.getElementsByTagName(_s)[0];if(!$_x.getElementById(id)){js = $_x.createElement(_s);js.id = id;js.src = "//platform.docplanner.com/js/widget.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","zl-widget-s");</script>
+          <p class="widget-note">Nasz profil placówki na ZnanyLekarz — opinie pacjentów i dane kontaktowe. Umawianie wizyt online uruchamiamy wkrótce; na razie zapisy przez <a href="#zapisy">formularz</a> lub telefonicznie.</p>
         </div>
         <div class="contact-info">
           <div class="ci-row">
@@ -941,7 +948,7 @@
             <div>
               <h4>Telefon</h4>
               <a class="big" href="tel:+48693979397">+48 693 979 397</a>
-              <p>Pon.–Pt. 8:00–21:00</p>
+              <p>Pon.–Pt. 8:00–21:00 · Sob. 9:00–15:00</p>
             </div>
           </div>
           <div class="ci-row">
@@ -1083,6 +1090,7 @@
       -->
       <form class="signup-form reveal" action="https://formsubmit.co/kontakt@pro-mentis.pl" method="POST">
         <input type="hidden" name="_subject" value="Nowe zgłoszenie z pro-mentis.pl">
+        <input type="hidden" name="_next" value="https://www.pro-mentis.pl/dziekujemy.html">
         <input type="hidden" name="_captcha" value="true">
         <input type="hidden" name="_template" value="table">
         <!-- ustawiane przy wysyłce ze pola „E-mail”, żeby dało się odpowiedzieć wprost z maila -->
@@ -1135,10 +1143,10 @@
         </div>
         <label class="consent">
           <input type="checkbox" name="Zgoda RODO" value="tak" required>
-          <span>Wyrażam zgodę na przetwarzanie moich danych osobowych w celu kontaktu i umówienia wizyty, zgodnie z <a href="#" target="_blank" rel="noopener">polityką prywatności</a>.</span>
+          <span>Wyrażam zgodę na przetwarzanie moich danych osobowych w celu kontaktu i umówienia wizyty, zgodnie z <a href="polityka-prywatnosci.html" target="_blank" rel="noopener">polityką prywatności</a>.</span>
         </label>
         <button class="btn btn-primary" type="submit">Wyślij zgłoszenie <span class="arrow">→</span></button>
-        <p class="form-hint">Pola wymagane: imię i nazwisko, telefon, e-mail, usługa i zgoda. Prosimy nie podawać w wiadomości szczegółowych informacji o stanie zdrowia.</p>
+        <p class="form-hint">Pola wymagane: imię i nazwisko, telefon, e-mail, usługa i zgoda. Prosimy nie podawać w wiadomości szczegółowych informacji o stanie zdrowia. Zasady wizyt, płatności i odwoływania terminów opisuje <a href="regulamin.html" target="_blank" rel="noopener">regulamin świadczenia usług</a>.</p>
       </form>
     </div>
   </section>
@@ -1166,11 +1174,15 @@
         <a href="tel:+48693979397">+48 693 979 397</a>
         <a href="mailto:kontakt@pro-mentis.pl">kontakt@pro-mentis.pl</a>
         <a href="https://www.google.com/maps/search/?api=1&amp;query=ul.+Drewnowska+102,+Łódź" target="_blank" rel="noopener">ul. Drewnowska 102, Łódź</a>
-        <p>Pon.–Pt. 8:00–21:00</p>
+        <p>Pon.–Pt. 8:00–21:00 · Sob. 9:00–15:00</p>
       </div>
     </div>
     <div class="footer-bottom">
       <span>© 2026 Pro-Mentis · Klinika Psychoterapii</span>
+      <span class="footer-legal">
+        <a href="regulamin.html">Regulamin</a>
+        <a href="polityka-prywatnosci.html">Polityka prywatności</a>
+      </span>
       <span>pro-mentis.pl</span>
     </div>
   </div>
@@ -1178,6 +1190,44 @@
 
 <!-- ============ SCRIPTS ============ -->
 <script>
+/* ------------------------------------------------------------------
+   Menu mobilne — poniżej 980px .nav-links jest schowane, więc nawigację
+   przejmuje hamburger; panel zamyka się po wyborze linku, Escape'em,
+   kliknięciem poza nagłówkiem i przy powrocie do szerokości desktopowej.
+   ------------------------------------------------------------------ */
+(function () {
+  var header = document.getElementById('header');
+  var toggle = header && header.querySelector('.menu-toggle');
+  var nav = document.getElementById('nav-main');
+  if (!toggle || !nav) return;
+
+  var close = function () {
+    header.classList.remove('nav-open');
+    toggle.setAttribute('aria-expanded', 'false');
+  };
+
+  toggle.addEventListener('click', function () {
+    var open = header.classList.toggle('nav-open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  Array.prototype.forEach.call(nav.querySelectorAll('a'), function (link) {
+    link.addEventListener('click', close);
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') close();
+  });
+
+  document.addEventListener('click', function (e) {
+    if (header.classList.contains('nav-open') && !header.contains(e.target)) close();
+  });
+
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 980) close();
+  });
+})();
+
 /* ------------------------------------------------------------------
    Sticky header reveal + reveal-on-scroll
    ------------------------------------------------------------------ */
@@ -1201,6 +1251,24 @@
   } else {
     els.forEach(function (el) { el.classList.add('in'); });
   }
+})();
+
+/* ------------------------------------------------------------------
+   Zespół — karty w wierszu mają równą wysokość (align-items: stretch),
+   ale gdy któryś „Pełny profil” jest otwarty, siatka wraca do wysokości
+   naturalnych, żeby w pozostałych kartach nie zostawała pusta przestrzeń
+   ------------------------------------------------------------------ */
+(function () {
+  var grid = document.querySelector('.team-grid.profiles');
+  if (!grid) return;
+  var panels = grid.querySelectorAll('.member-more');
+  var sync = function () {
+    if (grid.querySelector('.member-more[open]')) grid.classList.add('has-open');
+    else grid.classList.remove('has-open');
+  };
+  Array.prototype.forEach.call(panels, function (panel) {
+    panel.addEventListener('toggle', sync);
+  });
 })();
 
 /* ------------------------------------------------------------------
