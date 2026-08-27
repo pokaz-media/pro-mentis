@@ -37,18 +37,33 @@ html[data-density="spacious"] .section-head { margin-bottom: clamp(48px, 6vw, 80
 /* ───────────────────────────────────────────────────────────
    GLOBALNE: przejścia / animacje wejścia
    ─────────────────────────────────────────────────────────── */
-.reveal {
+/* Warianty animacji obowiązują tylko wtedy, gdy skrypt włączył .js-anim —
+   inaczej stan startowy (przesunięcie, skala, blur) zostałby na stałe. */
+html.js-anim .reveal {
   transition: opacity .8s cubic-bezier(.2,.7,.3,1),
               transform .8s cubic-bezier(.2,.7,.3,1),
               filter .8s ease !important;
 }
-html[data-anim="none"]  .reveal { opacity: 1; transform: none; filter: none; transition: none !important; }
-html[data-anim="fade"]  .reveal { transform: none; filter: none; }
-html[data-anim="rise"]  .reveal { transform: translateY(30px); filter: none; }
-html[data-anim="slide"] .reveal { transform: translateX(-40px); filter: none; }
-html[data-anim="scale"] .reveal { transform: scale(.92); transform-origin: center; filter: none; }
-html[data-anim="blur"]  .reveal { transform: translateY(12px); filter: blur(12px); }
+html.js-anim[data-anim="none"]  .reveal { opacity: 1; transform: none; filter: none; transition: none !important; }
+html.js-anim[data-anim="fade"]  .reveal { transform: none; filter: none; }
+html.js-anim[data-anim="rise"]  .reveal { transform: translateY(30px); filter: none; }
+html.js-anim[data-anim="slide"] .reveal { transform: translateX(-40px); filter: none; }
+html.js-anim[data-anim="scale"] .reveal { transform: scale(.92); transform-origin: center; filter: none; }
+html.js-anim[data-anim="blur"]  .reveal { transform: translateY(12px); filter: blur(12px); }
 .reveal.in { opacity: 1 !important; transform: none !important; filter: none !important; }
+
+/* Ostateczny reset dla „ogranicz ruch" — musi być tu (ostatni arkusz)
+   i z !important, żeby wygrać z regułami html[data-anim="..."] powyżej.
+   Bez tego cała treść zostawała np. na stałe pomniejszona do scale(.92). */
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  html.js-anim .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+}
 
 /* ═══════════════════════════════════════════════════════════
    HERO — 4. układ: BANNER (serce jako wielki znak wodny)

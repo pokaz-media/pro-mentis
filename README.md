@@ -159,8 +159,16 @@ head **and shoulders** in frame (see the note on reframing above), saved as
 in the order the person should appear, and add the same person to the combined
 `Godziny przyjęć specjalistów` table at the end of Kontakt.
 
+Keep `reveal` on the **card**, never on the `.team-grid.profiles` wrapper. The
+reveal observer fires when an element enters the viewport, so a container that
+is many screens tall behaves badly — with ten detailed profiles the grid is over
+10 000 px on a phone. It used to sit on the wrapper with a 12% visibility
+threshold, which a block that tall can never reach, so the whole team section
+stayed at `opacity: 0` on mobile and tablets. Per-card `reveal` keeps each
+animated element around one screen tall.
+
 ```html
-<article class="member member-detailed">
+<article class="member member-detailed reveal">
   <div class="portrait"><img src="assets/img/team/imie-nazwisko.jpg" alt="Imię Nazwisko — rola" loading="lazy"></div>
   <h3>Imię Nazwisko</h3>
   <span class="role">Rola · Druga rola</span>
@@ -172,7 +180,7 @@ in the order the person should appear, and add the same person to the combined
       <li><span>Wtorek</span><b>13:30–18:30</b></li>
     </ul>
     <!-- albo, gdy brak grafiku:
-    <p class="hours-individual">Terminy ustalane indywidualnie — prosimy o kontakt z rejestracją.</p> -->
+    <p class="member-hours-none">Terminy ustalane indywidualnie — prosimy o kontakt z rejestracją.</p> -->
   </div>
   <details class="member-more">
     <summary>Pełny profil</summary>

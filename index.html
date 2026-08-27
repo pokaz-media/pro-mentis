@@ -16,8 +16,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Lora:ital,wght@0,500;0,600;1,500&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Hanken+Grotesk:wght@400;500;600;700&family=Mulish:wght@400;500;600;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/styles.css">
-<link rel="stylesheet" href="assets/css/variants.css">
+<link rel="stylesheet" href="assets/css/styles.css?v=2">
+<link rel="stylesheet" href="assets/css/variants.css?v=2">
+<script>
+/* Włącza animacje wejścia dopiero, gdy JS działa. Przy wyłączonym lub
+   zablokowanym JS klasa się nie pojawi i cała treść zostaje widoczna. */
+document.documentElement.className += ' js-anim';
+</script>
 </head>
 <body>
 
@@ -393,9 +398,9 @@
       <h2 class="section-title">Ludzie, którym możesz zaufać</h2>
       <p class="lede">Doświadczeni psychoterapeuci, psycholodzy i lekarze, pracujący w nurcie opartym na relacji i zrozumieniu.</p>
     </div>
-    <div class="team-grid profiles reveal">
+    <div class="team-grid profiles">
 
-      <article class="member member-detailed">
+      <article class="member member-detailed reveal">
         <div class="portrait"><img src="assets/img/team/dariusz-druzynski.jpg" alt="Dariusz Drużyński — psychoterapeuta, psycholog i seksuolog" loading="lazy"></div>
         <h3>Dariusz Drużyński</h3>
         <span class="role">Psychoterapeuta · Psycholog · Seksuolog · Coach</span>
@@ -433,7 +438,7 @@
         </details>
       </article>
 
-      <article class="member member-detailed">
+      <article class="member member-detailed reveal">
         <div class="portrait"><img src="assets/img/team/dominika-krawczyk.jpg" alt="Dominika Krawczyk — psycholożka i diagnostka psychologiczna" loading="lazy"></div>
         <h3>Dominika Krawczyk</h3>
         <span class="role">Psycholożka · Diagnostka psychologiczna · Specjalistka psychologii klinicznej w trakcie szkolenia</span>
@@ -472,7 +477,7 @@
         </details>
       </article>
 
-      <article class="member member-detailed">
+      <article class="member member-detailed reveal">
         <div class="portrait"><img src="assets/img/team/ewa-marat.jpg" alt="Ewa Marat — psycholożka, doktor nauk humanistycznych" loading="lazy"></div>
         <h3>Ewa Marat</h3>
         <span class="role">Psycholożka · Wykładowczyni akademicka · Diagnostka dzieci i rodzin</span>
@@ -517,7 +522,7 @@
         </details>
       </article>
 
-      <article class="member member-detailed">
+      <article class="member member-detailed reveal">
         <div class="portrait"><img src="assets/img/team/jolanta-jankowska.jpg" alt="Jolanta Jankowska — psycholożka, psychoonkolożka i psychotraumatolożka" loading="lazy"></div>
         <h3>Jolanta Jankowska</h3>
         <span class="role">Psycholożka · Psychoonkolożka · Psychotraumatolożka · Logoterapeutka · Terapeutka EMDR (w trakcie szkolenia)</span>
@@ -562,7 +567,7 @@
         </details>
       </article>
 
-      <article class="member member-detailed">
+      <article class="member member-detailed reveal">
         <div class="portrait"><img src="assets/img/team/katarzyna-dawidowska.jpg" alt="Katarzyna Dawidowska — psychoterapeutka psychodynamiczna" loading="lazy"></div>
         <h3>Katarzyna Dawidowska</h3>
         <span class="role">Psychoterapeutka psychodynamiczna · Specjalistka pracy z kryzysem i zaburzeniami osobowości</span>
@@ -608,7 +613,7 @@
         </details>
       </article>
 
-      <article class="member member-detailed">
+      <article class="member member-detailed reveal">
         <div class="portrait"><img src="assets/img/team/adam-prosniak.jpg" alt="Adam Prośniak — psychoterapeuta psychodynamiczny, doktor nauk medycznych" loading="lazy"></div>
         <h3>Adam Prośniak</h3>
         <span class="role">Psychoterapeuta psychodynamiczny · Doktor nauk medycznych</span>
@@ -651,7 +656,7 @@
         </details>
       </article>
 
-      <article class="member member-detailed">
+      <article class="member member-detailed reveal">
         <div class="portrait"><img src="assets/img/team/katarzyna-wojcikowska.jpg" alt="Katarzyna Wójcikowska — seksuolożka kliniczna, pedagożka specjalna, mediatorka rodzinna" loading="lazy"></div>
         <h3>Katarzyna Wójcikowska</h3>
         <span class="role">Seksuolożka kliniczna · Pedagożka specjalna · Edukatorka seksualna · Mediatorka rodzinna</span>
@@ -694,7 +699,7 @@
         </details>
       </article>
 
-      <article class="member member-detailed">
+      <article class="member member-detailed reveal">
         <div class="portrait"><img src="assets/img/team/agnieszka-jurczyk.jpg" alt="Agnieszka Paula Jurczyk — lekarka, psychoterapeutka psychodynamiczna, doktor nauk medycznych" loading="lazy"></div>
         <h3>Agnieszka Paula Jurczyk</h3>
         <span class="role">Lekarka · Psychoterapeutka psychodynamiczna · Doktor nauk medycznych</span>
@@ -736,7 +741,7 @@
         </details>
       </article>
 
-      <article class="member member-detailed">
+      <article class="member member-detailed reveal">
         <div class="portrait"><img src="assets/img/team/beata-jaranowska.jpg" alt="Beata Joanna Jaranowska — psychoterapeutka w trakcie szkolenia klinicznego" loading="lazy"></div>
         <h3>Beata Joanna Jaranowska</h3>
         <span class="role">Psychoterapeutka w trakcie szkolenia klinicznego</span>
@@ -782,7 +787,7 @@
         </details>
       </article>
 
-      <article class="member member-detailed">
+      <article class="member member-detailed reveal">
         <div class="portrait"><img src="assets/img/team/katarzyna-chojak.jpg" alt="Katarzyna Chojak — psycholożka, psychoterapeutka poznawczo-behawioralna w trakcie szkolenia" loading="lazy"></div>
         <h3>Katarzyna Chojak</h3>
         <span class="role">Psycholożka · Psychoterapeutka poznawczo-behawioralna (w trakcie szkolenia)</span>
@@ -1227,17 +1232,79 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  var els = document.querySelectorAll('.reveal');
-  if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
-    els.forEach(function (el) { io.observe(el); });
-  } else {
-    els.forEach(function (el) { el.classList.add('in'); });
+  /* Reveal-on-scroll.
+     UWAGA: próg musi zostać na 0. Wcześniejsze `threshold: 0.12` wymagało,
+     żeby 12% elementu było w oknie — a sekcje wyższe od ~8x wysokości ekranu
+     (na telefonie siatka zespołu ma ponad 10 000 px) nigdy tylu procent nie
+     osiągają, więc nigdy nie dostawały klasy `in` i zostawały niewidoczne.
+     Przy progu 0 wystarczy, że element w ogóle wejdzie w kadr — działa
+     niezależnie od jego wysokości. */
+  var els = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+  var pending = els.slice();
+
+  var show = function (el) {
+    if (el.classList.contains('in')) return;
+    el.classList.add('in');
+    var i = pending.indexOf(el);
+    if (i > -1) pending.splice(i, 1);
+  };
+  var showAll = function () { els.forEach(show); };
+
+  /* Zapas bezpieczeństwa: gdyby IntersectionObserver nie zadziałał
+     (starsze WebView, wstrzymane karty, wyjątek w API), o odsłonięciu
+     decyduje zwykłe sprawdzenie pozycji przy scrollu i zmianie rozmiaru. */
+  var sweep = function () {
+    var limit = (window.innerHeight || document.documentElement.clientHeight) * 0.92;
+    pending.slice().forEach(function (el) {
+      var r = el.getBoundingClientRect();
+      if (r.top < limit && r.bottom > 0) show(el);
+    });
+    if (!pending.length) {
+      window.removeEventListener('scroll', onMove);
+      window.removeEventListener('resize', onMove);
+    }
+  };
+  /* Throttle liczony na zegarze, nie na requestAnimationFrame — rAF jest
+     wstrzymywany w kartach w tle i w oszczędzaniu energii na iOS, przez co
+     flaga „zaplanowano" zostałaby na stałe podniesiona i sekcje nigdy by się
+     nie odsłoniły. */
+  var lastSweep = 0, trailing = null;
+  var onMove = function () {
+    var now = +new Date();
+    /* Domknięcie na końcu gestu — gdy użytkownik zatrzyma przewijanie tuż po
+       ostatnim wywołaniu, samo ograniczenie częstotliwości zgubiłoby
+       końcową pozycję. */
+    clearTimeout(trailing);
+    trailing = setTimeout(sweep, 120);
+    if (now - lastSweep < 100) return;
+    lastSweep = now;
+    sweep();
+  };
+
+  try {
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { show(e.target); io.unobserve(e.target); }
+        });
+      }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
+      els.forEach(function (el) { io.observe(el); });
+    } else {
+      showAll();
+    }
+  } catch (err) {
+    showAll();
   }
+
+  window.addEventListener('scroll', onMove, { passive: true });
+  window.addEventListener('resize', onMove);
+  window.addEventListener('load', onMove);
+  sweep();
+
+  /* Ostateczna siatka bezpieczeństwa — nic nie zostaje ukryte na zawsze. */
+  setTimeout(function () {
+    if (pending.length === els.length) showAll();
+  }, 3000);
 })();
 
 /* ------------------------------------------------------------------
