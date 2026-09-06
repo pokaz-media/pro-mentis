@@ -16,8 +16,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Lora:ital,wght@0,500;0,600;1,500&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Hanken+Grotesk:wght@400;500;600;700&family=Mulish:wght@400;500;600;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/styles.css?v=2">
-<link rel="stylesheet" href="assets/css/variants.css?v=2">
+<link rel="stylesheet" href="assets/css/styles.css?v=3">
+<link rel="stylesheet" href="assets/css/variants.css?v=3">
 <script>
 /* Włącza animacje wejścia dopiero, gdy JS działa. Przy wyłączonym lub
    zablokowanym JS klasa się nie pojawi i cała treść zostaje widoczna. */
@@ -42,9 +42,10 @@ document.documentElement.className += ' js-anim';
       <a href="#cennik">Cennik</a>
       <a href="#zespol">Zespół</a>
       <a href="#misja">Misja</a>
-      <a href="#dojazd">Jak dojechać</a>
+      <a href="#dojazd">Poradnia</a>
       <a href="#kontakt">Kontakt</a>
       <a href="#zapisy">Zapisy</a>
+      <a href="kariera.html">Kariera</a>
     </div>
     <a class="nav-phone" href="tel:+48693979397">Zadzwoń: +48 693 979 397</a>
   </nav>
@@ -53,7 +54,7 @@ document.documentElement.className += ' js-anim';
     <a class="phone-link" href="tel:+48693979397">
       <span class="phone-text"><small>Zadzwoń</small>+48 693 979 397</span>
     </a>
-    <a class="btn btn-primary" href="#zapisy">Umów wizytę</a>
+    <a class="btn btn-primary" data-book href="#zapisy">Umów wizytę</a>
     <button class="menu-toggle" type="button" aria-label="Menu nawigacji" aria-expanded="false" aria-controls="nav-main">
       <span></span><span></span><span></span>
     </button>
@@ -80,8 +81,12 @@ document.documentElement.className += ' js-anim';
           Profesjonalna psychoterapia prowadzona z uważnością, dyskrecją i szacunkiem.
         </p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#zapisy">Umów wizytę <span class="arrow">→</span></a>
+          <a class="btn btn-primary" data-book href="#zapisy">Umów wizytę <span class="arrow">→</span></a>
           <a class="btn btn-ghost" href="#oferta">Poznaj ofertę</a>
+        </div>
+        <div class="hero-credo">
+          <p>Ufamy, że każdy Człowiek jest kimś wyjątkowym i jedynym w swoim rodzaju.</p>
+          <p>Wierzymy, że to właściwy dialog pomiędzy Sercem a Rozumem jest w stanie odnaleźć balans pomiędzy emocjami a empirycznym zachowaniem.</p>
         </div>
         <div class="hero-meta">
           <div class="mi"><b>10</b><span>specjalistów w zespole</span></div>
@@ -400,10 +405,14 @@ document.documentElement.className += ' js-anim';
     </div>
     <div class="team-grid profiles">
 
-      <article class="member member-detailed reveal">
-        <div class="portrait"><img src="assets/img/team/dariusz-druzynski.jpg" alt="Dariusz Drużyński — psychoterapeuta, psycholog i seksuolog" loading="lazy"></div>
+      <article class="member member-detailed reveal" id="spec-dariusz-druzynski">
+        <div class="portrait"><img src="assets/img/team/dariusz-druzynski.jpg" alt="Dariusz Drużyński — psychoterapeuta psychodynamiczny, seksuolog i psycholog" loading="lazy"></div>
         <h3>Dariusz Drużyński</h3>
-        <span class="role">Psychoterapeuta · Psycholog · Seksuolog · Coach</span>
+        <span class="role role-stacked">
+          <span>Psychoterapeuta psychodynamiczny</span>
+          <span>pracujący również w podejściu integracyjno-systemowym</span>
+          <span>Seksuolog · Psycholog · Coach · Edukator w diabetologii</span>
+        </span>
         <p>Jestem psychoterapeutą, psychologiem i seksuologiem, dla którego w pracy najważniejszy jest człowiek. Wierzę, że relacja terapeutyczna to przestrzeń, w której serce i rozum odnajdują wspólne porozumienie. Do każdego pacjenta podchodzę w sposób unikalny i indywidualny, patrząc na jego funkcjonowanie całościowo.</p>
         <blockquote class="member-quote">W procesie terapeutycznym wspólnie z pacjentem pracuję nad odnalezieniem i przepracowaniem nieuświadomionych konfliktów, które wywołują dysfunkcje w codziennym życiu. Zależy mi na tym, aby psychoterapia była procesem leczącym i usamodzielniającym, a nie uzależniającym.</blockquote>
         <div class="member-hours">
@@ -418,6 +427,7 @@ document.documentElement.className += ' js-anim';
         <details class="member-more">
           <summary>Pełny profil</summary>
           <div class="member-more-body">
+            <p>W swojej pracy łączę perspektywę psychologiczną, psychoterapeutyczną, seksuologiczną oraz edukację w obszarze diabetologii, indywidualizując podejście do potrzeb i oczekiwań każdego pacjenta. Towarzyszę osobom dorosłym oraz młodzieży powyżej 13. roku życia w lepszym rozumieniu siebie, swoich emocji, potrzeb i relacji — szczególnie w momentach kryzysu, zmiany lub trudności, które zaczynają wpływać na ich codzienne funkcjonowanie.</p>
             <p>Główną bazą mojej pracy jest nurt psychodynamiczny. W codziennej praktyce płynnie integruję narzędzia terapii poznawczo-behawioralnej (CBT), humanistycznej, systemowej oraz Terapii Skoncentrowanej na Rozwiązaniach (TSR), dopasowując je do potrzeb pacjenta. Posiadam blisko 16-letnie doświadczenie jako coach i trener umiejętności psychospołecznych, a przez 17 lat wspierałem pacjentów zmagających się z cukrzycą oraz ich bliskich.</p>
             <div class="member-creds">
               <h4>Wykształcenie i kwalifikacje</h4>
@@ -432,13 +442,21 @@ document.documentElement.className += ' js-anim';
                 <li><b>Gdańskie Centrum Zdrowia</b> — staż na Oddziale Dziennym Psychiatryczno-Rehabilitacyjnym dla Dzieci i Młodzieży.</li>
                 <li><b>SP ZOZ im. dr. Józefa Babińskiego w Łodzi</b> — wolontariat i praca z pacjentami powyżej 16. roku życia.</li>
               </ul>
+              <h4>Obszary wsparcia i specjalizacji</h4>
+              <ul>
+                <li><b>Bliskość, relacje i seksualność</b> — trudności w budowaniu i utrzymywaniu relacji, kryzysy partnerskie, małżeńskie i rodzinne, funkcjonowanie w życiu intymnym, osobista seksualność i orientacja seksualna; konsultacje seksuologiczne, psychoedukacja i edukacja seksualna.</li>
+                <li><b>Zaburzenia nastroju i lękowe</b> — obniżony nastrój, lęk, przewlekły stres, wahania nastroju, poczucie pustki.</li>
+                <li><b>Samoocena i akceptacja siebie</b> — obniżona samoocena i trudności w akceptacji siebie.</li>
+                <li><b>Kryzys, żałoba i zmiana życiowa</b> — sytuacje kryzysowe, żałoba, trudności wychowawcze oraz momenty istotnych zmian życiowych.</li>
+                <li><b>Choroby przewlekłe, w szczególności cukrzyca</b> — wpływ choroby przewlekłej na emocje, relacje i codzienne funkcjonowanie; wsparcie psychospołeczne łączące wiedzę z psychologii, psychoterapii i diabetologii.</li>
+              </ul>
             </div>
             <p class="member-superv">Moja praca podlega stałej, regularnej superwizji u certyfikowanych superwizorów Polskiego Towarzystwa Psychiatrycznego, co gwarantuje pełne bezpieczeństwo i najwyższy standard etyki zawodowej.</p>
           </div>
         </details>
       </article>
 
-      <article class="member member-detailed reveal">
+      <article class="member member-detailed reveal" id="spec-dominika-krawczyk">
         <div class="portrait"><img src="assets/img/team/dominika-krawczyk.jpg" alt="Dominika Krawczyk — psycholożka i diagnostka psychologiczna" loading="lazy"></div>
         <h3>Dominika Krawczyk</h3>
         <span class="role">Psycholożka · Diagnostka psychologiczna · Specjalistka psychologii klinicznej w trakcie szkolenia</span>
@@ -477,7 +495,7 @@ document.documentElement.className += ' js-anim';
         </details>
       </article>
 
-      <article class="member member-detailed reveal">
+      <article class="member member-detailed reveal" id="spec-ewa-marat">
         <div class="portrait"><img src="assets/img/team/ewa-marat.jpg" alt="Ewa Marat — psycholożka, doktor nauk humanistycznych" loading="lazy"></div>
         <h3>Ewa Marat</h3>
         <span class="role">Psycholożka · Wykładowczyni akademicka · Diagnostka dzieci i rodzin</span>
@@ -522,7 +540,7 @@ document.documentElement.className += ' js-anim';
         </details>
       </article>
 
-      <article class="member member-detailed reveal">
+      <article class="member member-detailed reveal" id="spec-jolanta-jankowska">
         <div class="portrait"><img src="assets/img/team/jolanta-jankowska.jpg" alt="Jolanta Jankowska — psycholożka, psychoonkolożka i psychotraumatolożka" loading="lazy"></div>
         <h3>Jolanta Jankowska</h3>
         <span class="role">Psycholożka · Psychoonkolożka · Psychotraumatolożka · Logoterapeutka · Terapeutka EMDR (w trakcie szkolenia)</span>
@@ -567,7 +585,7 @@ document.documentElement.className += ' js-anim';
         </details>
       </article>
 
-      <article class="member member-detailed reveal">
+      <article class="member member-detailed reveal" id="spec-katarzyna-dawidowska">
         <div class="portrait"><img src="assets/img/team/katarzyna-dawidowska.jpg" alt="Katarzyna Dawidowska — psychoterapeutka psychodynamiczna" loading="lazy"></div>
         <h3>Katarzyna Dawidowska</h3>
         <span class="role">Psychoterapeutka psychodynamiczna · Specjalistka pracy z kryzysem i zaburzeniami osobowości</span>
@@ -576,8 +594,8 @@ document.documentElement.className += ' js-anim';
         <div class="member-hours">
           <h4>Godziny przyjęć</h4>
           <ul>
-            <li><span>Środa</span><b>12:00–20:00</b></li>
-            <li><span>Piątek</span><b>16:00–20:00</b></li>
+            <li><span>Środa</span><b>16:00–20:00</b></li>
+            <li><span>Piątek</span><b>10:00–16:00</b></li>
           </ul>
         </div>
         <details class="member-more">
@@ -613,7 +631,7 @@ document.documentElement.className += ' js-anim';
         </details>
       </article>
 
-      <article class="member member-detailed reveal">
+      <article class="member member-detailed reveal" id="spec-adam-prosniak">
         <div class="portrait"><img src="assets/img/team/adam-prosniak.jpg" alt="Adam Prośniak — psychoterapeuta psychodynamiczny, doktor nauk medycznych" loading="lazy"></div>
         <h3>Adam Prośniak</h3>
         <span class="role">Psychoterapeuta psychodynamiczny · Doktor nauk medycznych</span>
@@ -656,7 +674,7 @@ document.documentElement.className += ' js-anim';
         </details>
       </article>
 
-      <article class="member member-detailed reveal">
+      <article class="member member-detailed reveal" id="spec-katarzyna-wojcikowska">
         <div class="portrait"><img src="assets/img/team/katarzyna-wojcikowska.jpg" alt="Katarzyna Wójcikowska — seksuolożka kliniczna, pedagożka specjalna, mediatorka rodzinna" loading="lazy"></div>
         <h3>Katarzyna Wójcikowska</h3>
         <span class="role">Seksuolożka kliniczna · Pedagożka specjalna · Edukatorka seksualna · Mediatorka rodzinna</span>
@@ -699,7 +717,7 @@ document.documentElement.className += ' js-anim';
         </details>
       </article>
 
-      <article class="member member-detailed reveal">
+      <article class="member member-detailed reveal" id="spec-agnieszka-jurczyk">
         <div class="portrait"><img src="assets/img/team/agnieszka-jurczyk.jpg" alt="Agnieszka Paula Jurczyk — lekarka, psychoterapeutka psychodynamiczna, doktor nauk medycznych" loading="lazy"></div>
         <h3>Agnieszka Paula Jurczyk</h3>
         <span class="role">Lekarka · Psychoterapeutka psychodynamiczna · Doktor nauk medycznych</span>
@@ -741,12 +759,12 @@ document.documentElement.className += ' js-anim';
         </details>
       </article>
 
-      <article class="member member-detailed reveal">
-        <div class="portrait"><img src="assets/img/team/beata-jaranowska.jpg" alt="Beata Joanna Jaranowska — psychoterapeutka w trakcie szkolenia klinicznego" loading="lazy"></div>
+      <article class="member member-detailed reveal" id="spec-beata-jaranowska">
+        <div class="portrait"><img src="assets/img/team/beata-jaranowska.jpg" alt="Beata Joanna Jaranowska — psychoterapeutka psychodynamiczna i psychopedagożka" loading="lazy"></div>
         <h3>Beata Joanna Jaranowska</h3>
-        <span class="role">Psychoterapeutka w trakcie szkolenia klinicznego</span>
-        <p>W pracy z pacjentami najwyżej cenię sobie autentyczną relację terapeutyczną oraz dobrą, zaangażowaną współpracę. Tworzę bezpieczną przestrzeń opartą na wzajemnym szacunku, zaufaniu oraz empatycznym zrozumieniu. Wierzę, że wspólnie wyznaczone cele oraz partnerstwo w procesie leczenia stanowią fundament do pokonania życiowych trudności i odzyskania równowagi.</p>
-        <blockquote class="member-quote">Każdy kryzys jest sygnałem do zatrzymania się i przyjrzenia własnym potrzebom. Pomagam pacjentom przejść przez najtrudniejsze momenty emocjonalne, stawiając na rzetelną współpracę i indywidualnie dobrane wsparcie.</blockquote>
+        <span class="role">Psychoterapeutka psychodynamiczna i psychopedagożka</span>
+        <p>Jestem psychoterapeutką i psychopedagożką. Pracuję w nurcie integracyjnym, głównie w oparciu o myślenie psychodynamiczne i psychoanalityczne. W pracy wykorzystuję również narzędzia terapii poznawczo-behawioralnej (CBT), terapii schematów i terapii humanistycznej. Kieruję się etyką zawodową psychoterapeuty — z szacunkiem, otwartością i szczerością w spojrzeniu na problemy pacjenta.</p>
+        <blockquote class="member-quote">W kontakcie z drugim człowiekiem bardzo zależy mi na stworzeniu bezpiecznej przestrzeni do dzielenia się myślami, doświadczeniem i uczuciami. Pracuję w oparciu o przekonanie, że trudności są elementem życia każdego człowieka.</blockquote>
         <div class="member-hours">
           <h4>Godziny przyjęć</h4>
           <ul>
@@ -758,19 +776,21 @@ document.documentElement.className += ' js-anim';
         <details class="member-more">
           <summary>Pełny profil</summary>
           <div class="member-more-body">
-            <p>Swoją ofertę kieruję do osób dorosłych oraz rodziców zmagających się z wyzwaniami emocjonalnymi, relacyjnymi czy wychowawczymi. Stale poszerzam swoje kompetencje i aktualizuję wiedzę, uczestnicząc w specjalistycznych warsztatach i szkoleniach.</p>
+            <p>W kontakcie zachęcam do wspierającego i życzliwego spojrzenia na samego siebie, a w konsekwencji do mobilizowania własnych zasobów, które pomagają w podejmowaniu trudnych decyzji o zmianie.</p>
             <div class="member-creds">
               <h4>Wykształcenie i kwalifikacje</h4>
               <ul>
-                <li><b>Uniwersytet Medyczny w Łodzi</b> — w trakcie 4-letnich studiów podyplomowych: Psychoterapia ze szczególnym uwzględnieniem aspektów klinicznych (program akredytowany przez Sekcję Naukową Psychoterapii oraz Sekcję Naukową Terapii Rodzin Polskiego Towarzystwa Psychiatrycznego).</li>
-                <li><b>Akademia Humanistyczno-Ekonomiczna w Łodzi</b> — absolwentka studiów psychologicznych/pedagogicznych.</li>
+                <li><b>Uniwersytet Medyczny w Łodzi</b> — Psychoterapia ze szczególnym uwzględnieniem aspektów klinicznych.</li>
+                <li><b>Akademia Humanistyczno-Ekonomiczna w Łodzi.</b></li>
+                <li><b>Wyższa Szkoła Humanistyczno-Ekonomiczna w Łodzi.</b></li>
               </ul>
               <h4>Doświadczenie kliniczne</h4>
               <ul>
-                <li><b>Mazowieckie Specjalistyczne Centrum Zdrowia im. prof. J. Mazurkiewicza (Tworki)</b> — Centralny Szpital Kliniczny.</li>
-                <li><b>Poradnia Zdrowia Psychicznego w Grodzisku Mazowieckim.</b></li>
                 <li><b>Poradnia Psychologiczno-Pedagogiczna nr 5 w Łodzi.</b></li>
-                <li>Praktyka prywatna.</li>
+                <li><b>Uniwersytet Medyczny — Centrum Zdrowia Psychicznego w Łodzi.</b></li>
+                <li><b>Mazowieckie Specjalistyczne Centrum Zdrowia im. prof. J. Mazurkiewicza (Tworki).</b></li>
+                <li><b>Poradnia Zdrowia Psychicznego w Grodzisku Mazowieckim.</b></li>
+                <li><b>Gaja Diagnoza i Terapia Medica sp. z o.o.</b></li>
               </ul>
               <h4>Obszary wsparcia i specjalizacji</h4>
               <ul>
@@ -782,12 +802,12 @@ document.documentElement.className += ' js-anim';
                 <li>Wsparcie dla rodziców doświadczających trudności wychowawczych z dziećmi.</li>
               </ul>
             </div>
-            <p class="member-superv">Moja praca podlega stałej, regularnej superwizji u certyfikowanych superwizorów Sekcji Naukowej Psychoterapii Polskiego Towarzystwa Psychiatrycznego, co gwarantuje zachowanie najwyższych standardów etycznych i terapeutycznych.</p>
+            <p class="member-superv">Stale poszerzam swoje kompetencje, aktualizując wiedzę poprzez uczestnictwo w szkoleniach i warsztatach. Swoją pracę psychoterapeutyczną poddaję stałej superwizji u certyfikowanych superwizorów w Sekcji Naukowej Psychoterapii Polskiego Towarzystwa Psychiatrycznego.</p>
           </div>
         </details>
       </article>
 
-      <article class="member member-detailed reveal">
+      <article class="member member-detailed reveal" id="spec-katarzyna-chojak">
         <div class="portrait"><img src="assets/img/team/katarzyna-chojak.jpg" alt="Katarzyna Chojak — psycholożka, psychoterapeutka poznawczo-behawioralna w trakcie szkolenia" loading="lazy"></div>
         <h3>Katarzyna Chojak</h3>
         <span class="role">Psycholożka · Psychoterapeutka poznawczo-behawioralna (w trakcie szkolenia)</span>
@@ -832,6 +852,21 @@ document.documentElement.className += ' js-anim';
       </article>
 
     </div>
+
+    <!--
+      Partner szkoleniowy. Logo jest obcą, mocno granatową marką wobec kremowo-czerwonej
+      palety strony — dostaje własną białą kartę zamiast prób wtopienia go w tło.
+      Wersja wektorowa / z przezroczystością wciąż do pozyskania od klienta.
+    -->
+    <aside class="partner reveal">
+      <div class="partner-mark">
+        <img src="assets/img/partner-mind4med.png" alt="Mind4Med" loading="lazy">
+      </div>
+      <div class="partner-body">
+        <h4>Partner szkoleniowy</h4>
+        <p>Mind4Med — szkolenia specjalistów. Nasz zespół stale podnosi kwalifikacje w ramach współpracy szkoleniowej.</p>
+      </div>
+    </aside>
   </section>
 
   <!-- ============ MISJA ============ -->
@@ -850,9 +885,15 @@ document.documentElement.className += ' js-anim';
           <p>Pracujemy w oparciu o sprawdzone metody i stałą superwizję naszej pracy.</p>
         </div>
         <div class="mb reveal">
-          <h4>Relacja</h4>
+          <h4>Relacja terapeutyczna</h4>
           <p>Wierzymy, że to dobra relacja terapeutyczna jest fundamentem skutecznej zmiany.</p>
         </div>
+      </div>
+      <div class="mission-text reveal">
+        <p>Klinika Psychoterapii Pro-Mentis to przestrzeń, w której możesz się spokojnie zatrzymać, wziąć głęboki oddech i przyjrzeć się temu, co sprawia Ci dyskomfort lub cierpienie. Z pomocą doświadczonych specjalistów możesz rozpocząć terapeutyczną podróż w głąb siebie, aby odzyskać życiową równowagę i wewnętrzny spokój.</p>
+        <p>W bezpiecznym i sprzyjającym środowisku, otulony przestrzenią pełną szacunku, empatii i zrozumienia, nie musisz nikogo udawać ani niczego udowadniać. Możesz artykułować wszystkie swoje wątpliwości, trudności i złości, pokazując nam swoje prawdziwe emocje, których nie musisz skrywać w sobie, bo nikt ich nie ocenia.</p>
+        <p>Wspólnie pomożemy Ci poznać lepiej siebie, poczuć, jak myśli wpływają na emocje i jak emocje oddziałują na myśli. Będziemy Ci towarzyszyć w tej podróży, abyś mógł odnaleźć siebie, poprawić relacje z ludźmi wokół Ciebie i doświadczyć czegoś, co zwie się szczęściem — na Twoich warunkach.</p>
+        <p class="ask">Czy masz gotowość rozpocząć Swoją podróż?</p>
       </div>
       <figure class="mission-photo reveal">
         <img src="assets/img/wnetrze-recepcja.jpg" alt="Recepcja kliniki Pro-Mentis — logo serca-mózgu na ścianie" loading="lazy">
@@ -864,10 +905,35 @@ document.documentElement.className += ' js-anim';
   <!-- ============ DOJAZD ============ -->
   <section class="locate wrap" id="dojazd" data-layout="map-left" data-screen-label="Dojazd">
     <div class="section-head reveal">
-      <span class="eyebrow">Jak dojechać</span>
-      <h2 class="section-title">Znajdziesz nas w centrum Łodzi</h2>
-      <p class="lede">Dobrze skomunikowane miejsce z łatwym dojazdem komunikacją miejską i samochodem.</p>
+      <span class="eyebrow">Poradnia</span>
+      <h2 class="section-title">Miejsce, w którym się spotkamy</h2>
+      <p class="lede">Cztery gabinety i poczekalnia w centrum Łodzi — dobrze skomunikowane, z łatwym dojazdem komunikacją miejską i samochodem.</p>
     </div>
+
+    <div class="locate-photos locate-rooms reveal">
+      <figure>
+        <img src="assets/img/poradnia/gabinet-1.jpg" alt="Gabinet terapeutyczny Pro-Mentis — fotele przy stoliku, tapeta w tropikalne liście" loading="lazy">
+        <figcaption>Gabinet terapeutyczny — miejsce sesji indywidualnych i par.</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/img/poradnia/gabinet-3.jpg" alt="Gabinet terapeutyczny Pro-Mentis — kanapa, fotele i lampa przy oknie" loading="lazy">
+        <figcaption>Największy z gabinetów — mieści sesje rodzinne i grupowe.</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/img/poradnia/gabinet-4.jpg" alt="Gabinet terapeutyczny Pro-Mentis — fotele na dywanie, jasna tapeta roślinna" loading="lazy">
+        <figcaption>Każdy gabinet ma naturalne światło i miejsce dla trzech osób.</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/img/poradnia/gabinet-2.jpg" alt="Gabinet terapeutyczny Pro-Mentis — fototapeta z drzewem, sofa i fotele" loading="lazy">
+        <figcaption>Gabinet z widokiem na fototapetę — sesje dorosłych i młodzieży.</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/img/poradnia/poczekalnia.jpg" alt="Poczekalnia Pro-Mentis — lada rejestracji, krzesła i drzwi do gabinetów" loading="lazy">
+        <figcaption>Poczekalnia przy rejestracji — stąd wchodzi się do gabinetów.</figcaption>
+      </figure>
+    </div>
+
+    <h3 class="locate-subhead reveal">Jak do nas trafić</h3>
     <div class="locate-grid reveal">
       <iframe class="map-embed" title="Mapa dojazdu — ul. Drewnowska 102, Łódź"
         src="https://maps.google.com/maps?q=ul.+Drewnowska+102,+%C5%81%C3%B3d%C5%BA&amp;t=&amp;z=16&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
@@ -900,18 +966,26 @@ document.documentElement.className += ' js-anim';
     </div>
 
     <!--
-      Zdjęcia z wizualizacji oznakowania (Kreatywna, 2026) — budynek i tablica przed wejściem.
-      Miejsce na kolejne zdjęcia Poradni (gabinety, rejestracja z innego ujęcia): dodaj następne
-      <figure> w tym samym układzie albo przenieś blok do osobnej sekcji „Poradnia”.
+      Zdjęcia orientacyjne — kolejność jest trasą pacjenta: brama od ulicy, budynek,
+      tablica przy wejściu, ten sam budynek po zmroku. Nowe ujęcia dodawaj w tym
+      samym układzie; siatka sama dobiera liczbę kolumn.
     -->
     <div class="locate-photos reveal">
       <figure>
-        <img src="assets/img/budynek-front.jpg" alt="Budynek poradni Pro-Mentis od strony ul. Drewnowskiej — parterowe wejście z oznakowaniem kliniki" loading="lazy">
-        <figcaption>Budynek poradni od ul. Drewnowskiej 102 — wejście po schodkach, przy oznakowanych oknach.</figcaption>
+        <img src="assets/img/poradnia/wjazd.jpg" alt="Brama wjazdowa na posesję przy ul. Drewnowskiej 102 z pylonem adresowym" loading="lazy">
+        <figcaption>Wjazd na posesję od ul. Drewnowskiej — szukaj pylonu z numerem 102.</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/img/budynek-front.jpg" alt="Budynek poradni Pro-Mentis od strony ul. Drewnowskiej — wejście z oznakowaniem kliniki" loading="lazy">
+        <figcaption>Budynek poradni — wejście po schodkach, przy oznakowanych oknach.</figcaption>
       </figure>
       <figure>
         <img src="assets/img/tablica-wejscie.jpg" alt="Tablica informacyjna Pro-Mentis przed wejściem do poradni" loading="lazy">
         <figcaption>Tablica przed wejściem — tego znaku szukaj od ulicy.</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/img/poradnia/budynek-noc.jpg" alt="Budynek poradni Pro-Mentis po zmroku — oświetlone wejście i oznakowane okna" loading="lazy">
+        <figcaption>Po zmroku wejście jest oświetlone — wieczorne sesje trwają do 21:00.</figcaption>
       </figure>
     </div>
   </section>
@@ -931,6 +1005,7 @@ document.documentElement.className += ' js-anim';
           działa offline, zostaje sam odnośnik „Umów wizytę” prowadzący na profil placówki.
         -->
         <div class="widget-ph widget-live">
+          <h3 class="widget-head">Umów online</h3>
           <a class="zl-facility-url" href="https://www.znanylekarz.pl/placowki/pro-mentis" rel="nofollow" data-zlw-facility="pro-mentis" data-zlw-type="facility-big" data-zlw-saas-only="false" data-zlw-a11y-title="Widget umówienia wizyty lekarskiej">Umów wizytę</a>
           <script>!function($_x,_s,id){var js,fjs=$_x.getElementsByTagName(_s)[0];if(!$_x.getElementById(id)){js = $_x.createElement(_s);js.id = id;js.src = "//platform.docplanner.com/js/widget.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","zl-widget-s");</script>
         </div>
@@ -1015,9 +1090,9 @@ document.documentElement.className += ' js-anim';
                 <th scope="row">Katarzyna Dawidowska</th>
                 <td aria-label="nie przyjmuje">—</td>
                 <td aria-label="nie przyjmuje">—</td>
-                <td>12:00–20:00</td>
-                <td aria-label="nie przyjmuje">—</td>
                 <td>16:00–20:00</td>
+                <td aria-label="nie przyjmuje">—</td>
+                <td>10:00–16:00</td>
                 <td aria-label="nie przyjmuje">—</td>
               </tr>
               <tr>
@@ -1125,6 +1200,37 @@ document.documentElement.className += ' js-anim';
             <option>Inne / nie wiem</option>
           </select>
         </div>
+        <!--
+          WYŁĄCZONE DO CZASU AKCEPTACJI KLINIKI.
+          Pole kieruje pacjenta do konkretnego specjalisty, więc jest deklaracją
+          kliniczną — mapa obszarów czeka na potwierdzenie przez Dariusza Drużyńskiego.
+          Żeby włączyć: odkomentuj ten blok. Skrypt obsługi (mapa OBSZARY na dole pliku)
+          zostaje na miejscu i sam wychodzi, gdy selecta nie ma w DOM — nic więcej
+          nie trzeba ruszać.
+        <div class="field">
+          <label for="f-obszar">Obszar trudności <span class="opt">(opcjonalnie)</span></label>
+          <select id="f-obszar" name="Obszar trudności">
+            <option value="">Nie wiem / wolę porozmawiać</option>
+            <option>Lęk, ataki paniki, przewlekły stres</option>
+            <option>Depresja i zaburzenia nastroju</option>
+            <option>Kryzys życiowy i emocjonalny</option>
+            <option>Żałoba i strata</option>
+            <option>Trauma i praca z traumą (EMDR)</option>
+            <option>Zaburzenia osobowości</option>
+            <option>Trudności w relacjach i związkach</option>
+            <option>Seksualność, bliskość, intymność</option>
+            <option>Samoocena i akceptacja siebie</option>
+            <option>Rodzina, rodzicielstwo, wychowanie</option>
+            <option>Dzieci i młodzież</option>
+            <option>Diagnoza psychologiczna (ADHD, osobowość, funkcje poznawcze)</option>
+            <option>Psychogeriatria i zaburzenia poznawcze</option>
+            <option>Uzależnienia</option>
+            <option>Psychoonkologia i choroby przewlekłe</option>
+            <option>Autyzm i niepełnosprawność</option>
+          </select>
+          <p class="field-help" id="f-obszar-out" hidden></p>
+        </div>
+        -->
         <div class="field">
           <label for="f-when">Preferowany termin <span class="opt">(opcjonalnie)</span></label>
           <input id="f-when" name="Preferowany termin" type="text" placeholder="np. popołudnia w tygodniu">
@@ -1157,7 +1263,7 @@ document.documentElement.className += ' js-anim';
         <a href="#cennik">Cennik</a>
         <a href="#zespol">Zespół</a>
         <a href="#misja">Misja</a>
-        <a href="#dojazd">Jak dojechać</a>
+        <a href="#dojazd">Poradnia</a>
         <a href="#kontakt">Kontakt</a>
         <a href="#zapisy">Zapisy</a>
       </div>
@@ -1167,6 +1273,17 @@ document.documentElement.className += ' js-anim';
         <a href="mailto:kontakt@pro-mentis.pl">kontakt@pro-mentis.pl</a>
         <a href="https://www.google.com/maps/search/?api=1&amp;query=ul.+Drewnowska+102,+Łódź" target="_blank" rel="noopener">ul. Drewnowska 102, Łódź</a>
         <p>Pon.–Pt. 8:00–21:00 · Sob. 9:00–15:00</p>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/profile.php?id=61594069676782" target="_blank" rel="noopener" aria-label="Pro-Mentis na Facebooku">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.52 1.49-3.91 3.77-3.91 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57v1.89h2.78l-.45 2.91h-2.33V22c4.78-.76 8.44-4.92 8.44-9.94Z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/klinika_pro_mentis/" target="_blank" rel="noopener" aria-label="Pro-Mentis na Instagramie">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.2"/><circle cx="12" cy="12" r="4.1"/><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/dariusz-dru%C5%BCy%C5%84ski-537254433" target="_blank" rel="noopener" aria-label="Dariusz Drużyński na LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.5h4v11H3v-11Zm6.5 0h3.83v1.5h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.76v5.69h-4v-5.05c0-1.2-.02-2.75-1.75-2.75-1.75 0-2.02 1.3-2.02 2.66v5.14h-4v-11Z"/></svg>
+          </a>
+        </div>
       </div>
     </div>
     <div class="footer-bottom">
@@ -1179,6 +1296,31 @@ document.documentElement.className += ' js-anim';
     </div>
   </div>
 </footer>
+
+<!-- ============ WYBÓR SPOSOBU ZAPISU ============ -->
+<!--
+  Przycisk „Umów wizytę” nie prowadzi już wprost do formularza — otwiera wybór.
+  <dialog> daje natywnie Escape, pułapkę fokusa i ::backdrop, więc skrypt poniżej
+  robi tylko trzy rzeczy: podmienia linki na przyciski, otwiera i zamyka.
+  Bez JS przyciski zostają zwykłymi linkami do #zapisy, tak jak dotąd.
+-->
+<dialog class="book-dialog" id="book-choice" aria-labelledby="book-choice-title">
+  <form method="dialog" class="book-close-form">
+    <button class="book-close" type="submit" aria-label="Zamknij">&times;</button>
+  </form>
+  <h3 id="book-choice-title">Jak chcesz umówić wizytę?</h3>
+  <p class="book-lede">Obie drogi prowadzą do tego samego zespołu — wybierz wygodniejszą.</p>
+  <div class="book-opts">
+    <a class="book-opt" href="https://www.znanylekarz.pl/placowki/pro-mentis" target="_blank" rel="noopener nofollow">
+      <img src="assets/img/logo-znanylekarz.png" alt="" width="64" height="64">
+      <span><b>ZnanyLekarz</b>Wybierz wolny termin online i potwierdź od ręki.</span>
+    </a>
+    <a class="book-opt" href="#zapisy">
+      <img src="assets/img/logo-heart.svg" alt="" width="64" height="64">
+      <span><b>Formularz Pro-Mentis</b>Zostaw zgłoszenie — oddzwonimy i pomożemy dobrać specjalistę.</span>
+    </a>
+  </div>
+</dialog>
 
 <!-- ============ SCRIPTS ============ -->
 <script>
@@ -1384,7 +1526,85 @@ document.documentElement.className += ' js-anim';
     });
   });
 })();
+
+/* ------------------------------------------------------------------
+   Wybór sposobu zapisu — „Umów wizytę” otwiera <dialog> zamiast skakać
+   wprost do formularza. Progresywnie: gdy JS nie działa albo przeglądarka
+   nie zna <dialog>, przyciski zostają zwykłymi linkami do #zapisy.
+   ------------------------------------------------------------------ */
+(function () {
+  var dlg = document.getElementById('book-choice');
+  if (!dlg || typeof dlg.showModal !== 'function') return;
+
+  Array.prototype.forEach.call(document.querySelectorAll('[data-book]'), function (el) {
+    el.addEventListener('click', function (e) { e.preventDefault(); dlg.showModal(); });
+  });
+
+  /* Klik w tło zamyka — <dialog> sam tego nie robi. */
+  dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+
+  /* Wybór formularza domyka okno, żeby skok do #zapisy był widoczny. */
+  Array.prototype.forEach.call(dlg.querySelectorAll('.book-opt'), function (a) {
+    a.addEventListener('click', function () { dlg.close(); });
+  });
+})();
+
+/* ------------------------------------------------------------------
+   Obszar trudności → specjaliści. Mapa jest wyprowadzona z bloków
+   „Obszary wsparcia i specjalizacji” w kartach zespołu — nie z domysłów.
+   WAŻNE: to informacja kierująca pacjenta do konkretnej osoby, więc każda
+   zmiana w kartach zespołu powinna wrócić tutaj (i odwrotnie).
+   ------------------------------------------------------------------ */
+(function () {
+  var sel = document.getElementById('f-obszar');
+  var out = document.getElementById('f-obszar-out');
+  if (!sel || !out) return;
+
+  var OSOBY = {
+    'dariusz-druzynski':    'Dariusz Drużyński',
+    'dominika-krawczyk':    'Dominika Krawczyk',
+    'ewa-marat':            'Ewa Marat',
+    'jolanta-jankowska':    'Jolanta Jankowska',
+    'katarzyna-dawidowska': 'Katarzyna Dawidowska',
+    'adam-prosniak':        'Adam Prośniak',
+    'katarzyna-wojcikowska':'Katarzyna Wójcikowska',
+    'agnieszka-jurczyk':    'Agnieszka Paula Jurczyk',
+    'beata-jaranowska':     'Beata Joanna Jaranowska',
+    'katarzyna-chojak':     'Katarzyna Chojak'
+  };
+
+  var MAPA = {
+    'Lęk, ataki paniki, przewlekły stres': ['beata-jaranowska','katarzyna-chojak','jolanta-jankowska','adam-prosniak','dariusz-druzynski'],
+    'Depresja i zaburzenia nastroju': ['beata-jaranowska','katarzyna-chojak','adam-prosniak','dariusz-druzynski'],
+    'Kryzys życiowy i emocjonalny': ['beata-jaranowska','katarzyna-dawidowska','dominika-krawczyk','katarzyna-chojak','jolanta-jankowska','dariusz-druzynski'],
+    'Żałoba i strata': ['beata-jaranowska','katarzyna-chojak','dariusz-druzynski'],
+    'Trauma i praca z traumą (EMDR)': ['jolanta-jankowska'],
+    'Zaburzenia osobowości': ['katarzyna-dawidowska','agnieszka-jurczyk','dominika-krawczyk'],
+    'Trudności w relacjach i związkach': ['beata-jaranowska','katarzyna-dawidowska','adam-prosniak','agnieszka-jurczyk','katarzyna-wojcikowska','dariusz-druzynski'],
+    'Seksualność, bliskość, intymność': ['katarzyna-wojcikowska','dariusz-druzynski'],
+    'Samoocena i akceptacja siebie': ['beata-jaranowska','jolanta-jankowska','dariusz-druzynski'],
+    'Rodzina, rodzicielstwo, wychowanie': ['beata-jaranowska','ewa-marat','katarzyna-dawidowska','katarzyna-wojcikowska','dariusz-druzynski'],
+    'Dzieci i młodzież': ['ewa-marat','katarzyna-dawidowska','dariusz-druzynski'],
+    'Diagnoza psychologiczna (ADHD, osobowość, funkcje poznawcze)': ['dominika-krawczyk','ewa-marat'],
+    'Psychogeriatria i zaburzenia poznawcze': ['katarzyna-chojak','dominika-krawczyk'],
+    'Uzależnienia': ['ewa-marat'],
+    'Psychoonkologia i choroby przewlekłe': ['jolanta-jankowska','dariusz-druzynski'],
+    'Autyzm i niepełnosprawność': ['ewa-marat','katarzyna-wojcikowska']
+  };
+
+  sel.addEventListener('change', function () {
+    var lista = MAPA[sel.value];
+    if (!lista || !lista.length) { out.hidden = true; out.innerHTML = ''; return; }
+    var linki = lista.map(function (id) {
+      return '<a href="#spec-' + id + '">' + OSOBY[id] + '</a>';
+    }).join(' · ');
+    out.innerHTML = 'Tym obszarem zajmują się: ' + linki +
+      ' <span class="field-help-note">Wybór specjalisty potwierdzimy przy zapisie.</span>';
+    out.hidden = false;
+  });
+})();
 </script>
+
 
 </body>
 </html>

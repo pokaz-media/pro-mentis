@@ -17,8 +17,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/styles.css?v=2">
-<link rel="stylesheet" href="assets/css/variants.css?v=2">
+<link rel="stylesheet" href="assets/css/styles.css?v=3">
+<link rel="stylesheet" href="assets/css/variants.css?v=3">
 </head>
 <body>
 
@@ -38,9 +38,10 @@
       <a href="index.html#cennik">Cennik</a>
       <a href="index.html#zespol">Zespół</a>
       <a href="index.html#misja">Misja</a>
-      <a href="index.html#dojazd">Jak dojechać</a>
+      <a href="index.html#dojazd">Poradnia</a>
       <a href="index.html#kontakt">Kontakt</a>
       <a href="index.html#zapisy">Zapisy</a>
+      <a href="kariera.html">Kariera</a>
     </div>
     <a class="nav-phone" href="tel:+48693979397">Zadzwoń: +48 693 979 397</a>
   </nav>
@@ -49,7 +50,7 @@
     <a class="phone-link" href="tel:+48693979397">
       <span class="phone-text"><small>Zadzwoń</small>+48 693 979 397</span>
     </a>
-    <a class="btn btn-primary" href="index.html#zapisy">Umów wizytę</a>
+    <a class="btn btn-primary" data-book href="index.html#zapisy">Umów wizytę</a>
     <button class="menu-toggle" type="button" aria-label="Menu nawigacji" aria-expanded="false" aria-controls="nav-main">
       <span></span><span></span><span></span>
     </button>
@@ -194,7 +195,7 @@
         <a href="index.html#cennik">Cennik</a>
         <a href="index.html#zespol">Zespół</a>
         <a href="index.html#misja">Misja</a>
-        <a href="index.html#dojazd">Jak dojechać</a>
+        <a href="index.html#dojazd">Poradnia</a>
         <a href="index.html#kontakt">Kontakt</a>
         <a href="index.html#zapisy">Zapisy</a>
       </div>
@@ -204,6 +205,17 @@
         <a href="mailto:kontakt@pro-mentis.pl">kontakt@pro-mentis.pl</a>
         <a href="https://www.google.com/maps/search/?api=1&amp;query=ul.+Drewnowska+102,+Łódź" target="_blank" rel="noopener">ul. Drewnowska 102, Łódź</a>
         <p>Pon.–Pt. 8:00–21:00 · Sob. 9:00–15:00</p>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/profile.php?id=61594069676782" target="_blank" rel="noopener" aria-label="Pro-Mentis na Facebooku">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.52 1.49-3.91 3.77-3.91 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57v1.89h2.78l-.45 2.91h-2.33V22c4.78-.76 8.44-4.92 8.44-9.94Z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/klinika_pro_mentis/" target="_blank" rel="noopener" aria-label="Pro-Mentis na Instagramie">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.2"/><circle cx="12" cy="12" r="4.1"/><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/dariusz-dru%C5%BCy%C5%84ski-537254433" target="_blank" rel="noopener" aria-label="Dariusz Drużyński na LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.5h4v11H3v-11Zm6.5 0h3.83v1.5h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.76v5.69h-4v-5.05c0-1.2-.02-2.75-1.75-2.75-1.75 0-2.02 1.3-2.02 2.66v5.14h-4v-11Z"/></svg>
+          </a>
+        </div>
       </div>
     </div>
     <div class="footer-bottom">
@@ -216,6 +228,31 @@
     </div>
   </div>
 </footer>
+
+<!-- ============ WYBÓR SPOSOBU ZAPISU ============ -->
+<!--
+  Przycisk „Umów wizytę” nie prowadzi już wprost do formularza — otwiera wybór.
+  <dialog> daje natywnie Escape, pułapkę fokusa i ::backdrop, więc skrypt poniżej
+  robi tylko trzy rzeczy: podmienia linki na przyciski, otwiera i zamyka.
+  Bez JS przyciski zostają zwykłymi linkami do #zapisy, tak jak dotąd.
+-->
+<dialog class="book-dialog" id="book-choice" aria-labelledby="book-choice-title">
+  <form method="dialog" class="book-close-form">
+    <button class="book-close" type="submit" aria-label="Zamknij">&times;</button>
+  </form>
+  <h3 id="book-choice-title">Jak chcesz umówić wizytę?</h3>
+  <p class="book-lede">Obie drogi prowadzą do tego samego zespołu — wybierz wygodniejszą.</p>
+  <div class="book-opts">
+    <a class="book-opt" href="https://www.znanylekarz.pl/placowki/pro-mentis" target="_blank" rel="noopener nofollow">
+      <img src="assets/img/logo-znanylekarz.png" alt="" width="64" height="64">
+      <span><b>ZnanyLekarz</b>Wybierz wolny termin online i potwierdź od ręki.</span>
+    </a>
+    <a class="book-opt" href="index.html#zapisy">
+      <img src="assets/img/logo-heart.svg" alt="" width="64" height="64">
+      <span><b>Formularz Pro-Mentis</b>Zostaw zgłoszenie — oddzwonimy i pomożemy dobrać specjalistę.</span>
+    </a>
+  </div>
+</dialog>
 
 <!-- ============ SCRIPTS ============ -->
 <script>
@@ -253,7 +290,30 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 })();
+
+/* ------------------------------------------------------------------
+   Wybór sposobu zapisu — „Umów wizytę” otwiera <dialog> zamiast skakać
+   wprost do formularza. Progresywnie: gdy JS nie działa albo przeglądarka
+   nie zna <dialog>, przyciski zostają zwykłymi linkami do #zapisy.
+   ------------------------------------------------------------------ */
+(function () {
+  var dlg = document.getElementById('book-choice');
+  if (!dlg || typeof dlg.showModal !== 'function') return;
+
+  Array.prototype.forEach.call(document.querySelectorAll('[data-book]'), function (el) {
+    el.addEventListener('click', function (e) { e.preventDefault(); dlg.showModal(); });
+  });
+
+  /* Klik w tło zamyka — <dialog> sam tego nie robi. */
+  dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+
+  /* Wybór formularza domyka okno, żeby skok do #zapisy był widoczny. */
+  Array.prototype.forEach.call(dlg.querySelectorAll('.book-opt'), function (a) {
+    a.addEventListener('click', function () { dlg.close(); });
+  });
+})();
 </script>
+
 
 </body>
 </html>
