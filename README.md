@@ -11,6 +11,7 @@ python3 -m http.server 8000     # → http://localhost:8000
 
 ```
 index.html              the whole page — markup + one <script> block
+kariera.html            job offers; reachable **only** from the nav, by the client's decision
 regulamin.html          terms of service (client's document, transcribed)
 polityka-prywatnosci.html  RODO information clause (client's document)
 dziekujemy.html         post-submit thank-you page (FormSubmit `_next` target)
@@ -21,10 +22,14 @@ assets/
   img/
     logo-heart.svg      the heart/brain mark — nav, hero, Misja art, favicon
     logo-full.png       full lockup, raster only (footer; SVG still missing)
+    logo-znanylekarz.png  ZnanyLekarz mark, 64×64, for the booking dialog
+    partner-mind4med.png  Mind4Med logo, white margin trimmed (Zespół)
+    tlo-splot.png       brain-pattern watermark, used as a CSS mask in the hero
     heart.png           legacy raster mark, kept for reference
-    wnetrze-recepcja.jpg  reception wall photo, used in Misja
-    budynek-front.jpg   building from ul. Drewnowska, 1800×900 (Dojazd)
-    tablica-wejscie.jpg sign by the entrance, 900×900 (Dojazd)
+    wnetrze-recepcja.jpg  reception — real photo, replaced the render in round 5
+    budynek-front.jpg   building from ul. Drewnowska — real photo, replaced the render
+    tablica-wejscie.jpg sign by the entrance, 900×900 (Poradnia)
+    poradnia/           4 gabinety, poczekalnia, entrance at night, the gate
     team/               10 therapist portraits, square (900×900, one 800×800)
 _source/                local only, git-ignored — never shipped
 ```
@@ -57,12 +62,22 @@ than scaling the current file.
 
 ## Sections
 
-Hero · Oferta · Cennik · Zespół · Misja · Dojazd · Kontakt · Zapisy — all direct
+Hero · Oferta · Cennik · Zespół · Misja · Poradnia · Kontakt · Zapisy — all direct
 children of `<main>`, each with an `id` the nav links to.
+
+**Poradnia keeps `id="dojazd"`** even though it is labelled Poradnia everywhere a
+visitor can see. The three other pages link to `index.html#dojazd`, so renaming the
+id would break them; the section was *promoted* rather than replaced when the room
+photos arrived in round 5. It now opens with the interior gallery, then the map and
+address card under a `Jak do nas trafić` subheading, then the orientation photos
+(gate → building → sign → the same building at night, in the order a patient meets
+them). Adding a nav entry for it was rejected: the bar was already going to eight
+items because of Kariera, so `Jak dojechać` was relabelled instead — the new label
+is shorter than the old one, so the bar did not grow.
 
 ## Navigation
 
-Desktop shows the seven inline `.nav-links`. Below **980px** those would vanish
+Desktop shows the eight inline `.nav-links`. Below **980px** those would vanish
 entirely, so `.menu-toggle` (a three-bar button that morphs into an ×) turns the
 same `<nav>` into a full-width panel absolutely positioned under the fixed
 header, plus a `.nav-phone` tap-to-call row that only exists in that panel —
@@ -70,7 +85,11 @@ header, plus a `.nav-phone` tap-to-call row that only exists in that panel —
 had no visible number in the header at all. State is one class, `.nav-open`, on
 `.site-header`; the panel closes on link click, Escape, a click outside the
 header and on resize back above 980px, and `aria-expanded` tracks it. The script
-is duplicated in all four pages along with the header markup.
+is duplicated in all **five** pages along with the header markup.
+
+`Kariera` sits in `.nav-links` **only** — deliberately not in the footer's
+`Nawigacja` column, which mirrors the nav on every other item. That is the client's
+call, not an oversight; it is the one label that differs between the two lists.
 
 ## Legal pages
 
@@ -81,8 +100,8 @@ the regulamin. Styling lives in the `.legal-*` block in `styles.css` (one text
 measure shared by the TOC and the body, `§` headings separated by rules,
 `scroll-margin-top` so anchors clear the sticky header).
 
-Header and footer are **copied** into all three files — there is no build step
-and no includes, so a change to either means editing three files. The two legal
+Header and footer are **copied** into all five files — there is no build step
+and no includes, so a change to either means editing five files. The two legal
 pages were generated from one skeleton so their header and footer are byte-identical;
 keep them that way. Their nav uses `index.html#…`, not bare `#…`.
 
@@ -204,6 +223,53 @@ A new service needs three edits instead: an `.offer-card` tile in Oferta (bump
 the `.num`), a `.price-row` in the right Cennik group (with a `Formularz` chip
 whose `data-usluga` matches) and an `<option>` in `#f-topic`.
 
+## Booking dialog
+
+`Umów wizytę` no longer jumps to the form. Every instance — the header button on
+all five pages and the hero CTA — carries `data-book` and opens a native
+`<dialog id="book-choice">` offering two equal paths: ZnanyLekarz (opens the
+facility profile in a new tab) and the Pro-Mentis form (`#zapisy`). This replaced
+the old behaviour at the client's request: the form was the only route, and the
+ZnanyLekarz widget sat about eight screens down where nobody scrolled to it.
+
+`<dialog>` supplies Escape, the focus trap and `::backdrop` for free, so the script
+only binds the triggers, closes on backdrop click and closes when an option is
+picked. Two things that will bite if the block is ever moved:
+
+- **The `<dialog>` markup must sit before the `<script>` block.** It lives right
+  after `</footer>`. Placed after the script — the obvious spot, just before
+  `</body>` — `getElementById` returns `null` at execution time and the IIFE
+  returns early, silently leaving the old jump-to-form behaviour.
+- **`margin: auto` is set explicitly.** The global `* { margin: 0 }` reset kills the
+  centring a modal `<dialog>` normally gets for free, and it renders pinned to the
+  top-left corner.
+
+Without JS, or on a browser with no `<dialog>`, the buttons stay ordinary links to
+`#zapisy` — the behaviour the site had before.
+
+## Obszar trudności → specialists
+
+The Zapisy form has a second, optional `<select id="f-obszar">` under the service
+picker. Choosing an area renders a panel naming the specialists who cover it, each
+linking to `#spec-…` on their card; the chosen area is also submitted, so
+reception knows what the call is about before it starts.
+
+This is a **separate axis from `#f-topic`**, on purpose. `#f-topic` lists *services*
+(Psychoterapia indywidualna, Dietetyk kliniczny) and is contract-bound to the
+Cennik chips — `data-usluga` has to match an `<option>` verbatim. Areas are
+*problems* (lęk, żałoba, seksualność), and one problem can be served by several
+services, so overloading the existing select would have broken the price-chip
+prefill.
+
+Every `.member` now carries `id="spec-<imie-nazwisko>"` plus `scroll-margin-top`,
+so the links clear the sticky header.
+
+**The map is a clinical claim, not decoration.** It routes a patient to a named
+therapist; if it is wrong, they get sent to the wrong person. The 16 areas were
+derived from the `Obszary wsparcia i specjalizacji` blocks on the ten cards, so
+nothing in it was invented — but **it still needs the clinic's sign-off, and any
+edit to a card's areas should come back to the map** (and the other way round).
+
 ## Design axes (`variants.css`)
 
 The design alternatives the client compared during handoff are still wired up as
@@ -285,6 +351,16 @@ the `_honey` honeypot stays either way. On the production host the
   delete when it works.
 - **Dietetyk kliniczny** — the service is in Oferta and Cennik, but there is no
   bio or photo for the dietitian in Zespół.
+- **Mind4Med has no vector or transparent logo.** What we have is a 1038×1037 PNG
+  of a solid royal-blue (`#063FA6`) square. It is a foreign, saturated mark against
+  a cream/red/graphite palette, so it is not blended in — it gets its own white
+  card in the `Partner szkoleniowy` strip at the end of Zespół. Ask for an SVG.
+- **The area → specialist map needs the clinic's sign-off** before it is treated as
+  authoritative (see *Obszar trudności* above).
+- **Kariera has no self-service.** Adding an offer means editing `kariera.html` —
+  one `<article class="job">` to copy, with the empty state as a sibling. The
+  client asked for "the ability to add job offers"; if that means *they* add them,
+  it needs a data file and an editor, which is a separate piece of work.
 - **Katarzyna Wójcikowska** and **Dominika Krawczyk** are missing from
   `GODZINY PRACY.xlsx`; their cards say "terminy ustalane indywidualnie".
 - The `STACJONARNIE` / `ON-LINE` columns in the schedule are empty, so the site
@@ -318,12 +394,17 @@ the `_honey` honeypot stays either way. On the production host the
 - A real Google Maps embed for Dojazd (the address links already open Google
   Maps; the in-page map is a generic embed).
 - A **vector (SVG) full logo** for the footer — only the heart mark is vector.
-- **Photos of the rooms** and the reception from a second angle. The building and
-  the entrance sign in Dojazd were lifted from the signage PDF, so they are the
-  *visualisation* renders — worth confirming the window films are actually up
-  before those two go live. When room photos arrive, the `.locate-photos` block
-  is the pattern to copy (and probably the moment to promote it to its own
-  `Poradnia` section).
+- ~~Photos of the rooms~~ — **arrived in round 5** and the section was promoted to
+  `Poradnia` as anticipated. Worth knowing: `wnetrze-recepcja.jpg` and
+  `budynek-front.jpg` used to be *visualisation renders* (grey placeholder
+  rectangles where the window films now are, a logo pasted onto a bare wall); both
+  are real photographs now. `tablica-wejscie.jpg` is still the one composite left —
+  a real photo of the site with the sign face pasted in — but the sign genuinely
+  exists, visible in `budynek-front.jpg`.
+  Four of the client's originals carried their rotation **only in EXIF**; it is
+  baked into the pixels in `assets/`. If those source files are ever reprocessed,
+  run `ImageOps.exif_transpose` first — compression tools drop the tag and the
+  photo silently lands on its side.
 - **The regulamin describes a booking-and-prepayment flow the site does not
   have.** §2 requires remote and most stationary visits to be paid through the
   website within 30 minutes of booking, via an external operator (Paynow) — but

@@ -178,14 +178,28 @@ main > section { padding-block: clamp(72px, 11vh, 140px); }
 .nav-phone { display: none; }
 
 /* ---------- HERO ---------- */
-.hero { position: relative; padding-top: clamp(120px, 17vh, 200px); padding-bottom: clamp(60px, 9vh, 120px); overflow: hidden; }
+.hero { position: relative; padding-top: clamp(104px, 14vh, 168px); padding-bottom: clamp(60px, 9vh, 120px); overflow: hidden; }
+/* Znak wodny z materiałów klienta — ten sam splot, co w tle tablicy przed wejściem.
+   Wchodzi jako maska, nie <img>: plik jest czarny przy ~5% krycia, a czerń na
+   kremowym tle zszarza całą paletę. Maska pozwala pomalować motyw na --clay
+   i zachować ciepło. Siłę reguluje opacity poniżej. */
+.hero::before {
+  content: ""; position: absolute; inset: auto 0 0 0; height: 74%;
+  background: var(--clay); opacity: 0.09; pointer-events: none; z-index: 0;
+  -webkit-mask: url(../img/tlo-splot.png) bottom center / 100% auto no-repeat;
+          mask: url(../img/tlo-splot.png) bottom center / 100% auto no-repeat;
+}
+.hero > .hero-inner, .hero > .hero-bg-heart { position: relative; z-index: 1; }
 .hero-eyebrow { display: inline-flex; align-items: center; gap: 12px; margin-bottom: 28px; }
 .hero-eyebrow .heart-mini { height: 26px; width: auto; }
 .hero-title { font-family: var(--font-display); font-weight: 600; line-height: 1.02; letter-spacing: -0.015em; color: var(--ink); }
 .hero-title .l2 { display: block; }
 .hero-title em { font-style: italic; color: var(--accent-ink); }
 .hero-lede { margin-top: 28px; max-width: 30ch; }
-.hero-actions { margin-top: 40px; display: flex; gap: 16px; flex-wrap: wrap; }
+.hero-credo { margin-top: 30px; padding-top: 22px; border-top: 1px solid var(--line); max-width: 52ch; }
+.hero-credo p { font-size: 0.95rem; color: var(--ink-soft); }
+.hero-credo p + p { margin-top: 8px; }
+.hero-actions { margin-top: 36px; display: flex; gap: 16px; flex-wrap: wrap; }
 .hero-meta { margin-top: 46px; display: flex; gap: 36px; flex-wrap: wrap; }
 .hero-meta .mi { display: flex; flex-direction: column; gap: 3px; }
 .hero-meta .mi b { font-family: var(--font-display); font-size: 1.7rem; font-weight: 600; font-variant-numeric: lining-nums; }
@@ -219,12 +233,12 @@ main > section { padding-block: clamp(72px, 11vh, 140px); }
 
 /* "editorial" = oversized type, faint big heart behind */
 .hero[data-hero="editorial"] .hero-inner { position: relative; }
-.hero[data-hero="editorial"] .hero-title { font-size: clamp(3rem, 10vw, 8rem); max-width: 14ch; }
+.hero[data-hero="editorial"] .hero-title { font-size: clamp(2.8rem, 8.6vw, 6.8rem); max-width: 14ch; }
 .hero[data-hero="editorial"] .hero-title .l2 { margin-left: 1.6em; color: var(--accent-ink); }
 .hero[data-hero="editorial"] .hero-lede { max-width: 42ch; }
 .hero[data-hero="editorial"] .hero-photo { display: none; }
 .hero[data-hero="editorial"] .hero-art { position: absolute; top: -6%; right: -2%; width: min(440px, 42vw); z-index: -1; }
-.hero[data-hero="editorial"] .hero-heart { opacity: 0.12; }
+.hero[data-hero="editorial"] .hero-heart { opacity: 0.07; }
 .hero[data-hero="editorial"] .hero-bg-heart { display: none; }
 
 /* ---------- Placeholder visual ---------- */
@@ -279,6 +293,10 @@ main > section { padding-block: clamp(72px, 11vh, 140px); }
 .member-detailed .portrait img { border-radius: 8px 8px 0 0; object-position: center 20%; }
 .member-detailed h3 { margin-top: 20px; font-size: 1.45rem; }
 .member-detailed .role { line-height: 1.5; }
+/* Rola z pięcioma członami nie mieści się w jednym łańcuchu kropek przy
+   uppercase 0.82rem — .role-stacked łamie ją na osobne wiersze. */
+.role-stacked span { display: block; }
+.role-stacked span + span { margin-top: 2px; }
 .member-quote { margin: 18px 0 0; padding: 14px 18px; border-left: 2px solid var(--accent-line); background: var(--bg); border-radius: 0 6px 6px 0; font-family: var(--font-display); font-style: italic; font-size: 1.02rem; color: var(--ink-soft); }
 .member-quote::before { content: "„"; }
 .member-quote::after { content: "”"; }
@@ -340,6 +358,86 @@ main > section { padding-block: clamp(72px, 11vh, 140px); }
 .team-note { margin-top: 40px; padding: 22px 26px; border-left: 2px solid var(--accent-line); background: var(--surface); border-radius: 0 6px 6px 0; color: var(--ink-soft); font-size: 0.95rem; max-width: 620px; }
 
 /* ---------- Misja ---------- */
+/* ---------- Panel „obszar → specjaliści” pod selectem ---------- */
+.field-help {
+  margin-top: 10px; padding: 11px 14px; font-size: 0.87rem; line-height: 1.6;
+  color: var(--ink-soft); background: var(--accent-tint);
+  border-left: 2px solid var(--accent-line); border-radius: 0 5px 5px 0;
+}
+.field-help a { color: var(--accent-ink); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+.field-help a:hover { color: var(--ink); }
+.field-help-note { display: block; margin-top: 6px; font-size: 0.82rem; color: var(--ink-faint); }
+/* karty zespołu jako cel skoku — nagłówek strony jest przyklejony */
+.member-detailed[id] { scroll-margin-top: 96px; }
+
+/* ---------- Wybór sposobu zapisu (dialog) ---------- */
+.book-dialog {
+  width: min(560px, calc(100vw - 32px)); padding: clamp(22px, 4vw, 32px);
+  margin: auto;                       /* globalny reset zeruje margin — <dialog> centruje się przez auto */
+  border: 1px solid var(--line); border-radius: 10px;
+  background: var(--bg); color: var(--ink); box-shadow: var(--shadow-lg);
+}
+.book-dialog::backdrop { background: rgba(43,45,47,.55); }
+.book-close-form { display: flex; justify-content: flex-end; margin: -8px -6px 0 0; }
+.book-close {
+  border: 0; background: none; cursor: pointer; line-height: 1;
+  font-size: 1.7rem; color: var(--ink-faint); padding: 4px 8px; border-radius: 4px;
+}
+.book-close:hover { color: var(--ink); background: var(--surface-2); }
+.book-dialog h3 { font-family: var(--font-display); font-size: clamp(1.4rem, 3.4vw, 1.8rem); font-weight: 600; letter-spacing: -0.01em; }
+.book-lede { margin-top: 6px; font-size: 0.92rem; color: var(--ink-soft); }
+.book-opts { margin-top: 20px; display: grid; gap: 12px; }
+.book-opt {
+  display: flex; align-items: center; gap: 16px; padding: 16px 18px;
+  border: 1px solid var(--line); border-radius: 8px; background: var(--surface);
+  transition: border-color .2s, background .2s, transform .2s;
+}
+.book-opt:hover { border-color: var(--accent-line); background: var(--accent-tint); transform: translateY(-1px); }
+.book-opt img { width: 38px; height: 38px; flex: 0 0 auto; object-fit: contain; }
+.book-opt span { display: flex; flex-direction: column; gap: 3px; font-size: 0.88rem; color: var(--ink-soft); }
+.book-opt b { font-size: 1.02rem; font-weight: 600; color: var(--ink); }
+
+/* ---------- Kariera ---------- */
+.career { padding-block: clamp(60px, 9vh, 110px); }
+.career .legal-back { display: inline-block; margin-bottom: clamp(24px, 4vw, 40px); }
+.job-list { margin-top: clamp(28px, 4vw, 44px); display: flex; flex-direction: column; gap: 20px; }
+.job-empty {
+  padding: 24px 26px; border: 1px dashed var(--line); border-radius: 8px;
+  background: var(--surface); color: var(--ink-soft); font-size: 0.96rem; max-width: 62ch;
+}
+.job { padding: 26px 28px; border: 1px solid var(--accent-line); border-radius: 8px; background: var(--surface); }
+.job-head { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+.job-head h3 { font-family: var(--font-display); font-size: 1.35rem; font-weight: 600; }
+.job-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+.job h4 {
+  margin-top: 20px; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--accent-ink);
+  padding-bottom: 8px; border-bottom: 1px solid var(--accent-line);
+}
+.job ul { list-style: none; margin: 12px 0 0; padding: 0; }
+.job li { position: relative; padding-left: 18px; margin-top: 9px; font-size: 0.93rem; color: var(--ink-soft); }
+.job li::before { content: "\2022"; position: absolute; left: 2px; color: var(--accent-ink); }
+.job-apply { margin-top: 24px; }
+/* .legal-body a nie sięga tej sekcji — Kariera potrzebuje własnej reguły */
+.career a:not(.btn):not(.legal-back) { color: var(--accent-ink); text-decoration: underline; text-underline-offset: 2px; overflow-wrap: anywhere; }
+.career a:not(.btn):not(.legal-back):hover { color: var(--ink); }
+
+/* ---------- Partner szkoleniowy ---------- */
+.partner {
+  margin-top: clamp(38px, 5vw, 56px); display: flex; align-items: center;
+  gap: clamp(18px, 3vw, 30px); flex-wrap: wrap;
+  padding: 20px clamp(20px, 3vw, 28px); background: var(--surface);
+  border: 1px solid var(--line); border-radius: 8px;
+}
+.partner-mark { flex: 0 0 auto; background: #fff; border-radius: 6px; padding: 10px; line-height: 0; }
+.partner-mark img { width: 92px; height: auto; display: block; border-radius: 3px; }
+.partner-body { flex: 1 1 260px; }
+.partner-body h4 {
+  font-size: 0.76rem; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--accent-ink);
+}
+.partner-body p { margin-top: 7px; font-size: 0.93rem; color: var(--ink-soft); max-width: 58ch; }
+
 .mission { background: var(--charcoal); color: #f3f1ee; position: relative; overflow: hidden; }
 .mission .eyebrow { color: color-mix(in oklab, var(--red) 75%, #fff); }
 .mission .wrap { position: relative; z-index: 1; }
@@ -349,6 +447,10 @@ main > section { padding-block: clamp(72px, 11vh, 140px); }
 .mission-body .mb h4 { font-size: 1.15rem; color: #fff; font-family: var(--font-body); font-weight: 700; }
 .mission-body .mb p { color: rgba(243,241,238,.7); font-size: 0.95rem; margin-top: 8px; }
 .mission-heart { position: absolute; right: -60px; bottom: -60px; width: 360px; opacity: 0.08; z-index: 0; }
+.mission-text { margin-top: clamp(26px, 3vw, 34px); max-width: 62ch; }
+.mission-text p { color: rgba(243,241,238,.78); font-size: 0.96rem; line-height: 1.72; }
+.mission-text p + p { margin-top: 14px; }
+.mission-text .ask { margin-top: 22px; font-family: var(--font-display); font-style: italic; font-size: clamp(1.15rem, 2.2vw, 1.45rem); color: #f3f1ee; }
 .mission-photo { margin-top: clamp(32px, 4vw, 44px); max-width: 460px; }
 .mission-photo img { width: 100%; height: auto; border-radius: 8px; box-shadow: var(--shadow-lg); }
 .mission-photo figcaption {
@@ -373,7 +475,15 @@ main > section { padding-block: clamp(72px, 11vh, 140px); }
   letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint);
 }
 
-.locate-photos { margin-top: clamp(26px, 3.4vw, 40px); display: grid; grid-template-columns: 2fr 1fr; gap: 18px; }
+.locate-photos { margin-top: clamp(26px, 3.4vw, 40px); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.locate-photos img { aspect-ratio: 4/3; object-fit: cover; }
+/* Galeria wnętrz — pierwsze zdjęcie na całą szerokość, reszta w siatce */
+.locate-rooms > figure:first-child { grid-column: 1 / -1; }
+.locate-rooms > figure:first-child img { aspect-ratio: 16/7; }
+.locate-subhead {
+  margin-top: clamp(38px, 5vw, 60px); font-family: var(--font-display);
+  font-weight: 600; font-size: clamp(1.4rem, 3vw, 1.9rem); letter-spacing: -0.01em;
+}
 .locate-photos figure { margin: 0; }
 .locate-photos img { width: 100%; height: auto; display: block; border-radius: 10px; box-shadow: var(--shadow-sm); }
 .locate-photos figcaption { margin-top: 10px; font-family: var(--font-body); font-size: 0.86rem; line-height: 1.5; color: var(--ink-faint); }
@@ -387,7 +497,8 @@ main > section { padding-block: clamp(72px, 11vh, 140px); }
   border: 1px solid var(--line); display: grid; place-items: center; padding: 40px; }
 /* .widget-ph trzyma pozycję w siatce (i w wariantach układu z variants.css);
    .widget-live zdejmuje z niego wygląd zaślepki, bo w środku jest już widżet */
-.widget-ph.widget-live { min-height: 0; padding: 0; border: 0; background: none; display: block; max-width: 420px; }
+.widget-ph.widget-live { min-height: 0; padding: 0; border: 0; background: none; display: block; max-width: 480px; }
+.widget-head { font-family: var(--font-display); font-size: 1.3rem; font-weight: 600; margin-bottom: 14px; }
 .widget-ph.widget-live iframe { display: block; max-width: 100%; }
 .widget-note { margin-top: 16px; font-family: var(--font-body); font-size: 0.86rem; line-height: 1.55; color: var(--ink-faint); }
 .widget-note a { color: var(--accent-ink); text-decoration: underline; text-underline-offset: 2px; }
@@ -518,6 +629,15 @@ a.tag-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px
 .footer-col h5 { color: #fff; font-family: var(--font-body); font-size: 0.76rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 16px; }
 .footer-col a, .footer-col p { display: block; font-size: 0.95rem; color: rgba(243,241,238,.75); margin-bottom: 9px; transition: color .2s; }
 .footer-col a:hover { color: #fff; }
+.footer-social { display: flex; gap: 12px; margin-top: 14px; }
+.footer-social a {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 34px; height: 34px; margin: 0; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.18); color: rgba(243,241,238,.75);
+  transition: color .2s, border-color .2s, background .2s;
+}
+.footer-social a:hover { color: #fff; border-color: rgba(255,255,255,.5); background: rgba(255,255,255,.07); }
+.footer-social svg { width: 17px; height: 17px; display: block; }
 .footer-bottom { display: flex; justify-content: space-between; gap: 12px 26px; flex-wrap: wrap; padding-top: 26px; font-size: 0.82rem; color: rgba(243,241,238,.5); }
 .footer-legal { display: flex; gap: 20px; flex-wrap: wrap; }
 .footer-bottom a { color: rgba(243,241,238,.62); text-decoration: underline; text-underline-offset: 3px; transition: color .2s; }
@@ -606,6 +726,7 @@ html.js-anim .reveal.in { opacity: 1; transform: none; }
   .mission-body { grid-template-columns: 1fr; gap: 22px; }
   .locate-grid, .contact-grid { grid-template-columns: 1fr; }
   .locate-photos { grid-template-columns: 1fr; }
+  .locate-rooms > figure:first-child img { aspect-ratio: 4/3; }
   .footer-top { grid-template-columns: 1fr 1fr; }
   .hero[data-hero="split"] .hero-inner { grid-template-columns: 1fr; }
   .hero[data-hero="split"] .hero-art { display: none; }
