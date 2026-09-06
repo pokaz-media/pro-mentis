@@ -250,11 +250,7 @@ Without JS, or on a browser with no `<dialog>`, the buttons stay ordinary links 
 ## Obszar trudności → specialists
 
 The Zapisy form has a second, optional `<select id="f-obszar">` under the service
-picker — **currently commented out in `index.html`, pending the clinic's sign-off.**
-Uncomment that one block to enable it: the script stays in place and returns early
-when the select is absent from the DOM, and the `#spec-…` ids stay on the cards.
-
-When live, it works as follows. Choosing an area renders a panel naming the specialists who cover it, each
+picker. Choosing an area renders a panel naming the specialists who cover it. Choosing an area renders a panel naming the specialists who cover it, each
 linking to `#spec-…` on their card; the chosen area is also submitted, so
 reception knows what the call is about before it starts.
 
@@ -271,8 +267,10 @@ so the links clear the sticky header.
 **The map is a clinical claim, not decoration.** It routes a patient to a named
 therapist; if it is wrong, they get sent to the wrong person. The 16 areas were
 derived from the `Obszary wsparcia i specjalizacji` blocks on the ten cards, so
-nothing in it was invented — but **it still needs the clinic's sign-off, and any
-edit to a card's areas should come back to the map** (and the other way round).
+nothing in it was invented, and it went live on 7 Sep 2026 on the client's own
+say-so. Treat it as live copy: **any edit to a card's areas has to come back to the
+map, and the other way round** — the two drifting apart is how a patient ends up
+booked with the wrong specialist.
 
 ## Design axes (`variants.css`)
 
