@@ -29,7 +29,7 @@ assets/
     wnetrze-recepcja.jpg  reception — real photo, replaced the render in round 5
     budynek-front.jpg   building from ul. Drewnowska — real photo, replaced the render
     tablica-wejscie.jpg sign by the entrance, 900×900 (Poradnia)
-    poradnia/           4 gabinety, poczekalnia, entrance at night, the gate
+    poradnia/           4 gabinety, poczekalnia, the gate from the street
     team/               10 therapist portraits, square (900×900, one 800×800)
 _source/                local only, git-ignored — never shipped
 ```
@@ -70,8 +70,7 @@ visitor can see. The three other pages link to `index.html#dojazd`, so renaming 
 id would break them; the section was *promoted* rather than replaced when the room
 photos arrived in round 5. It now opens with the interior gallery, then the map and
 address card under a `Jak do nas trafić` subheading, then the orientation photos
-(gate → building → sign → the same building at night, in the order a patient meets
-them). Adding a nav entry for it was rejected: the bar was already going to eight
+(gate → building → sign, in the order a patient meets them). Adding a nav entry for it was rejected: the bar was already going to eight
 items because of Kariera, so `Jak dojechać` was relabelled instead — the new label
 is shorter than the old one, so the bar did not grow.
 

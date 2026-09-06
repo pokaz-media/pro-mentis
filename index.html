@@ -963,10 +963,10 @@ document.documentElement.className += ' js-anim';
 
     <!--
       Zdjęcia orientacyjne — kolejność jest trasą pacjenta: brama od ulicy, budynek,
-      tablica przy wejściu, ten sam budynek po zmroku. Nowe ujęcia dodawaj w tym
-      samym układzie; siatka sama dobiera liczbę kolumn.
+      tablica przy wejściu. Trzy kafle w rzędzie (.locate-outside); przy innej
+      liczbie zdjęć popraw grid-template-columns, żeby nie został sierotą.
     -->
-    <div class="locate-photos reveal">
+    <div class="locate-photos locate-outside reveal">
       <figure>
         <img src="assets/img/poradnia/wjazd.jpg" alt="Brama wjazdowa na posesję przy ul. Drewnowskiej 102 z pylonem adresowym" loading="lazy">
         <figcaption>Wjazd na posesję od ul. Drewnowskiej — szukaj pylonu z numerem 102.</figcaption>
@@ -978,10 +978,6 @@ document.documentElement.className += ' js-anim';
       <figure>
         <img src="assets/img/tablica-wejscie.jpg" alt="Tablica informacyjna Pro-Mentis przed wejściem do poradni" loading="lazy">
         <figcaption>Tablica przed wejściem — tego znaku szukaj od ulicy.</figcaption>
-      </figure>
-      <figure>
-        <img src="assets/img/poradnia/budynek-noc.jpg" alt="Budynek poradni Pro-Mentis po zmroku — oświetlone wejście i oznakowane okna" loading="lazy">
-        <figcaption>Po zmroku wejście jest oświetlone — wieczorne sesje trwają do 21:00.</figcaption>
       </figure>
     </div>
   </section>

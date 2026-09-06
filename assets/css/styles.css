@@ -479,6 +479,8 @@ main > section { padding-block: clamp(72px, 11vh, 140px); }
 .locate-photos img { aspect-ratio: 4/3; object-fit: cover; }
 /* Galeria wnętrz — pierwsze zdjęcie na całą szerokość, reszta w siatce */
 .locate-rooms > figure:first-child { grid-column: 1 / -1; }
+/* Galeria orientacyjna ma trzy kafle — w siatce 2-kolumnowej trzeci zostałby sam */
+.locate-outside { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .locate-rooms > figure:first-child img { aspect-ratio: 16/7; }
 .locate-subhead {
   margin-top: clamp(38px, 5vw, 60px); font-family: var(--font-display);
