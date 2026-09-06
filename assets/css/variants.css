@@ -141,9 +141,13 @@ html.js-anim[data-anim="blur"]  .reveal { transform: translateY(12px); filter: b
 #misja[data-layout="split"] .wrap { display: grid; grid-template-columns: 1.1fr 1fr; column-gap: 64px; align-items: start; }
 #misja[data-layout="split"] .eyebrow { grid-column: 1; grid-row: 1; }
 #misja[data-layout="split"] .mission-quote { grid-column: 1; grid-row: 2; margin-top: 18px; max-width: none; }
-#misja[data-layout="split"] .mission-body { grid-column: 2; grid-row: 1 / 4; grid-template-columns: 1fr; gap: 26px; margin-top: 0; align-self: center; }
+/* Górny pas: cytat po lewej, trzy wartości po prawej — wyrównane do siebie.
+   Dolny pas: rozwinięty opis po lewej, zdjęcie wnętrza po prawej.
+   Zanim doszedł .mission-text, .mission-body spinało całą wysokość sekcji i przy
+   długim tekście centrowało się w pustce — stąd podział na dwa pasy. */
+#misja[data-layout="split"] .mission-body  { grid-column: 2; grid-row: 1 / 3; grid-template-columns: 1fr; gap: 26px; margin-top: 0; align-self: center; }
 #misja[data-layout="split"] .mission-text  { grid-column: 1; grid-row: 3; }
-#misja[data-layout="split"] .mission-photo { grid-column: 1; grid-row: 4; }
+#misja[data-layout="split"] .mission-photo { grid-column: 2; grid-row: 3; align-self: start; margin-top: 0; max-width: none; }
 
 /* centered — wielki cytat na środku */
 #misja[data-layout="centered"] .wrap { text-align: center; max-width: 980px; }

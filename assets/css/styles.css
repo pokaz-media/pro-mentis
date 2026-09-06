@@ -535,7 +535,6 @@ a.tag-link {
 a.tag-link:hover { color: var(--accent-ink); border-color: var(--accent-line); background: var(--accent-tint); }
 a.tag-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 /* kanał zapisu jeszcze nieuruchomiony — chip informacyjny, nieklikalny */
-.tag-soon { border-style: dashed; color: var(--ink-faint); cursor: default; }
 
 .price-legend { max-width: 860px; margin-bottom: clamp(28px, 4vw, 40px); }
 .price-legend .eyebrow { display: block; margin-bottom: 14px; }
@@ -546,8 +545,6 @@ a.tag-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px
 .price-legend a { color: var(--accent-ink); text-decoration: underline; text-underline-offset: 2px; }
 .price-legend a.tag-link { color: var(--ink-soft); text-decoration: none; }
 .price-legend a.tag-link:hover { color: var(--accent-ink); }
-.price-legend-soon { margin-top: 14px; font-size: 0.88rem; font-style: italic; color: var(--ink-faint); }
-.price-legend-soon b { font-style: normal; font-weight: 600; color: var(--ink-soft); }
 
 .price-groups { max-width: 860px; display: flex; flex-direction: column; gap: 26px; }
 .price-group { border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--bg); box-shadow: var(--shadow-sm); }

@@ -126,6 +126,12 @@ the alternative-layout library rather than shipped CSS.
 mediacje, zajęcia grupowe, diagnoza, pozostałe). Each row carries a duration and
 `.tag` chips for the channels you can book it through.
 
+Two channels only — `Formularz` and `ZnanyLekarz`. A third, `Kalendarz online`
+(a booking calendar on pro-mentis.pl), was dropped in September 2026: the client
+abandoned the idea, so the chips, the legend row, the `.price-legend-soon`
+paragraph and the `.tag-soon` rule are all gone. Don't reintroduce a "coming soon"
+channel — if a channel is not live, it does not appear.
+
 The chips are not decoration: every `Formularz` chip is an `<a class="tag
 tag-link" href="#zapisy" data-usluga="…">` and the script at the bottom of
 `index.html` jumps to the form, selects that `data-usluga` in `#f-topic`, writes
@@ -133,25 +139,25 @@ the exact row (title + price) into the hidden `Pozycja z cennika` field and
 flashes the field. `data-usluga` **must** match an `<option>` in `#f-topic`
 verbatim, otherwise the click still scrolls but selects nothing — several rows
 deliberately share one option (both seksuologia consultations → `Konsultacja
-seksuologiczna`, both dietetyka rows → `Dietetyk kliniczny`). Channels that are
-not live yet are `.tag-soon`: dashed, muted, deliberately not clickable.
+seksuologiczna`, both dietetyka rows → `Dietetyk kliniczny`). Every chip is a real link.
 
 The legend above the table is one `<li>` per channel, each **chip + a single
 `<span>`** — with the text as loose inline nodes the flex container broke every
 wrapped line back to the left margin. Keep the wrapper span.
 
-`Kalendarz online` sits **only on the three seksuologia rows** — the calendar we
-would build on pro-mentis.pl cannot sync with ZnanyLekarz's, so per the client's
-own rule it is limited to the services ZnanyLekarz does not cover. The four
-psychotherapy rows carry `ZnanyLekarz` instead. Move the chips if that changes.
+The four psychotherapy rows carry `ZnanyLekarz`; every row carries `Formularz`.
 
 As of 24 Aug 2026 ZnanyLekarz booking is **live**, so those four chips are real
 `<a class="tag tag-link">` links to the facility profile (`target="_blank"`,
 `rel="noopener nofollow"`) — no `data-usluga`, so the form-prefill script ignores
-them. `Kalendarz online` is the only channel still `.tag-soon`, and
-`.price-legend-soon` now talks about that calendar alone. Worth asking the client
-whether the seksuologia rows should also get a `ZnanyLekarz` chip — the original
-rule for splitting them assumed ZnanyLekarz booking did not work at all.
+them.
+
+**Open question the calendar's removal created:** the three seksuologia rows now
+carry `Formularz` alone, because their second chip used to be `Kalendarz online`.
+They were split off in the first place under a rule that assumed ZnanyLekarz
+booking did not work at all — which is no longer true. Ask the client whether
+seksuologia should be bookable through ZnanyLekarz too; if yes, those rows want the
+same chip as the psychotherapy ones.
 
 **Zespół** — 10 expandable cards. Photo, name, role, intro, pull quote and that
 person's hours are always visible; second paragraph, credentials, experience and
@@ -348,9 +354,9 @@ the `_honey` honeypot stays either way. On the production host the
   gone — it only existed to explain that booking did not work yet. What is still
   outstanding there: **the facility has no logo uploaded**, so the widget renders
   a grey placeholder avatar — the one visibly unfinished element in Kontakt.
-- The **online calendar** on pro-mentis.pl is still not built; it is the only
-  channel left marked `.tag-soon`, and `.price-legend-soon` is the paragraph to
-  delete when it works.
+- ~~The **online calendar** on pro-mentis.pl~~ — dropped in September 2026 at the
+  client's request. All traces removed: chips, legend row, the "wkrótce" paragraph
+  and the `.tag-soon` / `.price-legend-soon` rules.
 - **Dietetyk kliniczny** — the service is in Oferta and Cennik, but there is no
   bio or photo for the dietitian in Zespół.
 - **Mind4Med has no vector or transparent logo.** What we have is a 1038×1037 PNG
