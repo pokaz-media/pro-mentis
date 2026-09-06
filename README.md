@@ -250,7 +250,11 @@ Without JS, or on a browser with no `<dialog>`, the buttons stay ordinary links 
 ## Obszar trudności → specialists
 
 The Zapisy form has a second, optional `<select id="f-obszar">` under the service
-picker. Choosing an area renders a panel naming the specialists who cover it, each
+picker — **currently commented out in `index.html`, pending the clinic's sign-off.**
+Uncomment that one block to enable it: the script stays in place and returns early
+when the select is absent from the DOM, and the `#spec-…` ids stay on the cards.
+
+When live, it works as follows. Choosing an area renders a panel naming the specialists who cover it, each
 linking to `#spec-…` on their card; the chosen area is also submitted, so
 reception knows what the call is about before it starts.
 
