@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/styles.css?v=3">
+<link rel="stylesheet" href="assets/css/styles.css?v=4">
 <link rel="stylesheet" href="assets/css/variants.css?v=3">
 </head>
 <body>
@@ -47,6 +47,9 @@
   </nav>
 
   <div class="header-cta">
+    <button class="search-toggle" type="button" data-search-open hidden aria-label="Szukaj na stronie" title="Szukaj (Ctrl+K)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
+    </button>
     <a class="phone-link" href="tel:+48693979397">
       <span class="phone-text"><small>Zadzwoń</small>+48 693 979 397</span>
     </a>
@@ -187,7 +190,14 @@
   <div class="wrap">
     <div class="footer-top">
       <div class="footer-brand">
-        <p>Klinika psychoterapii w centrum Łodzi. Serce dla rozumu, rozum dla serca.</p>
+        <a class="brand" href="index.html" aria-label="Pro-Mentis — strona główna">
+          <img src="assets/img/logo-heart-light.svg" alt="">
+          <span class="brand-text">
+            <b>Pro-Mentis</b>
+            <span>Klinika Psychoterapii</span>
+          </span>
+        </a>
+        <p>Pro-Mentis Klinika Psychoterapii w centrum Łodzi. Serce dla rozumu, rozum dla serca.</p>
       </div>
       <div class="footer-col">
         <h5>Nawigacja</h5>
@@ -219,7 +229,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 Pro-Mentis · Klinika Psychoterapii</span>
+      <span>© 2026 Pro-Mentis · Klinika Psychoterapii · Dariusz Drużyński</span>
       <span class="footer-legal">
         <a href="regulamin.html">Regulamin</a>
         <a href="polityka-prywatnosci.html">Polityka prywatności</a>
@@ -313,7 +323,7 @@
   });
 })();
 </script>
-
+<script src="assets/js/search.js?v=1" defer></script>
 
 </body>
 </html>

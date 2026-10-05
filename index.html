@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Lora:ital,wght@0,500;0,600;1,500&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Hanken+Grotesk:wght@400;500;600;700&family=Mulish:wght@400;500;600;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/styles.css?v=3">
+<link rel="stylesheet" href="assets/css/styles.css?v=4">
 <link rel="stylesheet" href="assets/css/variants.css?v=3">
 <script>
 /* Włącza animacje wejścia dopiero, gdy JS działa. Przy wyłączonym lub
@@ -51,6 +51,9 @@ document.documentElement.className += ' js-anim';
   </nav>
 
   <div class="header-cta">
+    <button class="search-toggle" type="button" data-search-open hidden aria-label="Szukaj na stronie" title="Szukaj (Ctrl+K)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
+    </button>
     <a class="phone-link" href="tel:+48693979397">
       <span class="phone-text"><small>Zadzwoń</small>+48 693 979 397</span>
     </a>
@@ -89,9 +92,10 @@ document.documentElement.className += ' js-anim';
           <p>Wierzymy, że to właściwy dialog pomiędzy Sercem a Rozumem jest w stanie odnaleźć balans pomiędzy emocjami a empirycznym zachowaniem.</p>
         </div>
         <div class="hero-meta">
-          <div class="mi"><b>10</b><span>specjalistów w zespole</span></div>
+          <div class="mi"><b>11</b><span>specjalistów w zespole</span></div>
           <div class="mi"><b>Centrum</b><span>dogodna lokalizacja w Łodzi</span></div>
           <div class="mi"><b>Online</b><span>i konsultacje stacjonarne</span></div>
+          <a class="mi mi-link" href="#zapisy" data-usluga="Bezpłatna konsultacja wstępna (15 min, Google Meet)"><b>15 min</b><span>pierwsza konsultacja gratis</span></a>
         </div>
       </div>
       <div class="hero-art reveal">
@@ -198,6 +202,14 @@ document.documentElement.className += ' js-anim';
 
       <section class="price-group">
         <h3 class="price-group-head">Konsultacje i psychoterapia</h3>
+        <div class="price-row price-row-free">
+          <div class="price-info">
+            <h4>Bezpłatna konsultacja wstępna</h4>
+            <span class="price-dur">do 15 minut · online przez Google Meet · dzwoni do Ciebie Twój specjalista</span>
+            <span class="price-book"><a class="tag tag-link" href="#zapisy" data-usluga="Bezpłatna konsultacja wstępna (15 min, Google Meet)">Formularz</a></span>
+          </div>
+          <span class="price-amount price-free">bezpłatnie</span>
+        </div>
         <div class="price-row">
           <div class="price-info">
             <h4>Konsultacja / psychoterapia indywidualna</h4>
@@ -238,7 +250,7 @@ document.documentElement.className += ' js-anim';
           <div class="price-info">
             <h4>Konsultacja seksuologiczna indywidualna</h4>
             <span class="price-dur">50 minut</span>
-            <span class="price-book"><a class="tag tag-link" href="#zapisy" data-usluga="Konsultacja seksuologiczna">Formularz</a></span>
+            <span class="price-book"><a class="tag tag-link" href="#zapisy" data-usluga="Konsultacja seksuologiczna">Formularz</a><a class="tag tag-link" href="https://www.znanylekarz.pl/dariusz-druzynski/seksuolog-psycholog/lodz" target="_blank" rel="noopener nofollow" title="Umów konsultację u Dariusza Drużyńskiego na ZnanyLekarz">ZnanyLekarz</a></span>
           </div>
           <span class="price-amount">220 zł</span>
         </div>
@@ -246,7 +258,7 @@ document.documentElement.className += ' js-anim';
           <div class="price-info">
             <h4>Konsultacja seksuologiczna pary</h4>
             <span class="price-dur">80 minut</span>
-            <span class="price-book"><a class="tag tag-link" href="#zapisy" data-usluga="Konsultacja seksuologiczna">Formularz</a></span>
+            <span class="price-book"><a class="tag tag-link" href="#zapisy" data-usluga="Konsultacja seksuologiczna">Formularz</a><a class="tag tag-link" href="https://www.znanylekarz.pl/dariusz-druzynski/seksuolog-psycholog/lodz" target="_blank" rel="noopener nofollow" title="Umów konsultację u Dariusza Drużyńskiego na ZnanyLekarz">ZnanyLekarz</a></span>
           </div>
           <span class="price-amount">330 zł</span>
         </div>
@@ -419,6 +431,7 @@ document.documentElement.className += ' js-anim';
             <li><span>Piątek</span><b>16:00–19:00</b></li>
             <li><span>Sobota</span><b>9:00–12:00</b></li>
           </ul>
+          <a class="member-zl" href="https://www.znanylekarz.pl/dariusz-druzynski/seksuolog-psycholog/lodz" target="_blank" rel="noopener nofollow" aria-label="Umów wizytę u Dariusza Drużyńskiego na ZnanyLekarz (otwiera się w nowej karcie)"><img src="assets/img/logo-znanylekarz.png" alt="" width="18" height="18">Umów na ZnanyLekarz</a>
         </div>
         <details class="member-more">
           <summary>Pełny profil</summary>
@@ -461,6 +474,7 @@ document.documentElement.className += ' js-anim';
         <div class="member-hours">
           <h4>Godziny przyjęć</h4>
           <p class="member-hours-none">Terminy ustalane indywidualnie — prosimy o kontakt z rejestracją.</p>
+          <a class="member-zl" href="https://www.znanylekarz.pl/dominika-krawczyk-zakrzewska/psycholog/lodz" target="_blank" rel="noopener nofollow" aria-label="Umów wizytę u Dominiki Krawczyk na ZnanyLekarz (otwiera się w nowej karcie)"><img src="assets/img/logo-znanylekarz.png" alt="" width="18" height="18">Umów na ZnanyLekarz</a>
         </div>
         <details class="member-more">
           <summary>Pełny profil</summary>
@@ -503,6 +517,7 @@ document.documentElement.className += ' js-anim';
             <li><span>Wtorek</span><b>9:00–17:00</b></li>
             <li><span>Czwartek</span><b>9:00–17:00</b></li>
           </ul>
+          <a class="member-zl" href="https://www.znanylekarz.pl/ewa-marat/psycholog/lodz" target="_blank" rel="noopener nofollow" aria-label="Umów wizytę u Ewy Marat na ZnanyLekarz (otwiera się w nowej karcie)"><img src="assets/img/logo-znanylekarz.png" alt="" width="18" height="18">Umów na ZnanyLekarz</a>
         </div>
         <details class="member-more">
           <summary>Pełny profil</summary>
@@ -539,7 +554,7 @@ document.documentElement.className += ' js-anim';
       <article class="member member-detailed reveal" id="spec-jolanta-jankowska">
         <div class="portrait"><img src="assets/img/team/jolanta-jankowska.jpg" alt="Jolanta Jankowska — psycholożka, psychoonkolożka i psychotraumatolożka" loading="lazy"></div>
         <h3>Jolanta Jankowska</h3>
-        <span class="role">Psycholożka · Psychoonkolożka · Psychotraumatolożka · Logoterapeutka · Terapeutka EMDR (w trakcie szkolenia)</span>
+        <span class="role">Psycholożka · Psychoonkolożka · Psychotraumatolożka · Logoterapeutka · Terapeutka EMDR</span>
         <p>Jestem psycholożką, psychoonkolożką, psychotraumatolożką oraz socjolożką zdrowia. Relację z pacjentem traktuję jako szczególny rodzaj więzi — pełnej autentyczności, szacunku i wzajemnego, życzliwego nastawienia. Mam głębokie poczucie, że pacjent powierza mi to, co najważniejsze: swój wewnętrzny świat, swoje troski, lęki, ale i nadzieje.</p>
         <blockquote class="member-quote">Szczególne miejsce w mojej pracy zajmują osoby zmagające się z traumą onkologiczną oraz ich bliscy. Połączenie wiedzy specjalistycznej, doświadczenia zawodowego i osobistego pozwala mi głęboko rozumieć emocje, myśli oraz doznania fizyczne, z którymi mierzy się osoba w trakcie choroby nowotworowej.</blockquote>
         <div class="member-hours">
@@ -548,6 +563,7 @@ document.documentElement.className += ' js-anim';
             <li><span>Poniedziałek</span><b>13:00–20:00</b></li>
             <li><span>Środa</span><b>13:00–20:00</b></li>
           </ul>
+          <a class="member-zl" href="https://www.znanylekarz.pl/jolanta-jankowska-3/psycholog-psychoonkolog/lodz" target="_blank" rel="noopener nofollow" aria-label="Umów wizytę u Jolanty Jankowskiej na ZnanyLekarz (otwiera się w nowej karcie)"><img src="assets/img/logo-znanylekarz.png" alt="" width="18" height="18">Umów na ZnanyLekarz</a>
         </div>
         <details class="member-more">
           <summary>Pełny profil</summary>
@@ -559,7 +575,7 @@ document.documentElement.className += ' js-anim';
                 <li><b>Uczelnia Biznesu i Nauk Stosowanych Varsovia</b> — jednolite studia magisterskie na kierunku Psychologia (specjalność: psychoterapia).</li>
                 <li><b>Szkoła Psychoterapii w nurcie Logoterapii</b> — specjalizacja „psychoterapia integralna: noo-psychoterapia” (akredytacja Polskiego Towarzystwa Logoterapii i Noo-Psychosomatyki, Viktor Frankl Institut w Wiedniu oraz International Association of Logotherapy and Existential Analysis).</li>
                 <li><b>Studia podyplomowe</b> — psychoonkologia oraz psychotraumatologia.</li>
-                <li><b>Polskie Towarzystwo Terapii EMDR</b> — szkolenie z zakresu terapii EMDR (w trakcie).</li>
+                <li><b>Polskie Towarzystwo Terapii EMDR</b> — szkolenie z zakresu terapii EMDR.</li>
               </ul>
               <h4>Doświadczenie zawodowe</h4>
               <ul>
@@ -593,6 +609,7 @@ document.documentElement.className += ' js-anim';
             <li><span>Środa</span><b>16:00–20:00</b></li>
             <li><span>Piątek</span><b>10:00–16:00</b></li>
           </ul>
+          <a class="member-zl" href="https://www.znanylekarz.pl/katarzyna-dawidowska/psychoterapeuta/lodz" target="_blank" rel="noopener nofollow" aria-label="Umów wizytę u Katarzyny Dawidowskiej na ZnanyLekarz (otwiera się w nowej karcie)"><img src="assets/img/logo-znanylekarz.png" alt="" width="18" height="18">Umów na ZnanyLekarz</a>
         </div>
         <details class="member-more">
           <summary>Pełny profil</summary>
@@ -639,6 +656,7 @@ document.documentElement.className += ' js-anim';
             <li><span>Wtorek</span><b>13:00–20:00</b></li>
             <li><span>Czwartek</span><b>13:00–20:00</b></li>
           </ul>
+          <a class="member-zl" href="https://www.znanylekarz.pl/adam-prosniak/psychoterapeuta/lodz" target="_blank" rel="noopener nofollow" aria-label="Umów wizytę u Adama Prośniaka na ZnanyLekarz (otwiera się w nowej karcie)"><img src="assets/img/logo-znanylekarz.png" alt="" width="18" height="18">Umów na ZnanyLekarz</a>
         </div>
         <details class="member-more">
           <summary>Pełny profil</summary>
@@ -722,8 +740,11 @@ document.documentElement.className += ' js-anim';
         <div class="member-hours">
           <h4>Godziny przyjęć</h4>
           <ul>
-            <li><span>Wtorek</span><b>13:30–18:30</b></li>
+            <li><span>Poniedziałek</span><b>14:00–18:00</b></li>
+            <li><span>Wtorek</span><b>14:00–15:00</b></li>
+            <li><span>Czwartek</span><b>16:00–19:00</b></li>
           </ul>
+          <a class="member-zl" href="https://www.znanylekarz.pl/agnieszka-jurczyk/psychoterapeuta-lekarz-bez-specjalizacji/lodz" target="_blank" rel="noopener nofollow" aria-label="Umów wizytę u Agnieszki Pauli Jurczyk na ZnanyLekarz (otwiera się w nowej karcie)"><img src="assets/img/logo-znanylekarz.png" alt="" width="18" height="18">Umów na ZnanyLekarz</a>
         </div>
         <details class="member-more">
           <summary>Pełny profil</summary>
@@ -817,6 +838,7 @@ document.documentElement.className += ' js-anim';
             <li><span>Piątek</span><b>13:00–20:00</b></li>
             <li><span>Sobota</span><b>9:00–12:00</b></li>
           </ul>
+          <a class="member-zl" href="https://www.znanylekarz.pl/katarzyna-chojak/psycholog/lodz" target="_blank" rel="noopener nofollow" aria-label="Umów wizytę u Katarzyny Chojak na ZnanyLekarz (otwiera się w nowej karcie)"><img src="assets/img/logo-znanylekarz.png" alt="" width="18" height="18">Umów na ZnanyLekarz</a>
         </div>
         <details class="member-more">
           <summary>Pełny profil</summary>
@@ -843,6 +865,55 @@ document.documentElement.className += ' js-anim';
                 <li><b>Wsparcie w żałobie</b> — towarzyszenie pacjentom w procesie straty, przeżywania żalu i odbudowywania równowagi po stracie bliskich.</li>
               </ul>
             </div>
+          </div>
+        </details>
+      </article>
+
+      <article class="member member-detailed reveal" id="spec-olesya-shuvarikova-olczak">
+        <div class="portrait"><img src="assets/img/team/olesya-shuvarikova-olczak.jpg" alt="Olesya Shuvarikova-Olczak — certyfikowana psychoterapeutka TSR i psycholożka" loading="lazy"></div>
+        <h3>Olesya Shuvarikova-Olczak</h3>
+        <span class="role">Certyfikowana psychoterapeutka TSR · Psycholożka</span>
+        <p>Główną bazą mojej pracy jest Terapia Krótkoterminowa Skoncentrowana na Rozwiązaniu (TSR). W codziennej praktyce wspieram młodzież 13+, osoby dorosłe, pary oraz rodziny, koncentrując się na ich zasobach, możliwościach i realnych celach.</p>
+        <blockquote class="member-quote">Wierzę, że każdy człowiek ma potencjał do odzyskania równowagi, sprawczości i poczucia wpływu. Towarzyszę klientom w odkrywaniu ich mocnych stron, budowaniu odporności psychicznej oraz wprowadzaniu zmian, które są możliwe «tu i teraz».</blockquote>
+        <div class="member-hours">
+          <h4>Godziny przyjęć</h4>
+          <ul>
+            <li><span>Poniedziałek</span><b>9:00–12:00</b></li>
+            <li><span>Czwartek</span><b>14:00–20:00</b></li>
+          </ul>
+          <a class="member-zl" href="https://www.znanylekarz.pl/olesya-shuvarikova-olczak/psycholog-psychoterapeuta/lodz" target="_blank" rel="noopener nofollow" aria-label="Umów wizytę u Olesyi Shuvarikovej-Olczak na ZnanyLekarz (otwiera się w nowej karcie)"><img src="assets/img/logo-znanylekarz.png" alt="" width="18" height="18">Umów na ZnanyLekarz</a>
+        </div>
+        <details class="member-more">
+          <summary>Pełny profil</summary>
+          <div class="member-more-body">
+            <p>W pracy terapeutycznej łączę podejście skoncentrowane na rozwiązaniach z elementami współczesnej psychologii klinicznej, psychoedukacji oraz pracy systemowej — zawsze dopasowując metody do indywidualnych potrzeb klienta.</p>
+            <p>Tworzę atmosferę uważności, bezpieczeństwa i normalności — przestrzeń, w której można mówić o wszystkim bez presji i ocen.</p>
+            <div class="member-creds">
+              <h4>Wykształcenie i kwalifikacje</h4>
+              <ul>
+                <li><b>Centrum Terapii Krótkoterminowej</b> — psychoterapia w nurcie TSR (ukończone w 2025 r.); certyfikowana psychoterapeutka (certyfikat nr 77/2026 PTPSR).</li>
+                <li><b>Uniwersytet Łódzki</b> (2002–2007) — psychologia stosowana oraz psychologia małżeństw.</li>
+                <li>Regularne podnoszenie kwalifikacji poprzez udział w konferencjach naukowych, szkoleniach i kursach z zakresu pomocy psychologicznej, psychoterapii oraz pracy z parami.</li>
+              </ul>
+              <h4>Doświadczenie kliniczne</h4>
+              <ul>
+                <li>Praca z młodzieżą, osobami dorosłymi, parami oraz rodzinami — w gabinecie stacjonarnym i online.</li>
+                <li>Wsparcie osób doświadczających trudności emocjonalnych, kryzysów życiowych, przeciążenia, lęku, stresu, wypalenia oraz wyzwań relacyjnych.</li>
+                <li>Psychoedukacja dla młodzieży, rodziców i par oraz autorskie warsztaty rozwojowe.</li>
+              </ul>
+              <h4>Obszary wsparcia i specjalizacji</h4>
+              <ul>
+                <li><b>Depresja i zaburzenia nastroju</b> — depresja, zaburzenia nastroju, mania.</li>
+                <li><b>Lęk i nerwica</b> — lęki, zaburzenia lękowe, zespół lęku uogólnionego, nerwica, nerwica natręctw, zaburzenie obsesyjno-kompulsyjne (OCD).</li>
+                <li><b>Kryzys</b> — kryzys życiowy, emocjonalny i zawodowy, kryzys w związku, ból emocjonalny.</li>
+                <li><b>Relacje i terapia par</b> — zaburzenia w relacjach międzyludzkich, terapia par, DDD (dorosłe dziecko z rodziny dysfunkcyjnej).</li>
+                <li><b>Osobowość, emocje i zachowanie</b> — zaburzenia osobowości, borderline, zaburzenia emocjonalne, zaburzenia zachowania, zaburzenia psychiczne.</li>
+                <li><b>Sen i koncentracja</b> — bezsenność, zaburzenia snu, zaburzenia koncentracji.</li>
+                <li><b>Trauma i psychosomatyka</b> — trauma, zaburzenia psychosomatyczne.</li>
+                <li>Niskie poczucie własnej wartości.</li>
+              </ul>
+            </div>
+            <p class="member-superv">Moja praktyka podlega stałej superwizji u certyfikowanych superwizorów TSR. Pracuję w oparciu o wysokie standardy etyczne, transparentność i odpowiedzialność — regularna superwizja gwarantuje bezpieczeństwo i profesjonalizm na każdym etapie procesu terapeutycznego.</p>
           </div>
         </details>
       </article>
@@ -924,7 +995,7 @@ document.documentElement.className += ' js-anim';
         <figcaption>Gabinet z widokiem na fototapetę — sesje dorosłych i młodzieży.</figcaption>
       </figure>
       <figure>
-        <img src="assets/img/poradnia/poczekalnia.jpg" alt="Poczekalnia Pro-Mentis — lada rejestracji, krzesła i drzwi do gabinetów" loading="lazy">
+        <img src="assets/img/poradnia/poczekalnia.jpg" alt="Poczekalnia Pro-Mentis — lada rejestracji pod logo kliniki, krzesła i otwarte drzwi do gabinetu" loading="lazy">
         <figcaption>Poczekalnia przy rejestracji — stąd wchodzi się do gabinetów.</figcaption>
       </figure>
     </div>
@@ -1000,6 +1071,13 @@ document.documentElement.className += ' js-anim';
           <h3 class="widget-head">Umów online</h3>
           <a class="zl-facility-url" href="https://www.znanylekarz.pl/placowki/pro-mentis" rel="nofollow" data-zlw-facility="pro-mentis" data-zlw-type="facility-big" data-zlw-saas-only="false" data-zlw-a11y-title="Widget umówienia wizyty lekarskiej">Umów wizytę</a>
           <script>!function($_x,_s,id){var js,fjs=$_x.getElementsByTagName(_s)[0];if(!$_x.getElementById(id)){js = $_x.createElement(_s);js.id = id;js.src = "//platform.docplanner.com/js/widget.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","zl-widget-s");</script>
+          <!--
+            Olesya Shuvarikova-Olczak ma na ZnanyLekarz własny kalendarz, poza kalendarzem
+            placówki, więc widżet placówki nie pokazuje jej terminów. Kod z jej panelu,
+            bez zmian; loader platform.docplanner.com jest już wczytany wyżej (to samo id).
+          -->
+          <h3 class="widget-head widget-head-sub">Olesya Shuvarikova-Olczak <small>osobny kalendarz</small></h3>
+          <a id="zl-url" class="zl-url" href="https://www.znanylekarz.pl/olesya-shuvarikova-olczak/psycholog-psychoterapeuta/lodz" rel="nofollow" data-zlw-doctor="olesya-shuvarikova-olczak" data-zlw-type="big_with_calendar" data-zlw-opinion="false" data-zlw-hide-branding="true" data-zlw-saas-only="true" data-zlw-a11y-title="Widget umówienia wizyty lekarskiej">Umów wizytę</a>
         </div>
         <div class="contact-info">
           <div class="ci-row">
@@ -1030,7 +1108,7 @@ document.documentElement.className += ' js-anim';
         </div>
       </div>
 
-      <div class="hours reveal">
+      <div class="hours reveal" id="godziny">
         <h3>Godziny przyjęć specjalistów</h3>
         <p class="hours-lede">Grafik może się zmieniać — aktualną dostępność potwierdzamy przy zapisie.</p>
         <div class="table-scroll">
@@ -1102,10 +1180,10 @@ document.documentElement.className += ' js-anim';
               </tr>
               <tr>
                 <th scope="row">Agnieszka Paula Jurczyk</th>
+                <td>14:00–18:00</td>
+                <td>14:00–15:00</td>
                 <td aria-label="nie przyjmuje">—</td>
-                <td>13:30–18:30</td>
-                <td aria-label="nie przyjmuje">—</td>
-                <td aria-label="nie przyjmuje">—</td>
+                <td>16:00–19:00</td>
                 <td aria-label="nie przyjmuje">—</td>
                 <td aria-label="nie przyjmuje">—</td>
               </tr>
@@ -1127,6 +1205,15 @@ document.documentElement.className += ' js-anim';
                 <td>13:00–20:00</td>
                 <td>9:00–12:00</td>
               </tr>
+              <tr>
+                <th scope="row">Olesya Shuvarikova-Olczak</th>
+                <td>9:00–12:00</td>
+                <td aria-label="nie przyjmuje">—</td>
+                <td aria-label="nie przyjmuje">—</td>
+                <td>14:00–20:00</td>
+                <td aria-label="nie przyjmuje">—</td>
+                <td aria-label="nie przyjmuje">—</td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -1142,6 +1229,13 @@ document.documentElement.className += ' js-anim';
         <h2 class="section-title">Zapisz się na wizytę</h2>
         <p class="lede">Wypełnij krótki formularz — oddzwonimy lub odpiszemy, by potwierdzić termin i dobrać odpowiedniego specjalistę.</p>
       </div>
+      <aside class="free-consult reveal" id="bezplatna-konsultacja">
+        <span class="free-consult-badge">Za darmo</span>
+        <div>
+          <h3>Pierwsza konsultacja do 15 minut za darmo</h3>
+          <p>Zadzwoni do Ciebie Twój specjalista przez link Google Meet. Zapisy przez formularz poniżej: wybierz <a href="#zapisy" data-usluga="Bezpłatna konsultacja wstępna (15 min, Google Meet)">bezpłatną konsultację wstępną</a>, a link do rozmowy otrzymasz po potwierdzeniu terminu.</p>
+        </div>
+      </aside>
       <!--
         Wysyłka bez backendu przez FormSubmit (https://formsubmit.co).
         WAŻNE: pierwsza wysyłka wymaga jednorazowej aktywacji adresu (link w mailu od FormSubmit).
@@ -1176,6 +1270,9 @@ document.documentElement.className += ' js-anim';
           <label for="f-topic">Czego dotyczy zgłoszenie</label>
           <select id="f-topic" name="Usługa" required>
             <option value="" selected disabled>Wybierz…</option>
+            <option>Bezpłatna konsultacja wstępna (15 min, Google Meet)</option>
+            <option>Konsultacja psychologiczna</option>
+            <option>Konsultacja psychoterapeutyczna</option>
             <option>Psychoterapia indywidualna</option>
             <option>Terapia par</option>
             <option>Terapia rodzinna</option>
@@ -1184,6 +1281,7 @@ document.documentElement.className += ' js-anim';
             <option>Diagnoza psychologiczna</option>
             <option>Konsultacja seksuologiczna</option>
             <option>Psycholog kliniczny</option>
+            <option>Lekarz psychiatra</option>
             <option>Dietetyk kliniczny</option>
             <option>Mediacje rodzinne</option>
             <option>Trening umiejętności społecznych (TUS)</option>
@@ -1200,7 +1298,7 @@ document.documentElement.className += ' js-anim';
             <option>Depresja i zaburzenia nastroju</option>
             <option>Kryzys życiowy i emocjonalny</option>
             <option>Żałoba i strata</option>
-            <option>Trauma i praca z traumą (EMDR)</option>
+            <option>Trauma i praca z traumą (m.in. EMDR)</option>
             <option>Zaburzenia osobowości</option>
             <option>Trudności w relacjach i związkach</option>
             <option>Seksualność, bliskość, intymność</option>
@@ -1239,7 +1337,14 @@ document.documentElement.className += ' js-anim';
   <div class="wrap">
     <div class="footer-top">
       <div class="footer-brand">
-        <p>Klinika psychoterapii w centrum Łodzi. Serce dla rozumu, rozum dla serca.</p>
+        <a class="brand" href="#top" aria-label="Pro-Mentis — strona główna">
+          <img src="assets/img/logo-heart-light.svg" alt="">
+          <span class="brand-text">
+            <b>Pro-Mentis</b>
+            <span>Klinika Psychoterapii</span>
+          </span>
+        </a>
+        <p>Pro-Mentis Klinika Psychoterapii w centrum Łodzi. Serce dla rozumu, rozum dla serca.</p>
       </div>
       <div class="footer-col">
         <h5>Nawigacja</h5>
@@ -1271,7 +1376,7 @@ document.documentElement.className += ' js-anim';
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 Pro-Mentis · Klinika Psychoterapii</span>
+      <span>© 2026 Pro-Mentis · Klinika Psychoterapii · Dariusz Drużyński</span>
       <span class="footer-legal">
         <a href="regulamin.html">Regulamin</a>
         <a href="polityka-prywatnosci.html">Polityka prywatności</a>
@@ -1554,21 +1659,22 @@ document.documentElement.className += ' js-anim';
     'katarzyna-wojcikowska':'Katarzyna Wójcikowska',
     'agnieszka-jurczyk':    'Agnieszka Paula Jurczyk',
     'beata-jaranowska':     'Beata Joanna Jaranowska',
-    'katarzyna-chojak':     'Katarzyna Chojak'
+    'katarzyna-chojak':     'Katarzyna Chojak',
+    'olesya-shuvarikova-olczak': 'Olesya Shuvarikova-Olczak'
   };
 
   var MAPA = {
-    'Lęk, ataki paniki, przewlekły stres': ['beata-jaranowska','katarzyna-chojak','jolanta-jankowska','adam-prosniak','dariusz-druzynski'],
-    'Depresja i zaburzenia nastroju': ['beata-jaranowska','katarzyna-chojak','adam-prosniak','dariusz-druzynski'],
-    'Kryzys życiowy i emocjonalny': ['beata-jaranowska','katarzyna-dawidowska','dominika-krawczyk','katarzyna-chojak','jolanta-jankowska','dariusz-druzynski'],
+    'Lęk, ataki paniki, przewlekły stres': ['beata-jaranowska','katarzyna-chojak','jolanta-jankowska','adam-prosniak','dariusz-druzynski','olesya-shuvarikova-olczak'],
+    'Depresja i zaburzenia nastroju': ['beata-jaranowska','katarzyna-chojak','adam-prosniak','dariusz-druzynski','olesya-shuvarikova-olczak'],
+    'Kryzys życiowy i emocjonalny': ['beata-jaranowska','katarzyna-dawidowska','dominika-krawczyk','katarzyna-chojak','jolanta-jankowska','dariusz-druzynski','olesya-shuvarikova-olczak'],
     'Żałoba i strata': ['beata-jaranowska','katarzyna-chojak','dariusz-druzynski'],
-    'Trauma i praca z traumą (EMDR)': ['jolanta-jankowska'],
-    'Zaburzenia osobowości': ['katarzyna-dawidowska','agnieszka-jurczyk','dominika-krawczyk'],
-    'Trudności w relacjach i związkach': ['beata-jaranowska','katarzyna-dawidowska','adam-prosniak','agnieszka-jurczyk','katarzyna-wojcikowska','dariusz-druzynski'],
+    'Trauma i praca z traumą (m.in. EMDR)': ['jolanta-jankowska','olesya-shuvarikova-olczak'],
+    'Zaburzenia osobowości': ['katarzyna-dawidowska','agnieszka-jurczyk','dominika-krawczyk','olesya-shuvarikova-olczak'],
+    'Trudności w relacjach i związkach': ['beata-jaranowska','katarzyna-dawidowska','adam-prosniak','agnieszka-jurczyk','katarzyna-wojcikowska','dariusz-druzynski','olesya-shuvarikova-olczak'],
     'Seksualność, bliskość, intymność': ['katarzyna-wojcikowska','dariusz-druzynski'],
-    'Samoocena i akceptacja siebie': ['beata-jaranowska','jolanta-jankowska','dariusz-druzynski'],
-    'Rodzina, rodzicielstwo, wychowanie': ['beata-jaranowska','ewa-marat','katarzyna-dawidowska','katarzyna-wojcikowska','dariusz-druzynski'],
-    'Dzieci i młodzież': ['ewa-marat','katarzyna-dawidowska','dariusz-druzynski'],
+    'Samoocena i akceptacja siebie': ['beata-jaranowska','jolanta-jankowska','dariusz-druzynski','olesya-shuvarikova-olczak'],
+    'Rodzina, rodzicielstwo, wychowanie': ['beata-jaranowska','ewa-marat','katarzyna-dawidowska','katarzyna-wojcikowska','dariusz-druzynski','olesya-shuvarikova-olczak'],
+    'Dzieci i młodzież': ['ewa-marat','katarzyna-dawidowska','dariusz-druzynski','olesya-shuvarikova-olczak'],
     'Diagnoza psychologiczna (ADHD, osobowość, funkcje poznawcze)': ['dominika-krawczyk','ewa-marat'],
     'Psychogeriatria i zaburzenia poznawcze': ['katarzyna-chojak','dominika-krawczyk'],
     'Uzależnienia': ['ewa-marat'],
@@ -1588,7 +1694,7 @@ document.documentElement.className += ' js-anim';
   });
 })();
 </script>
-
+<script src="assets/js/search.js?v=1" defer></script>
 
 </body>
 </html>

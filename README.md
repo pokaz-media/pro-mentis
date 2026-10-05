@@ -16,11 +16,14 @@ regulamin.html          terms of service (client's document, transcribed)
 polityka-prywatnosci.html  RODO information clause (client's document)
 dziekujemy.html         post-submit thank-you page (FormSubmit `_next` target)
 assets/
+  js/
+    search.js           the site search ("lupka"), shared by all five pages
   css/
     styles.css          design system: tokens, type, section layouts
     variants.css        alternative layouts + design axes (see below)
   img/
     logo-heart.svg      the heart/brain mark — nav, hero, Misja art, favicon
+    logo-heart-light.svg  same mark, grey half lightened to #D9D5CF for the dark footer
     logo-full.png       full lockup, raster only (footer; SVG still missing)
     logo-znanylekarz.png  ZnanyLekarz mark, 64×64, for the booking dialog
     partner-mind4med.png  Mind4Med logo, white margin trimmed (Zespół)
@@ -30,18 +33,18 @@ assets/
     budynek-front.jpg   building from ul. Drewnowska — real photo, replaced the render
     tablica-wejscie.jpg sign by the entrance, 900×900 (Poradnia)
     poradnia/           4 gabinety, poczekalnia, the gate from the street
-    team/               10 therapist portraits, square (900×900, one 800×800)
+    team/               11 therapist portraits, square (900×900, one 800×800)
 _source/                local only, git-ignored — never shipped
 ```
 
 `_source/` holds the material this site was built from: the original Claude
 Design export (`design-bundle/`) and the client's per-round source files
-(`klient-2026-06-runda-2/`, `klient-2026-08-runda-3/` — untouched photos,
+(`klient-2026-06-runda-2/`, `klient-2026-08-runda-3/`, `klient-2026-10-runda-6/` — untouched photos,
 `GODZINY PRACY.xlsx`, the signage PDF the reception, building and sign photos
 were lifted from). Processed, web-ready copies live in `assets/img/`; the
 originals stay out of git.
 
-All ten portraits are **square** and framed head-and-shoulders at a comparable
+All eleven portraits are **square** and framed head-and-shoulders at a comparable
 head size, so the grid reads as one set — `object-position: center 20%` is
 therefore a no-op for every one of them. Dariusz Drużyński and Dominika Krawczyk
 used to be the two exceptions (a 1000×1188 standing shot and an 879×768 seated
@@ -59,6 +62,11 @@ and the plain stucco wall is extended sideways (13% per side — the edge strip
 stretched, blurred and re-grained). Beata Jaranowska's is a plain square crop
 lowered to `top=170`. If either original is ever replaced, redo the crop rather
 than scaling the current file.
+
+Olesya Shuvarikova-Olczak (round 6) came as a 3024×2268 file whose rotation lives
+only in EXIF (orientation 8). After `ImageOps.exif_transpose` it is 2268×3024; the
+portrait is the full-width square from `top=150`, which puts her head at about the
+same size as the rest of the grid.
 
 ## Sections
 
@@ -86,6 +94,12 @@ had no visible number in the header at all. State is one class, `.nav-open`, on
 header and on resize back above 980px, and `aria-expanded` tracks it. The script
 is duplicated in all **five** pages along with the header markup.
 
+The header also carries a search button (`.search-toggle`, `data-search-open`). It
+ships with `hidden` and `assets/js/search.js` un-hides it, so without JS there is no
+dead button. Below **400px** the bar cannot fit it next to the full logo and the
+CTA, so the script adds a `Szukaj na stronie` row (`.nav-search`) to the mobile
+panel instead and CSS swaps which one shows.
+
 `Kariera` sits in `.nav-links` **only** — deliberately not in the footer's
 `Nawigacja` column, which mirrors the nav on every other item. That is the client's
 call, not an oversight; it is the one label that differs between the two lists.
@@ -98,6 +112,12 @@ page; the form's RODO checkbox points at the privacy clause and `.form-hint` at
 the regulamin. Styling lives in the `.legal-*` block in `styles.css` (one text
 measure shared by the TOC and the body, `§` headings separated by rules,
 `scroll-margin-top` so anchors clear the sticky header).
+
+The footer shows the logo lockup again (round 6, the client asked for it back
+after it was removed in June) using `logo-heart-light.svg`, because the mark's
+`#383E42` half disappears on the charcoal background. Its text reads `Pro-Mentis
+Klinika Psychoterapii w centrum Łodzi…` and the copyright line ends with
+`· Dariusz Drużyński`, both at the client's request.
 
 Header and footer are **copied** into all five files — there is no build step
 and no includes, so a change to either means editing five files. The two legal
@@ -151,20 +171,34 @@ As of 24 Aug 2026 ZnanyLekarz booking is **live**, so those four chips are real
 `rel="noopener nofollow"`) — no `data-usluga`, so the form-prefill script ignores
 them.
 
-**Open question the calendar's removal created:** the three seksuologia rows now
-carry `Formularz` alone, because their second chip used to be `Kalendarz online`.
-They were split off in the first place under a rule that assumed ZnanyLekarz
-booking did not work at all — which is no longer true. Ask the client whether
-seksuologia should be bookable through ZnanyLekarz too; if yes, those rows want the
-same chip as the psychotherapy ones.
+The two seksuologia consultations got their `ZnanyLekarz` chip back in round 6, at
+the client's request. Dariusz runs them, so the chip goes to **his** ZL profile
+(`dariusz-druzynski/seksuolog-psycholog/lodz`), not the facility one. The workshops
+row stays `Formularz` only.
 
-**Zespół** — 10 expandable cards. Photo, name, role, intro, pull quote and that
+The first row of the first group is **Bezpłatna konsultacja wstępna** (up to 15
+minutes, Google Meet, the specialist calls the patient; round 6). It is bookable
+only through the form, so it carries a `Formularz` chip alone, and the same option
+is preselected by the hero's `15 min` item and the box above the form
+(`#bezplatna-konsultacja`).
+
+**Zespół** — 11 expandable cards. Photo, name, role, intro, pull quote and that
 person's hours are always visible; second paragraph, credentials, experience and
 the supervision note sit behind a `Pełny profil` `<details>` toggle (no JS).
-Grid is 3-up ≥1081px, 2-up 781–1080px, 1-up ≤780px (`minmax(0, 1fr)`
+Grid is 3-up ≥1081px (built on 6 tracks with each card spanning 2, so a last row
+of one or two cards can be centred), 2-up 781–1080px, 1-up ≤780px (`minmax(0, 1fr)`
 everywhere — a bare `1fr` lets a long institution name set the track's
-min-content and push the card out of the grid on narrow phones); a lone card on
+min-content and push the card out of the grid on narrow phones); a lone card or a pair on
 the last row is centred.
+
+Nine cards end their hours block with `Umów na ZnanyLekarz` (`.member-zl`), linking
+that person's own ZL profile. Only profiles that ZnanyLekarz lists under
+`placowki/pro-mentis` get one (checked 6 Oct 2026); Olesya is the exception, her
+calendar is separate from the facility by design. **Beata Joanna Jaranowska** and
+**Katarzyna Wójcikowska** have ZL profiles at other addresses, so they get no link:
+it would book them somewhere else. The obvious slug can belong to a namesake
+(`jolanta-jankowska` is a neurologist in Leżajsk; ours is `jolanta-jankowska-3`),
+so verify the profile before adding a link.
 
 Cards in a row are **equal height** (`align-items: stretch`) with `Pełny profil`
 pinned to the card bottom (`margin-top: auto`), so the buttons line up. Opening
@@ -252,6 +286,28 @@ picked. Two things that will bite if the block is ever moved:
 Without JS, or on a browser with no `<dialog>`, the buttons stay ordinary links to
 `#zapisy` — the behaviour the site had before.
 
+## Search (`assets/js/search.js`)
+
+Requested in round 6 so a patient can find the regulamin or a specialist's hours
+quickly. One shared file, loaded with `defer` on all five pages; the dialog markup
+is built by the script, the only per-page markup is the header button.
+
+There is **no hand-kept index**. On first open the script reads the current page
+from the DOM and fetches the other pages (`index.html`, `regulamin.html`,
+`polityka-prywatnosci.html`, `kariera.html`) through `DOMParser`, then indexes
+sections, Oferta tiles, every Cennik row (with price and duration), every team card
+(role, hours, areas, supervision note), the hours table (`#godziny`), Poradnia,
+Kontakt, the free-consultation box, each `§` of the legal pages and each Kariera
+offer. Editing content therefore updates search with no second edit. Over `file://`
+the fetches fail and only the current page is searched; use `http.server`.
+
+Matching folds Polish diacritics (`ł` too), requires every query word, and ranks
+title over keywords over body. Polish inflection is handled by trimming the end of
+longer words (`terapii` finds `terapia`), with a full-word hit always outranking a
+trimmed one (`regulamin` must not surface `regularnej superwizji`). Ctrl/⌘+K and `/`
+open it; arrows and Enter pick a result; a same-page result briefly outlines its
+target (`.search-hit`).
+
 ## Obszar trudności → specialists
 
 The Zapisy form has a second, optional `<select id="f-obszar">` under the service
@@ -271,7 +327,7 @@ so the links clear the sticky header.
 
 **The map is a clinical claim, not decoration.** It routes a patient to a named
 therapist; if it is wrong, they get sent to the wrong person. The 16 areas were
-derived from the `Obszary wsparcia i specjalizacji` blocks on the ten cards, so
+derived from the `Obszary wsparcia i specjalizacji` blocks on the cards (eleven since round 6), so
 nothing in it was invented, and it went live on 7 Sep 2026 on the client's own
 say-so. Treat it as live copy: **any edit to a card's areas has to come back to the
 map, and the other way round** — the two drifting apart is how a patient ends up
@@ -325,6 +381,25 @@ the `_honey` honeypot stays either way. On the production host the
 
 ## Still needed from the client
 
+Round 6 (October 2026) open items, full list with sources in
+`_source/klient-2026-10-runda-6/ZADANIA.md`:
+
+- **Calendar for the free 15-minute consultation.** The client would like "our
+  calendar" next to it; we need the booking link (e.g. a Google Calendar
+  appointment schedule) before it can be embedded in `#bezplatna-konsultacja`.
+- **`Lekarz psychiatra` is a form option with no psychiatrist behind it.** Added
+  because the client asked; there is no card, price or Oferta tile for it. Ask who
+  sees these patients, when, and at what price.
+- **Olesya is not attached to the facility on ZnanyLekarz**, which is why she has
+  her own widget. Beata Joanna Jaranowska and Katarzyna Wójcikowska have no profile
+  at Drewnowska 102 (see Zespół).
+- **Does the free consultation apply to every service** (also sexology, dietetics,
+  mediation) or only psychotherapy?
+- The three new `#f-topic` options (`Konsultacja psychologiczna`, `Konsultacja
+  psychoterapeutyczna`, `Lekarz psychiatra`) and the free consultation are entry
+  points, not services, so they deliberately have **no Oferta tile**; the 1:1 rule
+  above covers the 13 services.
+
 - **Activate the form — this is the one hard launch blocker.** Verified on
   23 Aug 2026 by posting a test submission: FormSubmit answered *"This form needs
   Activation. We've sent you an email containing an 'Activate Form' link."* Until
@@ -349,7 +424,10 @@ the `_honey` honeypot stays either way. On the production host the
   button changed from *Pokaż opinie* to *Umów wizytę*). The widget in Kontakt is
   the client's snippet from their panel, verbatim, plus the
   `platform.docplanner.com` loader; the script replaces the fallback
-  `a.zl-facility-url` with an iframe that sizes itself. `.widget-note` under it is
+  `a.zl-facility-url` with an iframe that sizes itself. Under it sits a second
+  widget, `a.zl-url` for Olesya Shuvarikova-Olczak (round 6, the client's snippet
+  verbatim): she is not in the facility's ZL calendar, so the facility widget never
+  shows her slots. The loader runs once (same `zl-widget-s` id) and fills both. `.widget-note` under it is
   gone — it only existed to explain that booking did not work yet. What is still
   outstanding there: **the facility has no logo uploaded**, so the widget renders
   a grey placeholder avatar — the one visibly unfinished element in Kontakt.
@@ -365,7 +443,10 @@ the `_honey` honeypot stays either way. On the production host the
 - **The area → specialist map needs the clinic's sign-off** before it is treated as
   authoritative (see *Obszar trudności* above).
 - **Kariera has no self-service.** Adding an offer means editing `kariera.html` —
-  one `<article class="job">` to copy, with the empty state as a sibling. The
+  one `<article class="job">` to copy; the empty-state paragraph is kept in the
+  comment above the list. Since round 6 it holds a B2B psychotherapist offer and, under
+  `Inne warunki współpracy` (`#inne-warunki`), office rental by the hour, half day
+  or day, priced with the Cennik `.price-row` markup (`h5` titles inside a job). The
   client asked for "the ability to add job offers"; if that means *they* add them,
   it needs a data file and an editor, which is a separate piece of work.
 - **Katarzyna Wójcikowska** and **Dominika Krawczyk** are missing from

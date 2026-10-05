@@ -11,13 +11,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kariera — Pro-Mentis</title>
-<meta name="description" content="Oferty pracy i współpracy w Klinice Psychoterapii Pro-Mentis w Łodzi — dołącz do zespołu psychoterapeutów, psychologów i seksuologów.">
+<meta name="description" content="Oferty pracy i współpracy w Klinice Psychoterapii Pro-Mentis w Łodzi — dołącz do zespołu na umowę B2B albo wynajmij gabinet na godziny.">
 <meta name="robots" content="index, follow">
 <link rel="icon" type="image/svg+xml" href="assets/img/logo-heart.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/styles.css?v=3">
+<link rel="stylesheet" href="assets/css/styles.css?v=4">
 <link rel="stylesheet" href="assets/css/variants.css?v=3">
 </head>
 <body>
@@ -47,6 +47,9 @@
   </nav>
 
   <div class="header-cta">
+    <button class="search-toggle" type="button" data-search-open hidden aria-label="Szukaj na stronie" title="Szukaj (Ctrl+K)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
+    </button>
     <a class="phone-link" href="tel:+48693979397">
       <span class="phone-text"><small>Zadzwoń</small>+48 693 979 397</span>
     </a>
@@ -70,10 +73,46 @@
 
       <!--
         Jedna oferta = jeden <article class="job">. Kopiuj blok poniżej i uzupełnij.
-        Gdy nie ma żadnej oferty, zostaw sam <p class="job-empty"> i usuń wszystkie .job.
+        Gdy nie ma żadnej oferty, usuń wszystkie .job i wstaw w ich miejsce stan pusty:
+        <p class="job-empty">Obecnie nie prowadzimy otwartej rekrutacji — ale chętnie poznamy specjalistów zainteresowanych współpracą. Napisz na <a href="mailto:kontakt@pro-mentis.pl">kontakt@pro-mentis.pl</a>, a odezwiemy się, gdy pojawi się miejsce w zespole.</p>
       -->
       <div class="job-list">
-        <p class="job-empty">Obecnie nie prowadzimy otwartej rekrutacji — ale chętnie poznamy specjalistów zainteresowanych współpracą. Napisz na <a href="mailto:kontakt@pro-mentis.pl">kontakt@pro-mentis.pl</a>, a odezwiemy się, gdy pojawi się miejsce w zespole.</p>
+        <article class="job" id="psychoterapeuta-b2b">
+          <div class="job-head">
+            <h3>Psychoterapeuta / Psychoterapeutka</h3>
+            <span class="job-tags"><span class="tag">Umowa B2B</span><span class="tag">Łódź, centrum</span></span>
+          </div>
+          <p class="job-lede">Zatrudnimy na umowę B2B do Zespołu Profesjonalistów. Poszukujemy Fajnych Ludzi, dla których liczy się przede wszystkim Człowiek.</p>
+          <p>Klinika Psychoterapii Pro-Mentis zaprasza do współpracy Psychoterapeutów z Pasją, którzy potrafią pomóc odnaleźć harmonię tam, gdzie Serce da siłę Rozumowi, a Rozum zrozumie Serce. Jeśli jesteś gotowa/y na podróż pełną pasji, zapraszamy do współpracy.</p>
+          <h4>Wymagania</h4>
+          <ul>
+            <li>Ukończone jednolite studia wyższe z zakresu psychologii.</li>
+            <li>Ukończony 3. rok akredytowanej szkoły psychoterapii.</li>
+            <li>Doświadczenie pracy z pacjentem w szpitalu (może być podczas stażu, udokumentowane minimum 240 h).</li>
+            <li>Nastawienie na proces psychoterapeutyczny indywidualny lub grupowy.</li>
+            <li>Punktualność.</li>
+            <li>Rzetelność i sumienność.</li>
+            <li>Umiejętność pracy w zespole.</li>
+            <li>Dyspozycyjność minimum 15 godzin tygodniowo.</li>
+            <li>Konto na ZnanyLekarz.</li>
+          </ul>
+          <h4>Zakres obowiązków</h4>
+          <p>W zależności od zawodowych kompetencji Kandydata:</p>
+          <ul>
+            <li>Konsultacja i psychoterapia: indywidualna, grupowa, par, rodzinna, dzieci i młodzieży.</li>
+            <li>Prowadzenie Treningu Umiejętności Społecznych (TUS).</li>
+          </ul>
+          <h4>Oferujemy</h4>
+          <ul>
+            <li>Minimum roczną umowę B2B.</li>
+            <li>Elastyczne godziny pracy, dopasowane do możliwości Kandydata.</li>
+            <li>Profesjonalne środowisko pracy.</li>
+            <li>Superwizję koleżeńską oraz grupową.</li>
+            <li>Wsparcie merytoryczne oraz możliwość rozwoju umiejętności terapeutycznych.</li>
+            <li>Miejsce w dobrze skomunikowanym centrum miasta, w bezpośrednim sąsiedztwie Manufaktury w Łodzi.</li>
+          </ul>
+          <p class="job-apply"><a class="btn btn-primary" href="mailto:kontakt@pro-mentis.pl?subject=Rekrutacja%3A%20Psychoterapeuta%20(B2B)">Aplikuj mailem <span class="arrow">→</span></a></p>
+        </article>
 
         <!-- WZÓR OFERTY — odkomentuj i uzupełnij
         <article class="job">
@@ -95,6 +134,52 @@
         -->
       </div>
 
+      <!-- Inne warunki współpracy: wynajem gabinetu (stawki od klienta, runda 6, październik 2026) -->
+      <div class="section-head job-section-head" id="inne-warunki">
+        <span class="eyebrow">Inne warunki współpracy</span>
+        <h2 class="section-title">Gabinet na godziny</h2>
+      </div>
+      <div class="job-list">
+        <article class="job" id="wynajem-gabinetu">
+          <div class="job-head">
+            <h3>Wynajem gabinetu</h3>
+            <span class="job-tags"><span class="tag">Na godziny</span><span class="tag">Pół dnia</span><span class="tag">Cały dzień</span></span>
+          </div>
+          <p class="job-lede">Poszukujesz profesjonalnie wyposażonego gabinetu na godziny, pół dnia lub może na cały dzień? Skontaktuj się z nami bezpośrednio.</p>
+          <h4>Jasne i przejrzyste stawki</h4>
+          <div class="job-prices">
+            <div class="price-row">
+              <div class="price-info">
+                <h5>1 godzina</h5>
+              </div>
+              <span class="price-amount">100 zł</span>
+            </div>
+            <div class="price-row">
+              <div class="price-info">
+                <h5>Pół dnia</h5>
+                <span class="price-dur">do 5 godzin, 9:00–14:00 · pierwsza godzina gratis</span>
+              </div>
+              <span class="price-amount">400 zł</span>
+            </div>
+            <div class="price-row">
+              <div class="price-info">
+                <h5>Cały dzień</h5>
+                <span class="price-dur">do 8 godzin, 9:00–17:00 lub 12:00–20:00 · 2 godziny gratis</span>
+              </div>
+              <span class="price-amount">600 zł</span>
+            </div>
+          </div>
+          <ul>
+            <li>Kaucja zwrotna 1000 zł przy dłuższej umowie współpracy, gwarantującej dostępność gabinetu. Możliwość negocjacji kaucji.</li>
+            <li>Wystawiamy fakturę.</li>
+          </ul>
+          <p class="job-apply job-apply-row">
+            <a class="btn btn-primary" href="tel:+48693979397">Zadzwoń: +48 693 979 397 <span class="arrow">→</span></a>
+            <a class="btn btn-ghost" href="mailto:kontakt@pro-mentis.pl?subject=Wynajem%20gabinetu">Napisz w sprawie gabinetu</a>
+          </p>
+        </article>
+      </div>
+
       <p class="legal-note">Aplikacje przyjmujemy pod adresem <a href="mailto:kontakt@pro-mentis.pl">kontakt@pro-mentis.pl</a>. W zgłoszeniu prosimy o dopisanie zgody na przetwarzanie danych w celu rekrutacji — zasady opisuje <a href="polityka-prywatnosci.html">polityka prywatności</a>.</p>
     </div>
   </section>
@@ -105,7 +190,14 @@
   <div class="wrap">
     <div class="footer-top">
       <div class="footer-brand">
-        <p>Klinika psychoterapii w centrum Łodzi. Serce dla rozumu, rozum dla serca.</p>
+        <a class="brand" href="index.html" aria-label="Pro-Mentis — strona główna">
+          <img src="assets/img/logo-heart-light.svg" alt="">
+          <span class="brand-text">
+            <b>Pro-Mentis</b>
+            <span>Klinika Psychoterapii</span>
+          </span>
+        </a>
+        <p>Pro-Mentis Klinika Psychoterapii w centrum Łodzi. Serce dla rozumu, rozum dla serca.</p>
       </div>
       <div class="footer-col">
         <h5>Nawigacja</h5>
@@ -137,7 +229,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 Pro-Mentis · Klinika Psychoterapii</span>
+      <span>© 2026 Pro-Mentis · Klinika Psychoterapii · Dariusz Drużyński</span>
       <span class="footer-legal">
         <a href="regulamin.html">Regulamin</a>
         <a href="polityka-prywatnosci.html">Polityka prywatności</a>
@@ -231,7 +323,7 @@
   });
 })();
 </script>
-
+<script src="assets/js/search.js?v=1" defer></script>
 
 </body>
 </html>
